@@ -6,6 +6,7 @@
 package jodicelukeendicott.dashboard;
 
 import api.CovidConnection;
+import javax.swing.JOptionPane;
 import login.User;
 
 /**
@@ -248,6 +249,9 @@ public class RegisterWindow extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //check if the email is considered valid
+        //@TODO
+        //Write Error exceptions checking where the information would be considered incorrect
+        try{
         String email = jtfEmail.getText();
        if(!this.validateEmail(email)){
        //error messege as a dialog box saying that the email must be a valid email
@@ -257,8 +261,14 @@ public class RegisterWindow extends javax.swing.JFrame {
         //User(String fn, String ln, String email, String city, String staProv, String usern, String pword, String pwordHint){
         User u = new User(jtfFirstName.getText(), jtfLastName.getText(),email,jtfCity.getText(),State, jtfUsername.getText(),jpfPass.getText(), jtaPassHint.getText() ); 
         this.setVisible(false);
-        DCustom dc = new DCustom(u);
+        DCustom dc = new DCustom();
         dc.setVisible(true);
+        }
+        //error will check to see if the information that is filled out in this part is incorrect
+        catch(Exception e){
+            
+            JOptionPane.showMessageDialog(this,"the information Seems to be either Filled out incorrectly or is blank recheck");
+        }
         
         
         

@@ -10,7 +10,8 @@ package login;
  * @author jodic
  */
 
-public class CustomUser extends User{
+public class CustomUser{
+    User user;
     boolean doesNews;
 //Arraylist newsApiTopic
     boolean doesStocks;
@@ -20,8 +21,15 @@ public class CustomUser extends User{
     boolean doesCovid;
 //CovidConnection CovidApiTopic
     
-    public CustomUser(String fn, String ln, String email, String city, String staProv, String usern, String pword, String pwordHint,boolean covid, boolean crypto, boolean stocks, boolean news) {
-        super(fn, ln, email, city, staProv, usern, pword, pwordHint);
+    public CustomUser(User u,boolean covid, boolean crypto, boolean stocks, boolean news) {
+        this.assignadds(covid,crypto,stocks,news);
+        this.user= u;
+    }
+  /*
+    public CustomUser(boolean covid, boolean crypto, boolean stocks, boolean news) {
+        this.assignadds(covid,crypto,stocks,news);
+    }*/
+    private void assignadds(boolean covid, boolean crypto ,boolean stocks, boolean news){
         if(covid){
             // call covid api
         }
