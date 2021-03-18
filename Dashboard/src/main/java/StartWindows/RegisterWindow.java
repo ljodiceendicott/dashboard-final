@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jodicelukeendicott.dashboard;
+package StartWindows;
 
 import api.CovidConnection;
 import javax.swing.JOptionPane;
-import login.User;
+import javax.swing.JTextField;
+import UserInfo.User;
 
 /**
  *
@@ -253,8 +254,9 @@ public class RegisterWindow extends javax.swing.JFrame {
         //Write Error exceptions checking where the information would be considered incorrect
         try{
         String email = jtfEmail.getText();
-       if(!this.validateEmail(email)){
-       //error messege as a dialog box saying that the email must be a valid email
+       if(!User.isEmail(email)){
+       JOptionPane.showMessageDialog(this, "Email:"+email+"\n Is not a valid email \nPlease input a valid email");
+       jtfEmail.setText("");
            return; 
        }
         String State= (String) jcbState.getSelectedItem();
@@ -277,10 +279,9 @@ public class RegisterWindow extends javax.swing.JFrame {
     private void jtfCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfCityActionPerformed
- private boolean validateEmail(String email){
- //checks to see if the email is considered valid
-     return true;
- }
+    private boolean isBlank(JTextField jtf){
+        return jtf.getText()=="";
+    }
     /**
      * @param args the command line arguments
      */

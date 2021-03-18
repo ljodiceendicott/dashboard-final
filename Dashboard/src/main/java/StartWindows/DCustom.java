@@ -3,21 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package jodicelukeendicott.dashboard;
+package StartWindows;
 
-import login.*;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author lukej
  */
 public class DCustom extends javax.swing.JFrame {
-User user; 
+
     /**
      * Creates new form DashboardCustomization
      */
     public DCustom() {
-        
         initComponents();
     }
     
@@ -68,8 +67,8 @@ User user;
         jSpinner2 = new javax.swing.JSpinner();
         jLabel8 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jrbtnnoDef = new javax.swing.JRadioButton();
+        jrbtnAddDef = new javax.swing.JRadioButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -414,7 +413,7 @@ User user;
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -427,12 +426,12 @@ User user;
 
         jPanel8.setBorder(new javax.swing.border.MatteBorder(null));
 
-        jRadioButton2.setText("Do not Add Default Widgets");
+        jrbtnnoDef.setText("Do not Add Default Widgets");
 
-        jRadioButton1.setText("Add Default Widgets");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        jrbtnAddDef.setText("Add Default Widgets");
+        jrbtnAddDef.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                jrbtnAddDefActionPerformed(evt);
             }
         });
 
@@ -447,8 +446,8 @@ User user;
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap(10, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton1)
+                    .addComponent(jrbtnnoDef)
+                    .addComponent(jrbtnAddDef)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addComponent(jLabel5))))
@@ -465,9 +464,9 @@ User user;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                .addComponent(jRadioButton1)
+                .addComponent(jrbtnAddDef)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(jrbtnnoDef)
                 .addContainerGap())
         );
 
@@ -514,9 +513,9 @@ User user;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void jrbtnAddDefActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnAddDefActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_jrbtnAddDefActionPerformed
 
     private void jcbStateSelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbStateSelActionPerformed
         // TODO add your handling code here:
@@ -531,10 +530,16 @@ User user;
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //if one of preferenced for default is not pressed
-        return; 
+        //checktoseeif you fillout the different values
+        if(!jrbtnAddDef.isSelected()&&!jrbtnnoDef.isSelected()){
+            JOptionPane.showMessageDialog(this,"Please select if you would like the default widgets");
+            return;
+        }
+        else{
         //else if (Missing one of the things that need to be filled out){
-                
-         //       }
+             
+             //get information   
+             }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
@@ -629,8 +634,6 @@ User user;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JRadioButton jRadioButton7;
@@ -638,7 +641,9 @@ User user;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
     private javax.swing.JComboBox<String> jcbStateSel;
+    private javax.swing.JRadioButton jrbtnAddDef;
     private javax.swing.JRadioButton jrbtnCovidNewState;
     private javax.swing.JRadioButton jrbtnCovidUseState;
+    private javax.swing.JRadioButton jrbtnnoDef;
     // End of variables declaration//GEN-END:variables
 }
