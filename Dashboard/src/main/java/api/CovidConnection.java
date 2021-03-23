@@ -30,11 +30,10 @@ public class CovidConnection {
     String countryName;
     Gson gson;
     
-   public CovidConnection(String countryName, String state){
-        this.countryName = countryName;
+   public CovidConnection(String state){
         gson = new Gson();
         try{
-            URL apiURL = new URL("https://covid-api.mmediagroup.fr/v1/cases?country="+countryName);
+            URL apiURL = new URL("https://covid-api.mmediagroup.fr/v1/cases?country=US");
 
             URLConnection yc = apiURL.openConnection();
 
@@ -63,8 +62,7 @@ public class CovidConnection {
          System.out.println("Bad Connection: ERROR:"+e);
         }
 }
-    public void print(){
-        System.out.println(countryName);
-    }
-
+public void print(){
+    System.out.println("Confirmed cases:"+this.confirmed+"\n Deaths:"+this.deaths);
+}
 }

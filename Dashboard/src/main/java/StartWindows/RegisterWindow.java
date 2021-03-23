@@ -9,19 +9,26 @@ import api.CovidConnection;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import UserInfo.User;
+import UserInfo.UserData;
+import java.awt.HeadlessException;
 
 /**
  *
  * @author lukej
  */
 public class RegisterWindow extends javax.swing.JFrame {
-
+UserData ud;
     /**
      * Creates new form RegisterWindow
      */
     public RegisterWindow() {
         initComponents();
     }
+    public RegisterWindow(UserData ud){
+        initComponents();
+        this.ud = ud;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,7 +50,7 @@ public class RegisterWindow extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jtfUsername = new javax.swing.JTextField();
-        jpfPass = new javax.swing.JPasswordField();
+        jtfPass = new javax.swing.JTextField();
         jtfFirstName = new javax.swing.JTextField();
         jtfLastName = new javax.swing.JTextField();
         jtfEmail = new javax.swing.JTextField();
@@ -73,6 +80,8 @@ public class RegisterWindow extends javax.swing.JFrame {
 
         jLabel6.setText("Password hint:");
 
+        jtfPass.setText("jTextField1");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -87,7 +96,7 @@ public class RegisterWindow extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jpfPass))
+                        .addComponent(jtfPass))
                     .addComponent(jLabel6))
                 .addGap(0, 68, Short.MAX_VALUE))
         );
@@ -101,7 +110,7 @@ public class RegisterWindow extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jpfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -252,25 +261,23 @@ public class RegisterWindow extends javax.swing.JFrame {
         //check if the email is considered valid
         //@TODO
         //Write Error exceptions checking where the information would be considered incorrect
-        try{
         String email = jtfEmail.getText();
-       if(!User.isEmail(email)){
+   /*    if(!User.isEmail(email)){
        JOptionPane.showMessageDialog(this, "Email:"+email+"\n Is not a valid email \nPlease input a valid email");
        jtfEmail.setText("");
            return; 
-       }
+       }*/
         String State= (String) jcbState.getSelectedItem();
         //User(String fn, String ln, String email, String city, String staProv, String usern, String pword, String pwordHint){
-        User u = new User(jtfFirstName.getText(), jtfLastName.getText(),email,jtfCity.getText(),State, jtfUsername.getText(),jpfPass.getText(), jtaPassHint.getText() ); 
+        User u = new User(jtfFirstName.getText(), jtfLastName.getText(),email,jtfCity.getText(),State, jtfUsername.getText(),jtfPass.getText(), jtaPassHint.getText()); 
         this.setVisible(false);
         DCustom dc = new DCustom();
         dc.setVisible(true);
-        }
         //error will check to see if the information that is filled out in this part is incorrect
-        catch(Exception e){
+     
             
             JOptionPane.showMessageDialog(this,"the information Seems to be either Filled out incorrectly or is blank recheck");
-        }
+        
         
         
         
@@ -333,12 +340,12 @@ public class RegisterWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jcbState;
-    private javax.swing.JPasswordField jpfPass;
     private javax.swing.JTextArea jtaPassHint;
     private javax.swing.JTextField jtfCity;
     private javax.swing.JTextField jtfEmail;
     private javax.swing.JTextField jtfFirstName;
     private javax.swing.JTextField jtfLastName;
+    private javax.swing.JTextField jtfPass;
     private javax.swing.JTextField jtfUsername;
     // End of variables declaration//GEN-END:variables
 }

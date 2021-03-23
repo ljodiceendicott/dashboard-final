@@ -5,6 +5,9 @@
  */
 package StartWindows;
 
+import UserInfo.User;
+import UserInfo.UserData;
+import api.CovidConnection;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,14 +15,17 @@ import javax.swing.JOptionPane;
  * @author lukej
  */
 public class DCustom extends javax.swing.JFrame {
-
+User u;
     /**
      * Creates new form DashboardCustomization
      */
     public DCustom() {
         initComponents();
     }
-    
+    public DCustom(User u){
+        this.u = u;
+        initComponents();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,7 +44,7 @@ public class DCustom extends javax.swing.JFrame {
         jrbtnCovidUseState = new javax.swing.JRadioButton();
         jrbtnCovidNewState = new javax.swing.JRadioButton();
         jcbStateSel = new javax.swing.JComboBox<>();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        jcbCovidInfo = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jCheckBox2 = new javax.swing.JCheckBox();
@@ -109,10 +115,10 @@ public class DCustom extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setText(" Covid Info");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        jcbCovidInfo.setText(" Covid Info");
+        jcbCovidInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                jcbCovidInfoActionPerformed(evt);
             }
         });
 
@@ -128,14 +134,14 @@ public class DCustom extends javax.swing.JFrame {
                         .addGap(33, 33, 33)
                         .addComponent(jcbStateSel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jrbtnCovidNewState)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbCovidInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jCheckBox1)
+                .addComponent(jcbCovidInfo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jrbtnCovidUseState)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -413,7 +419,7 @@ public class DCustom extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 374, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -529,6 +535,7 @@ public class DCustom extends javax.swing.JFrame {
     }//GEN-LAST:event_jrbtnCovidNewStateActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        UserData.updateChanges();
         //if one of preferenced for default is not pressed
         //checktoseeif you fillout the different values
         if(!jrbtnAddDef.isSelected()&&!jrbtnnoDef.isSelected()){
@@ -536,14 +543,20 @@ public class DCustom extends javax.swing.JFrame {
             return;
         }
         else{
+            if(jcbCovidInfo.isSelected()){
+                if(jrbtnCovidUseState.isSelected()){
+                    CovidConnection cc = new CovidConnection(u.getStateTerritory());
+                    cc.print();
+                }
+            }
         //else if (Missing one of the things that need to be filled out){
              
              //get information   
              }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
-        if(jCheckBox1.isSelected()){
+    private void jcbCovidInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbCovidInfoActionPerformed
+        if(jcbCovidInfo.isSelected()){
             jrbtnCovidNewState.setEnabled(true);
             jrbtnCovidUseState.setEnabled(true);
         }
@@ -552,7 +565,7 @@ public class DCustom extends javax.swing.JFrame {
             jrbtnCovidUseState.setEnabled(false);
             jcbStateSel.setEnabled(false);
         }
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_jcbCovidInfoActionPerformed
 
     private void jrbtnCovidUseStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnCovidUseStateActionPerformed
         if(jrbtnCovidUseState.isSelected()){
@@ -607,7 +620,6 @@ public class DCustom extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
@@ -640,6 +652,7 @@ public class DCustom extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton8;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
+    private javax.swing.JCheckBox jcbCovidInfo;
     private javax.swing.JComboBox<String> jcbStateSel;
     private javax.swing.JRadioButton jrbtnAddDef;
     private javax.swing.JRadioButton jrbtnCovidNewState;

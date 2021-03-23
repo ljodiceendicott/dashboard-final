@@ -22,8 +22,9 @@ public class CustomUser{
 //CovidConnection CovidApiTopic
     
     public CustomUser(User u,boolean covid, boolean crypto, boolean stocks, boolean news) {
-        this.assignadds(covid,crypto,stocks,news);
         this.user= u;
+        this.assignadds(covid,crypto,stocks,news);
+        
     }
   /*
     public CustomUser(boolean covid, boolean crypto, boolean stocks, boolean news) {

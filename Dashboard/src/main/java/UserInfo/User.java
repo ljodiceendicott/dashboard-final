@@ -10,14 +10,14 @@ package UserInfo;
  * @author jodic
  */
 public class User {
-    String firstName;
-    String lastName;
+    private String firstName;
+    private String lastName;
     String email;
-    String city;
-    String stateTerritory;
-    String username;
-    String password;
-    String passwordHint;
+    private String city;
+    private String stateTerritory;
+    private String username;
+    private String password;
+    private String passwordHint;
    public User(String fn, String ln, String email, String city, String staProv, String usern, String pword, String pwordHint){
         this.firstName = fn;
         this.lastName = ln;           
@@ -25,7 +25,8 @@ public class User {
         this.city = city;
         this.stateTerritory = staProv;
         this.username = usern;
-        this.password = this.encrypt(pword);
+        this.password = pword;
+// this.password = this.encrypt(pword);
         UserData.logUserInfo(usern, pword);
         UserData.logHalfUser(this);
    }
@@ -51,7 +52,7 @@ public class User {
        //algo for email
    }
    private String encrypt(String pword){
-       System.out.println("unencrypted:"+this.password);
+       System.out.println("unencrypted:"+this.getPassword());
        String encrpword = "";
        for(int i=0; i<pword.length(); i++){
            char e=pword.charAt(i);
@@ -75,5 +76,58 @@ public class User {
        System.out.println("Original password:"+decryptpword);
        //return decryptpword;
    }
+   @Override 
+   public String toString(){
+   return this.getLastName()+","+this.getFirstName();    
+   }
    //store user info
+
+    /**
+     * @return the firstName
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * @return the lastName
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * @return the city
+     */
+    public String getCity() {
+        return city;
+    }
+
+    /**
+     * @return the stateTerritory
+     */
+    public String getStateTerritory() {
+        return stateTerritory;
+    }
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
+
+    /**
+     * @return the password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * @return the passwordHint
+     */
+    public String getPasswordHint() {
+        return passwordHint;
+    }
 }
