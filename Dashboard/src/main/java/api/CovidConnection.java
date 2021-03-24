@@ -24,14 +24,16 @@ public class CovidConnection {
     String confirmed;
     String recovered;
     String deaths;
-    String population;
+    String yestConfirmed;
+    String yestRecovered;
+    String yestDeaths;
     String updated;
     String name;
-    String countryName;
     Gson gson;
     
    public CovidConnection(String state){
-        gson = new Gson();
+        this.name = state; 
+        //code for current day of Covid
         try{
             URL apiURL = new URL("https://covid-api.mmediagroup.fr/v1/cases?country=US");
 
@@ -48,12 +50,16 @@ public class CovidConnection {
                 sb.append(inputLine);
                 sb.append("\n");
             }
+            
             JsonParser jp= new JsonParser();
             JsonElement root = jp.parse(sb.toString());
             JsonObject stateJson = root.getAsJsonObject();
-            this.confirmed = stateJson.get("confiremed").getAsString();
-            this.deaths = stateJson.get("deaths").getAsString();
-            this.population = stateJson.get("population").getAsString();
+            JsonElement stateele = stateJson.get(state);
+            JsonObject stateobj = stateele.getAsJsonObject();
+            this.confirmed = stateobj.get("confirmed").getAsString();
+            this.recovered = stateobj.get("recovered").getAsString();
+            this.deaths = stateobj.get("deaths").getAsString();
+            this.updated = stateobj.get("updated").getAsString();
             
             
             in.close();
@@ -62,7 +68,10 @@ public class CovidConnection {
          System.out.println("Bad Connection: ERROR:"+e);
         }
 }
+   private void getYesterday(String state){
+       //getting yesterdays data
+   }
 public void print(){
-    System.out.println("Confirmed cases:"+this.confirmed+"\n Deaths:"+this.deaths);
+    System.out.println("Covid Today in "+this.name+"\n Confirmed Cases:"+this.confirmed);
 }
 }

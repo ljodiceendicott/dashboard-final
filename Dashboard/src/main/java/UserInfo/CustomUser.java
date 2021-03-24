@@ -5,6 +5,8 @@
  */
 package UserInfo;
 
+import api.CovidConnection;
+
 /**
  *
  * @author jodic
@@ -13,7 +15,7 @@ package UserInfo;
 public class CustomUser{
     User user;
     boolean doesNews;
-//Arraylist newsApiTopic
+//Arraylist newsApiTopics;
     boolean doesStocks;
 //Arraylist stocksApiTopic
     boolean doesCrypto;

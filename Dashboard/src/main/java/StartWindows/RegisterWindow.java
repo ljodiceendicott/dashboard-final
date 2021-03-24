@@ -271,13 +271,9 @@ UserData ud;
         //User(String fn, String ln, String email, String city, String staProv, String usern, String pword, String pwordHint){
         User u = new User(jtfFirstName.getText(), jtfLastName.getText(),email,jtfCity.getText(),State, jtfUsername.getText(),jtfPass.getText(), jtaPassHint.getText()); 
         this.setVisible(false);
-        DCustom dc = new DCustom();
+        DCustom dc = new DCustom(u);
         dc.setVisible(true);
         //error will check to see if the information that is filled out in this part is incorrect
-     
-            
-            JOptionPane.showMessageDialog(this,"the information Seems to be either Filled out incorrectly or is blank recheck");
-        
         
         
         
