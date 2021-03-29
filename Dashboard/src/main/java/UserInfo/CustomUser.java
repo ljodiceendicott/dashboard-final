@@ -5,7 +5,8 @@
  */
 package UserInfo;
 
-import api.CovidConnection;
+import api.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +16,7 @@ import api.CovidConnection;
 public class CustomUser{
     User user;
     boolean doesNews;
-//Arraylist newsApiTopics;
+ArrayList newsApiTopics;
     boolean doesStocks;
 //Arraylist stocksApiTopic
     boolean doesCrypto;
@@ -23,28 +24,17 @@ public class CustomUser{
     boolean doesCovid;
 //CovidConnection CovidApiTopic
     
-    public CustomUser(User u,boolean covid, boolean crypto, boolean stocks, boolean news) {
+    public CustomUser(User u, CovidConnection cc, WeatherConnection wc, StockConnection sc,NewsConnection nc) {
         this.user= u;
-        this.assignadds(covid,crypto,stocks,news);
+        this.assignadds(cc,sc,nc,wc);
         
     }
   /*
     public CustomUser(boolean covid, boolean crypto, boolean stocks, boolean news) {
         this.assignadds(covid,crypto,stocks,news);
     }*/
-    private void assignadds(boolean covid, boolean crypto ,boolean stocks, boolean news){
-        if(covid){
-            // call covid api
-        }
-        if(crypto){
-            //call to the crypto api
-        }
-        if(stocks){
-            //call stocks api
-        }
-        if(news){
-            //call news
-       }
+    //used if all of the of the things should be added
+    private void assignadds(CovidConnection covid, StockConnection stocks, NewsConnection news, WeatherConnection weather){ 
         //information about what the user wants
         this.registerfull();
     }

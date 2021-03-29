@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package StartWindows;
+package Dashboard;
 
 import UserInfo.CustomUser;
 
@@ -11,16 +11,16 @@ import UserInfo.CustomUser;
  *
  * @author jodic
  */
-public class DashBoard extends javax.swing.JFrame {
+public class DashboardFour extends javax.swing.JFrame {
 
     /**
-     * Creates new form DashBoard
+     * Creates new form DashboardFour
      */
     CustomUser cu;
-    public DashBoard() {
+    public DashboardFour() {
         initComponents();
     }
-    public DashBoard(CustomUser cu) {
+    public DashboardFour(CustomUser cu) {
         this.cu = cu;
         //State.setText();
         initComponents();
@@ -34,7 +34,7 @@ public class DashBoard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        State = new javax.swing.JLabel();
+        state = new javax.swing.JLabel();
         confirmed = new javax.swing.JLabel();
         recovered = new javax.swing.JLabel();
         deaths = new javax.swing.JLabel();
@@ -42,7 +42,7 @@ public class DashBoard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        State.setText("jLabel1");
+        state.setText("jLabel1");
 
         confirmed.setText("jLabel2");
 
@@ -62,7 +62,7 @@ public class DashBoard extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(confirmed)
-                            .addComponent(State)
+                            .addComponent(state)
                             .addComponent(deaths)
                             .addComponent(updated)))
                     .addGroup(layout.createSequentialGroup()
@@ -74,7 +74,7 @@ public class DashBoard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(State)
+                .addComponent(state)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(confirmed)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -106,29 +106,30 @@ public class DashBoard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardFour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardFour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardFour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DashBoard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardFour.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashBoard().setVisible(true);
+                new DashboardFour().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel State;
     private javax.swing.JLabel confirmed;
     private javax.swing.JLabel deaths;
     private javax.swing.JLabel recovered;
+    private javax.swing.JLabel state;
     private javax.swing.JLabel updated;
     // End of variables declaration//GEN-END:variables
 }

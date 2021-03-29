@@ -20,7 +20,7 @@ import java.net.URLConnection;
  *
  * @author lukej
  */
-public class CovidConnection {
+public class CovidConnection implements ApiConnection{
     String confirmed;
     String recovered;
     String deaths;
@@ -68,6 +68,10 @@ public class CovidConnection {
          System.out.println("Bad Connection: ERROR:"+e);
         }
 }
+    @Override
+   public void setConnection(String url){
+       //will replace putting the code for connection in the constructor
+   }
    private void getYesterday(String state){
        //getting yesterdays data
    }
