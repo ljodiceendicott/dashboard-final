@@ -24,9 +24,12 @@ ArrayList newsApiTopics;
     boolean doesCovid;
 //CovidConnection CovidApiTopic
     
-    public CustomUser(User u, CovidConnection cc, WeatherConnection wc, StockConnection sc,NewsConnection nc) {
+    public CustomUser(User u, CovidConnection cc, WeatherConnection wc, StockConnection sc,ArrayList<NewsConnection> stories) {
         this.user= u;
-        this.assignadds(cc,sc,nc,wc);
+       //TO DO:
+       //set 
+        
+       // this.assignadds(cc,sc,nc,wc);
         
     }
   /*
@@ -34,10 +37,10 @@ ArrayList newsApiTopics;
         this.assignadds(covid,crypto,stocks,news);
     }*/
     //used if all of the of the things should be added
-    private void assignadds(CovidConnection covid, StockConnection stocks, NewsConnection news, WeatherConnection weather){ 
+   // private void assignadds(CovidConnection covid, StockConnection stocks, NewsConnection news, WeatherConnection weather){ 
         //information about what the user wants
-        this.registerfull();
-    }
+    //    this.registerfull();
+    //}
    private void registerfull(){
        UserData.logFullUser(this);
    }

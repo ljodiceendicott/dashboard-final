@@ -1,4 +1,5 @@
 
+import StartWindows.StartScreen;
 import api.CovidConnection;
 
 /*
@@ -13,7 +14,7 @@ import api.CovidConnection;
  */
 public class Main {
     public static void main(String[] args){
-        CovidConnection cc = new CovidConnection("Massachusetts");
-        cc.print();
+        StartScreen ss = new StartScreen();
+        ss.setVisible(true);
     }
 }

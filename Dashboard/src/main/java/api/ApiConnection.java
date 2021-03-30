@@ -10,5 +10,5 @@ package api;
  * @author jodic
  */
 public interface ApiConnection {
-    public void setConnection(String url);
+    public String setConnection(String key, String topic);
 }

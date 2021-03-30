@@ -8,6 +8,7 @@ package StartWindows;
 import UserInfo.*;
 import api.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
@@ -21,7 +22,7 @@ CovidConnection cc;
 NewsConnection nc;
 StockConnection sc;
 WeatherConnection wc;
-ArrayList<ApiConnection> options;
+HashMap<String, ArrayList<ApiConnection>> options;
     /**
      * Creates new form DashboardCustomization
      */
@@ -31,7 +32,7 @@ ArrayList<ApiConnection> options;
     public DCustom(User u){
         this.u = u;
         initComponents();
-        options = new ArrayList<>();
+        options = new HashMap<>();
         
     }
 
@@ -68,9 +69,9 @@ ArrayList<ApiConnection> options;
         jCheckBox3 = new javax.swing.JCheckBox();
         jPanel9 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jcbNewsone = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
+        jcbNewstwo = new javax.swing.JComboBox<>();
         jPanel8 = new javax.swing.JPanel();
         jrbtnnoDef = new javax.swing.JRadioButton();
         jrbtnAddDef = new javax.swing.JRadioButton();
@@ -260,18 +261,23 @@ ArrayList<ApiConnection> options;
 
         jLabel1.setText("News Type 1:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select News Option>", "Arts", "Automobiles", "Books", "Business", "Fashion", "Food", "Health", "Home", "Insider", "Magazine", "Movies ", "NYRegion", "Obituaries", "Opinion", "Politics", "Realestate", "Science", "Sports", "Sunday Review", "Technology", "Theater", "T-Magazine", "Travel", "Upshot", "US", "World" }));
-        jComboBox3.setEnabled(false);
-        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+        jcbNewsone.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select News Option>", "Arts", "Automobiles", "Books", "Business", "Fashion", "Food", "Health", "Home", "Insider", "Magazine", "Movies ", "NYRegion", "Obituaries", "Opinion", "Politics", "Realestate", "Science", "Sports", "Sunday Review", "Technology", "Theater", "T-Magazine", "Travel", "Upshot", "US", "World" }));
+        jcbNewsone.setEnabled(false);
+        jcbNewsone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox3ActionPerformed(evt);
+                jcbNewsoneActionPerformed(evt);
             }
         });
 
         jLabel4.setText("News Type 2:");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select News Option>", "Arts", "Automobiles", "Books", "Business", "Fashion", "Food", "Health", "Home", "Insider", "Magazine", "Movies ", "NYRegion", "Obituaries", "Opinion", "Politics", "Realestate", "Science", "Sports", "Sunday Review", "Technology", "Theater", "T-Magazine", "Travel", "Upshot", "US", "World" }));
-        jComboBox5.setEnabled(false);
+        jcbNewstwo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<Select News Option>", "Arts", "Automobiles", "Books", "Business", "Fashion", "Food", "Health", "Home", "Insider", "Magazine", "Movies ", "NYRegion", "Obituaries", "Opinion", "Politics", "Realestate", "Science", "Sports", "Sunday Review", "Technology", "Theater", "T-Magazine", "Travel", "Upshot", "US", "World" }));
+        jcbNewstwo.setEnabled(false);
+        jcbNewstwo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbNewstwoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -284,14 +290,14 @@ ArrayList<ApiConnection> options;
                         .addComponent(jLabel1))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jcbNewsone, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(jLabel4))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jcbNewstwo, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
@@ -302,8 +308,8 @@ ArrayList<ApiConnection> options;
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcbNewsone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcbNewstwo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 49, Short.MAX_VALUE))
         );
 
@@ -446,6 +452,8 @@ ArrayList<ApiConnection> options;
 
     private void jrbtnCovidNewStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnCovidNewStateActionPerformed
         if(jrbtnCovidNewState.isSelected()){
+            jrbtnCovidUseState.setEnabled(true);
+            jrbtnCovidNewState.setEnabled(false);
             jrbtnCovidUseState.setSelected(false);
             jcbStateSel.setEnabled(true);
         }
@@ -472,6 +480,8 @@ ArrayList<ApiConnection> options;
 
     private void jrbtnCovidUseStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnCovidUseStateActionPerformed
         if(jrbtnCovidUseState.isSelected()){
+            jrbtnCovidNewState.setEnabled(true);
+            jrbtnCovidUseState.setEnabled(false);
             jrbtnCovidNewState.setSelected(false);
             jcbStateSel.setEnabled(false);
         }
@@ -479,13 +489,23 @@ ArrayList<ApiConnection> options;
 
     private void jCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox3ActionPerformed
         if(jCheckBox3.isSelected()){
-            
+            jcbNewsone.setEnabled(true);
+            jcbNewstwo.setEnabled(true);
+        }
+        else{
+            jcbNewsone.setEnabled(false);
+            jcbNewstwo.setEnabled(false);
         }
     }//GEN-LAST:event_jCheckBox3ActionPerformed
 
-    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+    private void jcbNewsoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbNewsoneActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox3ActionPerformed
+        System.out.println(jcbNewsone.getSelectedItem().toString());
+    }//GEN-LAST:event_jcbNewsoneActionPerformed
+
+    private void jcbNewstwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbNewstwoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbNewstwoActionPerformed
     public CustomUser getUser(){
     if(!jrbtnAddDef.isSelected()&&!jrbtnnoDef.isSelected()){
             JOptionPane.showMessageDialog(this,"Please select if you would like the default widgets");
@@ -513,51 +533,33 @@ ArrayList<ApiConnection> options;
         if(jcbCovidInfo.isSelected()){
                 if(jrbtnCovidUseState.isSelected()){
                     CovidConnection cc = new CovidConnection(u.getStateTerritory());
-                    cc.print();
-                    options.add(cc);
+                    ArrayList<ApiConnection> covidInfo = new ArrayList<>(); 
+                    covidInfo.add(cc);
+                    options.put("covid",covidInfo);
                 }
             }
     }
-    public ArrayList<NewsConnection> getNews(){
-        ArrayList<NewsConnection> collection = new ArrayList<>();
-        
-        return collection;
+    public void getNews(){
+        ArrayList<ApiConnection> collection = new ArrayList<>();
+        String newsone =jcbNewsone.getSelectedItem().toString();
+        String newstwo =jcbNewsone.getSelectedItem().toString();
+        if (!"<Select News Option>".equals(newsone)){ 
+            collection.add(new NewsConnection(newsone));
+        }
+        if(!"<Select News Option>".equals(newstwo)){
+             collection.add(new NewsConnection(newstwo));
+        }
+        if(collection.size()==0){
+            JOptionPane.showMessageDialog(this,"Error: If you would not like to select a news topic you should deselect the News Checkbox");
+        }
+        else{
+           options.put("news",collection); 
+        //options.add(collection);
                 }
+    }
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DCustom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DCustom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DCustom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DCustom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DCustom().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
@@ -565,8 +567,6 @@ ArrayList<ApiConnection> options;
     private javax.swing.JButton jButton2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -587,6 +587,8 @@ ArrayList<ApiConnection> options;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JCheckBox jcbCovidInfo;
+    private javax.swing.JComboBox<String> jcbNewsone;
+    private javax.swing.JComboBox<String> jcbNewstwo;
     private javax.swing.JComboBox<String> jcbStateSel;
     private javax.swing.JRadioButton jrbtnAddDef;
     private javax.swing.JRadioButton jrbtnCovidNewState;

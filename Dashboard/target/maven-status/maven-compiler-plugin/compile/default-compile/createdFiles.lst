@@ -9,6 +9,7 @@ StartWindows\StartScreen$3.class
 StartWindows\DCustom$8.class
 StartWindows\DCustom$6.class
 StartWindows\RegisterWindow$3.class
+StartWindows\DCustom$10.class
 StartWindows\StartScreen$1.class
 StartWindows\DCustom$3.class
 StartWindows\RegisterWindow.class
@@ -16,6 +17,7 @@ api\WeatherConnection.class
 api\StockConnection.class
 Dashboard\DashboardFour.class
 StartWindows\DCustom$4.class
+StartWindows\DCustom$9.class
 StartWindows\DCustom.class
 StartWindows\RegisterWindow$2.class
 Dashboard\DashboardFour$1.class

@@ -35,6 +35,7 @@ public class CovidConnection implements ApiConnection{
         this.name = state; 
         //code for current day of Covid
         try{
+            
             URL apiURL = new URL("https://covid-api.mmediagroup.fr/v1/cases?country=US");
 
             URLConnection yc = apiURL.openConnection();
@@ -69,8 +70,9 @@ public class CovidConnection implements ApiConnection{
         }
 }
     @Override
-   public void setConnection(String url){
+   public String setConnection(String key, String topic){
        //will replace putting the code for connection in the constructor
+       return"";
    }
    private void getYesterday(String state){
        //getting yesterdays data

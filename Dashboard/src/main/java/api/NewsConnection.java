@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -23,8 +24,11 @@ import java.util.logging.Logger;
  *
  * @author jodic
  */
-public class NewsConnection {
-   ArrayList<NewsStory> stories;
+public class NewsConnection implements ApiConnection{
+  private ArrayList<NewsStory> stories = new ArrayList<>();
+  String url;
+
+   
    
    public class NewsStory{
    String storylink;
@@ -50,8 +54,9 @@ public class NewsConnection {
  
 public NewsConnection(String section){
             stories= new ArrayList<>();
+            url = this.setConnection(key, section);
        try {
-                   URL apiUrl = new URL("https://api.nytimes.com/svc/topstories/v2/"+section+".json?api-key="+key);
+                   URL apiUrl = new URL(this.url);
                    URLConnection yc = apiUrl.openConnection();
                    InputStream inStream = yc.getInputStream();
                    InputStreamReader inStreamReader = new InputStreamReader(inStream);
@@ -84,6 +89,10 @@ public NewsConnection(String section){
            Logger.getLogger(NewsConnection.class.getName()).log(Level.SEVERE, null, ex);
        }
 }
+ @Override
+    public String setConnection(String key, String topic) {
+        return "https://api.nytimes.com/svc/topstories/v2/"+topic+".json?api-key="+key;
+    }
 public String toString(){
     String news="";
        for (NewsStory story : stories) {
