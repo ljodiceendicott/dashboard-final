@@ -35,7 +35,7 @@ public class UserData {
        halfUser.remove(cu.user); 
    }
    public static void logHalfUser(User u){
-       halfUser.add(u);
+       //halfUser.add(u);
    }
    public static void logUserInfo(String usern, String pword){
 //       userlogin.put(usern, pword);
