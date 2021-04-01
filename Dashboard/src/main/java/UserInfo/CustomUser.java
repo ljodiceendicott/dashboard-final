@@ -22,15 +22,23 @@ ArrayList newsApiTopics;
     boolean doesCrypto;
 //Arraylist cryptoApiTopic
     boolean doesCovid;
-//CovidConnection CovidApiTopic
+CovidConnection covidApiTopic;
+WeatherConnection wc;
     
-    public CustomUser(User u, CovidConnection cc, WeatherConnection wc, StockConnection sc,ArrayList<NewsConnection> stories) {
-        this.user= u;
-       //TO DO:
-       //set 
-        
-       // this.assignadds(cc,sc,nc,wc);
-        
+    public CustomUser(User u) {
+        this.user= u;}
+    public void setCovid(CovidConnection cc){
+        this.covidApiTopic = cc;       
+    }
+    public void setNews(ArrayList<NewsConnection> news){
+        this.newsApiTopics = news;
+    }
+    public void setStocks(ArrayList<StockConnection> stocks){
+        //set the stocks 
+       //this.stocks = stocks;
+    }
+    public void setWeather(WeatherConnection wc){
+        this.wc = wc;
     }
   /*
     public CustomUser(boolean covid, boolean crypto, boolean stocks, boolean news) {
