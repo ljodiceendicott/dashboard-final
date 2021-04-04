@@ -21,14 +21,14 @@ import java.net.URLConnection;
  * @author lukej
  */
 public class CovidConnection implements ApiConnection{
-    String confirmed;
-    String recovered;
-    String deaths;
-    String yestConfirmed;
+   private String confirmed;
+   private String recovered;
+   private String deaths;
+   private String yestConfirmed;
     String yestRecovered;
     String yestDeaths;
-    String updated;
-    String name;
+   private String updated;
+   private String name;
     Gson gson;
     
    public CovidConnection(String state){
@@ -78,6 +78,41 @@ public class CovidConnection implements ApiConnection{
        //getting yesterdays data
    }
 public void print(){
-    System.out.println("Covid Today in "+this.name+"\n Confirmed Cases:"+this.confirmed);
+    System.out.println("Covid Today in "+this.getName()+"\n Confirmed Cases:"+this.getConfirmed());
 }
+
+    /**
+     * @return the confirmed
+     */
+    public String getConfirmed() {
+        return confirmed;
+    }
+
+    /**
+     * @return the recovered
+     */
+    public String getRecovered() {
+        return recovered;
+    }
+
+    /**
+     * @return the deaths
+     */
+    public String getDeaths() {
+        return deaths;
+    }
+
+    /**
+     * @return the updated
+     */
+    public String getUpdated() {
+        return updated;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
 }

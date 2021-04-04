@@ -26,16 +26,16 @@ import java.util.logging.Logger;
  */
 public class NewsConnection implements ApiConnection{
   private ArrayList<NewsStory> stories = new ArrayList<>();
-  String url;
+  private String url;
 
    
    
    public class NewsStory{
-   String storylink;
-   String last_updated;
-   String pubdate;
-   String title;
-   String desc;
+   private String storylink;
+   private String last_updated;
+   private String pubdate;
+   private String title;
+   private String desc;
    
    public NewsStory(String storylink, String lastup, String pubdate, String title, String desc){
        this.storylink = storylink;
