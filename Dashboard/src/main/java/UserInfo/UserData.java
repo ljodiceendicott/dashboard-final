@@ -32,7 +32,7 @@ public class UserData {
    
    public static void logFullUser(CustomUser cu){
        fullUser.add(cu);
-       halfUser.remove(cu.user); 
+       halfUser.remove(cu.getUser()); 
    }
    public static void logHalfUser(User u){
        //halfUser.add(u);

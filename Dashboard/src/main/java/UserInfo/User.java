@@ -12,13 +12,13 @@ package UserInfo;
 public class User {
     private String firstName;
     private String lastName;
-    String email;
+    private String email;
     private String city;
     private String stateTerritory;
     private String username;
     private String password;
     private String passwordHint;
-   public User(String fn, String ln, String email, String city, String staProv, String usern, String pword, String pwordHint){
+   public User(String fn, String ln, String email,String city,String staProv, String usern, String pword, String pwordHint){
         this.firstName = fn;
         this.lastName = ln;           
         this.email = email;
@@ -94,13 +94,6 @@ public class User {
      */
     public String getLastName() {
         return lastName;
-    }
-
-    /**
-     * @return the city
-     */
-    public String getCity() {
-        return city;
     }
 
     /**

@@ -75,9 +75,13 @@ public class StockConnection implements ApiConnection{
        }
         
     }
+
+    public StockConnection(String symbol) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    @Override
     public String toString(){
-        return name+"("+symb+")"+high+"/"+low;
+        return name+"("+symb+")  High:"+high+"/ Low:"+low;
     }
 /**
  * 

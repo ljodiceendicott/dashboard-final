@@ -5,6 +5,7 @@
  */
 package StartWindows;
 
+import UserInfo.CustomUser;
 import api.CovidConnection;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -50,7 +51,7 @@ UserData ud;
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jtfUsername = new javax.swing.JTextField();
-        jtfPass = new javax.swing.JTextField();
+        jpfield = new javax.swing.JPasswordField();
         jtfFirstName = new javax.swing.JTextField();
         jtfLastName = new javax.swing.JTextField();
         jtfEmail = new javax.swing.JTextField();
@@ -80,7 +81,11 @@ UserData ud;
 
         jLabel6.setText("Password hint:");
 
-        jtfPass.setText("jTextField1");
+        jpfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpfieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -96,7 +101,7 @@ UserData ud;
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfPass))
+                        .addComponent(jpfield))
                     .addComponent(jLabel6))
                 .addGap(0, 68, Short.MAX_VALUE))
         );
@@ -110,7 +115,7 @@ UserData ud;
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jtfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jpfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -269,10 +274,12 @@ UserData ud;
        }*/
         String State= (String) jcbState.getSelectedItem();
         //User(String fn, String ln, String email, String city, String staProv, String usern, String pword, String pwordHint){
-        User u = new User(jtfFirstName.getText(), jtfLastName.getText(),email,jtfCity.getText(),State, jtfUsername.getText(),jtfPass.getText(), jtaPassHint.getText()); 
+        User u = new User(jtfFirstName.getText(), jtfLastName.getText(),email,jtfCity.getText(),State, jtfUsername.getText(),jpfield.getText(), jtaPassHint.getText()); 
+        CustomUser cu = new CustomUser(u);
         this.setVisible(false);
-        DCustom dc = new DCustom(u);
-        dc.setVisible(true);
+        CovidRegister cr = new CovidRegister(cu, this);
+        cr.setVisible(true);
+        
         //error will check to see if the information that is filled out in this part is incorrect
         
         
@@ -282,6 +289,10 @@ UserData ud;
     private void jtfCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfCityActionPerformed
+
+    private void jpfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpfieldActionPerformed
     private boolean isBlank(JTextField jtf){
         return jtf.getText()=="";
     }
@@ -336,12 +347,12 @@ UserData ud;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> jcbState;
+    private javax.swing.JPasswordField jpfield;
     private javax.swing.JTextArea jtaPassHint;
     private javax.swing.JTextField jtfCity;
     private javax.swing.JTextField jtfEmail;
     private javax.swing.JTextField jtfFirstName;
     private javax.swing.JTextField jtfLastName;
-    private javax.swing.JTextField jtfPass;
     private javax.swing.JTextField jtfUsername;
     // End of variables declaration//GEN-END:variables
 }

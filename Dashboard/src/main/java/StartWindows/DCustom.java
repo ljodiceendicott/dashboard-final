@@ -5,8 +5,8 @@
  */
 package StartWindows;
 
-import DatabaseRetrieve.StocksfromJson;
-import DatabaseRetrieve.StocksfromJson.Stockinfo;
+import DatabaseRetrieve.StockNameImport;
+import DatabaseRetrieve.StockNameImport.Stockinfo;
 import UserInfo.*;
 import api.*;
 import com.google.gson.Gson;
@@ -45,7 +45,7 @@ DefaultListModel<Stockinfo> watchlist;
         initComponents();
     }
     public DCustom(User u){
-        StocksfromJson stockinfo = new StocksfromJson();
+        StockNameImport stockinfo = new StockNameImport();
         dlmall = new DefaultListModel<>();
         watchlist = new DefaultListModel<>();
         stockinfo.getDlmItems(dlmall);

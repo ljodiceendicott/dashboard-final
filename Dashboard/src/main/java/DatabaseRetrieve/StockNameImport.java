@@ -5,7 +5,7 @@
  */
 package DatabaseRetrieve;
 
-import DatabaseRetrieve.StocksfromJson.Stockinfo;
+import DatabaseRetrieve.StockNameImport.Stockinfo;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.BufferedReader;
@@ -20,7 +20,7 @@ import javax.swing.DefaultListModel;
  *
  * @author jodic
  */
-public class StocksfromJson {
+public class StockNameImport {
  public class Stockinfo{
    private String name;
    private String symbol;
@@ -30,8 +30,11 @@ public class StocksfromJson {
        this.symbol = symb;
    }
    
-    private String getSymbol(){
+    public String getSymbol(){
         return symbol;
+    }
+    public String getName(){
+        return name;
     }
    @Override
     public String toString(){ 

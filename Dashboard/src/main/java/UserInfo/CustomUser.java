@@ -5,6 +5,7 @@
  */
 package UserInfo;
 
+import DatabaseRetrieve.StockNameImport.Stockinfo;
 import api.*;
 import java.util.ArrayList;
 
@@ -13,18 +14,19 @@ import java.util.ArrayList;
  * @author jodic
  */
 
-public class CustomUser{
-    User user;
-    boolean doesNews;
-ArrayList newsApiTopics;
-    boolean doesStocks;
-//Arraylist stocksApiTopic
-    boolean doesCrypto;
-//Arraylist cryptoApiTopic
-    boolean doesCovid;
-CovidConnection covidApiTopic;
-WeatherConnection wc;
-    
+public class CustomUser {
+  private User user;
+private ArrayList newsApiTopics;
+private ArrayList<StockConnection> stockslist;
+private CovidConnection covidApiTopic;
+private WeatherConnection wc;
+    private CustomUser(){
+        user = new User("Default", "User", "DefaultInfo@info.com","Chatham","Massachusetts", "Duser", "Duser123!", "Easypword");
+        CovidConnection cc = new CovidConnection(user.getStateTerritory());
+        ArrayList<StockConnection> sc = new ArrayList<>();
+        sc.add(new StockConnection("Apple","AAPL"));
+        sc.add(new StockConnection("GM","GM"));
+    }
     public CustomUser(User u) {
         this.user= u;}
     public void setCovid(CovidConnection cc){
@@ -33,12 +35,23 @@ WeatherConnection wc;
     public void setNews(ArrayList<NewsConnection> news){
         this.newsApiTopics = news;
     }
-    public void setStocks(ArrayList<StockConnection> stocks){
-        //set the stocks 
-       //this.stocks = stocks;
+    public void setStocks(ArrayList<Stockinfo> stocks){
+        stockslist = new ArrayList<>();
+        stocks.forEach(stock -> {
+            stockslist.add(new StockConnection(stock.getName(),stock.getSymbol()));
+        });
     }
     public void setWeather(WeatherConnection wc){
         this.wc = wc;
+    }
+    public ArrayList<StockConnection> getStocks(){
+        return this.stockslist;
+    }
+    public static CustomUser getDefaultCustomUser(){
+        return new CustomUser();
+    }
+    public User getUser(){
+        return this.user;
     }
   /*
     public CustomUser(boolean covid, boolean crypto, boolean stocks, boolean news) {

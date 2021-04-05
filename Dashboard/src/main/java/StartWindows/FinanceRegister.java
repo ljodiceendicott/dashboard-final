@@ -5,9 +5,10 @@
  */
 package StartWindows;
 
-import DatabaseRetrieve.StocksfromJson;
-import DatabaseRetrieve.StocksfromJson.Stockinfo;
+import DatabaseRetrieve.StockNameImport;
+import DatabaseRetrieve.StockNameImport.Stockinfo;
 import UserInfo.CustomUser;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
 /**
@@ -15,8 +16,8 @@ import javax.swing.DefaultListModel;
  * @author jodic
  */
 public class FinanceRegister extends javax.swing.JFrame {
-DefaultListModel<StocksfromJson.Stockinfo> dlmall;
-DefaultListModel<StocksfromJson.Stockinfo> watchlist;
+DefaultListModel<StockNameImport.Stockinfo> dlmall;
+DefaultListModel<StockNameImport.Stockinfo> watchlist;
 CustomUser cu;
 NewsRegister parent;
     /**
@@ -29,7 +30,7 @@ NewsRegister parent;
     public FinanceRegister(CustomUser cu, NewsRegister nr){
         this.cu = cu;
         this.parent = nr;
-        StocksfromJson stockinfo = new StocksfromJson();
+        StockNameImport stockinfo = new StockNameImport();
         dlmall = new DefaultListModel<>();
         watchlist = new DefaultListModel<>();
         stockinfo.getDlmItems(dlmall);
@@ -48,9 +49,9 @@ NewsRegister parent;
         jPanel5 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jButton3 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jlSelStocks = new javax.swing.JList<>();
         jPanel3 = new javax.swing.JPanel();
         jRadioButton7 = new javax.swing.JRadioButton();
         jRadioButton8 = new javax.swing.JRadioButton();
@@ -64,7 +65,7 @@ NewsRegister parent;
         jTextField2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jLall = new javax.swing.JList<>();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
@@ -76,12 +77,10 @@ NewsRegister parent;
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Stocks in watchlist");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setEnabled(false);
-        jScrollPane1.setViewportView(jTextArea1);
-
         jButton3.setText("Remove Selected Item");
+
+        jlSelStocks.setModel(watchlist);
+        jScrollPane3.setViewportView(jlSelStocks);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -90,14 +89,15 @@ NewsRegister parent;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 53, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 26, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -105,9 +105,9 @@ NewsRegister parent;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -150,6 +150,11 @@ NewsRegister parent;
         );
 
         jButton1.setText("Add Selected Item");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
         jLabel1.setText("Don't see the Stock that you want? if you know the Stock");
@@ -220,8 +225,8 @@ NewsRegister parent;
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jList1.setModel(dlmall);
-        jScrollPane2.setViewportView(jList1);
+        jLall.setModel(dlmall);
+        jScrollPane2.setViewportView(jLall);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -311,10 +316,20 @@ NewsRegister parent;
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        //if info is blanck leave a joptionpane
+        ArrayList<Stockinfo> si = new ArrayList<>();
+        for(int i=0; i<watchlist.size(); i++){
+            si.add(watchlist.get(i));
+        }
      this.setVisible(false);
      DashboardStyling ds = new DashboardStyling(cu, this);
      ds.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      Stockinfo s = dlmall.getElementAt(jLall.getSelectedIndex());
+      watchlist.addElement(s);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -361,7 +376,7 @@ NewsRegister parent;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<Stockinfo> jList1;
+    private javax.swing.JList<Stockinfo> jLall;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -370,9 +385,9 @@ NewsRegister parent;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JRadioButton jRadioButton8;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JList<Stockinfo> jlSelStocks;
     // End of variables declaration//GEN-END:variables
 }

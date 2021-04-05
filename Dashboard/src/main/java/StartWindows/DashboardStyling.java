@@ -5,6 +5,7 @@
  */
 package StartWindows;
 
+import Dashboards.DashboardBase;
 import UserInfo.CustomUser;
 
 /**
@@ -42,7 +43,7 @@ FinanceRegister fr;
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        jcboxdefault = new javax.swing.JCheckBox();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -63,7 +64,12 @@ FinanceRegister fr;
 
         jCheckBox1.setText("jCheckBox1");
 
-        jCheckBox2.setText("jCheckBox2");
+        jcboxdefault.setText("Use Default Menu");
+        jcboxdefault.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcboxdefaultActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Get Started");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +112,7 @@ FinanceRegister fr;
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jcboxdefault, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -122,7 +128,7 @@ FinanceRegister fr;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jCheckBox1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox2)
+                .addComponent(jcboxdefault)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -150,8 +156,15 @@ FinanceRegister fr;
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        //Launch Dashboard figuring out which layout you would like 
+            if(jcboxdefault.isSelected()){
+                DashboardBase db = new DashboardBase();
+                db.setVisible(true);
+            }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jcboxdefaultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcboxdefaultActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcboxdefaultActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,10 +207,10 @@ FinanceRegister fr;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JCheckBox jcboxdefault;
     // End of variables declaration//GEN-END:variables
 }

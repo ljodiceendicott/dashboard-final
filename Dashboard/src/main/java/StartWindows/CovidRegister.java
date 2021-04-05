@@ -7,23 +7,24 @@ package StartWindows;
 
 import UserInfo.CustomUser;
 import UserInfo.User;
+import api.CovidConnection;
 
 /**
  *
  * @author jodic
  */
 public class CovidRegister extends javax.swing.JFrame {
-User u;
 CustomUser cu;
+RegisterWindow rw;
     /**
      * Creates new form CovidRegister
      */
     public CovidRegister() {
         initComponents();
     }
-public CovidRegister(User u){
-    this.u = u;
-    this.cu = new CustomUser(u);
+public CovidRegister(CustomUser cu, RegisterWindow rw){
+    this.cu = cu;
+    this.rw = rw;
     initComponents();
 }
     /**
@@ -203,14 +204,16 @@ public CovidRegister(User u){
 
     private void jbtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBackActionPerformed
         this.dispose();
-        StartScreen ss = new StartScreen();
-        ss.setVisible(true);
+        rw.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtnBackActionPerformed
 
     private void jbtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNextActionPerformed
         // TODO add your handling code here:
        //Get the code to get whether one of the items is being selected
+       if(jrbtnCovidUseState.isSelected()){
+           cu.setCovid(new CovidConnection(cu.getUser().getStateTerritory()));
+       }
         this.setVisible(false);
         //cu.useCovid(false); //Implemented to make sure that if user does not want this feature
        // cu.setCovid();
