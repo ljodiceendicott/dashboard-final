@@ -321,6 +321,7 @@ NewsRegister parent;
         for(int i=0; i<watchlist.size(); i++){
             si.add(watchlist.get(i));
         }
+        cu.setStocks(si);
      this.setVisible(false);
      DashboardStyling ds = new DashboardStyling(cu, this);
      ds.setVisible(true);

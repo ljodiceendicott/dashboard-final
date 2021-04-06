@@ -19,6 +19,7 @@ public class CustomUser {
 private ArrayList newsApiTopics;
 private ArrayList<StockConnection> stockslist;
 private CovidConnection covidApiTopic;
+private boolean isCovid;
 private WeatherConnection wc;
     private CustomUser(){
         user = new User("Default", "User", "DefaultInfo@info.com","Chatham","Massachusetts", "Duser", "Duser123!", "Easypword");
@@ -52,6 +53,9 @@ private WeatherConnection wc;
     }
     public User getUser(){
         return this.user;
+    }
+    public void setIsCovid(boolean c){
+       this.isCovid=c;
     }
   /*
     public CustomUser(boolean covid, boolean crypto, boolean stocks, boolean news) {

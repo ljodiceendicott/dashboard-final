@@ -123,7 +123,7 @@ public class StartScreen extends javax.swing.JFrame {
         this.setVisible(false);
        // CovidRegister cr = new CovidRegister();
         //cr.setVisible(true);
-       RegisterWindow rw = new RegisterWindow(ud);
+       RegisterWindow rw = new RegisterWindow(ud, this);
        rw.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 

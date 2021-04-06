@@ -19,14 +19,16 @@ import java.awt.HeadlessException;
  */
 public class RegisterWindow extends javax.swing.JFrame {
 UserData ud;
+StartScreen stsc;
     /**
      * Creates new form RegisterWindow
      */
     public RegisterWindow() {
         initComponents();
     }
-    public RegisterWindow(UserData ud){
+    public RegisterWindow(UserData ud, StartScreen start){
         initComponents();
+        this.stsc = start;
         this.ud = ud;
     }
     
@@ -258,7 +260,8 @@ UserData ud;
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+     this.dispose();
+     stsc.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
