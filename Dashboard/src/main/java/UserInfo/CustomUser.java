@@ -16,7 +16,8 @@ import java.util.ArrayList;
 
 public class CustomUser {
   private User user;
-private ArrayList newsApiTopics;
+private ArrayList<NewsConnection> newsApiTopics;
+private boolean isNews;
 private ArrayList<StockConnection> stockslist;
 private CovidConnection covidApiTopic;
 private boolean isCovid;
@@ -57,6 +58,9 @@ private WeatherConnection wc;
     public void setIsCovid(boolean c){
        this.isCovid=c;
     }
+    public void setIsNews(boolean b) {
+        this.isNews=b;
+    }
   /*
     public CustomUser(boolean covid, boolean crypto, boolean stocks, boolean news) {
         this.assignadds(covid,crypto,stocks,news);
@@ -69,4 +73,6 @@ private WeatherConnection wc;
    private void registerfull(){
        UserData.logFullUser(this);
    }
+
+    
 }

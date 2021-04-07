@@ -8,6 +8,7 @@ package StartWindows;
 import UserInfo.CustomUser;
 import UserInfo.User;
 import api.CovidConnection;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -266,11 +267,23 @@ public CovidRegister(CustomUser cu, RegisterWindow rw){
       if(jrbtnYesCovid.isSelected()){
        if(jrbtnCovidUseState.isSelected()){
            cu.setCovid(new CovidConnection(cu.getUser().getStateTerritory()));
-           cu.setIsCovid(true);
-       }}
+       }
+       else if(jrbtnCovidNewState.isSelected()){
+           String loc = jcbStateSel.getSelectedItem().toString();
+           if(loc =="<-Select-One->"){
+               JOptionPane.showMessageDialog(this, "Need to select a State");
+               return;
+           }
+           else{
+               cu.setCovid(new CovidConnection(loc));
+           }
+       }
+       cu.setIsCovid(true);
+      }
       else if(jrbtnNoCovid.isSelected()){
           cu.setIsCovid(false);
       }
+      System.out.print("Covid Info:Entered");
         this.setVisible(false);
         //cu.useCovid(false); //Implemented to make sure that if user does not want this feature
        // cu.setCovid();
@@ -292,6 +305,9 @@ public CovidRegister(CustomUser cu, RegisterWindow rw){
        if(jrbtnNoCovid.isSelected()){
            jrbtnYesCovid.setEnabled(true);
            jrbtnYesCovid.setSelected(false);
+           jrbtnNoCovid.setEnabled(false);
+           jrbtnCovidUseState.setEnabled(false);
+           jrbtnCovidNewState.setEnabled(false);
            jbtnNext.setEnabled(true);
        }
     }//GEN-LAST:event_jrbtnNoCovidActionPerformed

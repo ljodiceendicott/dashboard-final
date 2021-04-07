@@ -26,6 +26,7 @@ StartWindows\StartScreen.class
 panels\Covidsmall.class
 StartWindows\DCustom$7.class
 api\ApiConnection.class
+StartWindows\CovidRegister$8.class
 StartWindows\DashboardStyling$2.class
 CustomRenders\StocksListRender.class
 DatabaseRetrieve\StockNameImport$Stockinfo.class
@@ -41,6 +42,7 @@ StartWindows\DashboardStyling.class
 StartWindows\StartScreen$3.class
 StartWindows\DCustom$6.class
 StartWindows\RegisterWindow$3.class
+StartWindows\CovidRegister$7.class
 StartWindows\DCustom$3.class
 StartWindows\FinanceRegister$5.class
 api\WeatherConnection.class

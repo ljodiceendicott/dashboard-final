@@ -40,18 +40,6 @@ public class UserData {
    public static void logUserInfo(String usern, String pword){
 //       userlogin.put(usern, pword);
    }
-   public static void updateChanges(){
-       try {
-      FileWriter myWriter = new FileWriter("test.txt");
-      myWriter.write("This is a test");
-      myWriter.close();
-      System.out.println("Successfully wrote to the file.");
-    } catch (IOException e) {
-      System.out.println("An error occurred.");
-      e.printStackTrace();
-    }
-    //print out information to Json file (userData.Json)
-   }
    public static boolean isUser(String Username, String pword){
    //cross reference to see if the username and pword match
    //if(userlogin.containsKey(Username)&& userlogin.)
