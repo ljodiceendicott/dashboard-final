@@ -28,8 +28,18 @@ DefaultListModel<StockConnection> dlm;
     }
     public DashboardBase(CustomUser cu){
         this.cu = cu;
+        if(cu.isCovid())
+            covidPanel.setValues(cu.getCovidinfo());
+        else{
+            //Put a blank disabled window
+        }
+        if(cu.isStocks()){
         dlm = new DefaultListModel<>();
         dlm.addAll(cu.getStocks());
+        }
+        else{
+            //put blank disabled window
+        }
         initComponents();
     }
 
@@ -48,7 +58,7 @@ DefaultListModel<StockConnection> dlm;
         jList1 = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        covidsmall2 = new panels.Covidsmall();
+        covidPanel = new panels.Covidsmall();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -100,7 +110,7 @@ DefaultListModel<StockConnection> dlm;
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(covidsmall2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(covidPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -115,7 +125,7 @@ DefaultListModel<StockConnection> dlm;
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(covidsmall2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(covidPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addComponent(jLabel2)))
@@ -161,8 +171,8 @@ DefaultListModel<StockConnection> dlm;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private panels.Covidsmall covidPanel;
     private panels.Covidsmall covidsmall1;
-    private panels.Covidsmall covidsmall2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JList<StockConnection> jList1;

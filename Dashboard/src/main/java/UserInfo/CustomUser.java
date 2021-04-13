@@ -19,6 +19,7 @@ public class CustomUser {
 private ArrayList<NewsConnection> newsApiTopics;
 private boolean isNews;
 private ArrayList<StockConnection> stockslist;
+private boolean isStocks;
 private CovidConnection covidApiTopic;
 private boolean isCovid;
 private WeatherConnection wc;
@@ -49,18 +50,30 @@ private WeatherConnection wc;
     public ArrayList<StockConnection> getStocks(){
         return this.stockslist;
     }
-    public static CustomUser getDefaultCustomUser(){
-        return new CustomUser();
-    }
-    public User getUser(){
-        return this.user;
-    }
     public void setIsCovid(boolean c){
        this.isCovid=c;
     }
     public void setIsNews(boolean b) {
         this.isNews=b;
     }
+    public void setIsStocks(boolean b){
+        this.isStocks = b;
+    }
+      public static CustomUser getDefaultCustomUser(){
+        return new CustomUser();
+    }
+    public User getUser(){
+        return this.user;
+    }
+    public CovidConnection getCovidinfo(){
+        return covidApiTopic;
+    }
+     public boolean isCovid() {
+         return isCovid;
+     }
+     public boolean isStocks(){
+         return isStocks;
+     }
   /*
     public CustomUser(boolean covid, boolean crypto, boolean stocks, boolean news) {
         this.assignadds(covid,crypto,stocks,news);
@@ -73,6 +86,8 @@ private WeatherConnection wc;
    private void registerfull(){
        UserData.logFullUser(this);
    }
+
+   
 
     
 }

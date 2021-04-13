@@ -80,6 +80,7 @@ public NewsConnection(String section){
             String lastup = topstory.get("updated_date").getAsString();
             String pubdate = topstory.get("published_date").getAsString();                        
             String title =topstory.get("title").getAsString();
+            title = title.replaceAll("â€™","'");
             String desc = topstory.get("abstract").getAsString();
             NewsStory ns = new NewsStory(storylink,lastup,pubdate,title,desc);
             stories.add(ns);

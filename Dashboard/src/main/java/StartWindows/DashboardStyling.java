@@ -163,6 +163,8 @@ FinanceRegister fr;
                 DashboardBase db = new DashboardBase();
                 db.setVisible(true);
             }
+            DashboardBase db = new DashboardBase(cu);
+            db.setVisible(true);
             //Store the User and finally complete in the USERDATA Class
             
     }//GEN-LAST:event_jButton3ActionPerformed

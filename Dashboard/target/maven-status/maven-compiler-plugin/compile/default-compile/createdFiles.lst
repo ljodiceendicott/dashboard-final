@@ -15,6 +15,7 @@ StartWindows\RegisterWindow$5.class
 StartWindows\StartScreen$1.class
 StartWindows\DashboardStyling$1.class
 StartWindows\RegisterWindow.class
+StartWindows\DashboardStyling$5.class
 StartWindows\NewsRegister$4.class
 api\StockConnection.class
 StartWindows\CovidRegister$4.class
@@ -33,13 +34,16 @@ DatabaseRetrieve\StockNameImport$Stockinfo.class
 StartWindows\FinanceRegister$6.class
 api\NewsConnection.class
 StartWindows\NewsRegister$1.class
+StartWindows\DashboardStyling$6.class
 UserInfo\User.class
 StartWindows\NewsRegister$3.class
 StartWindows\FinanceRegister$4.class
 UserInfo\UserData.class
+StartWindows\FinanceRegister$8.class
 Main.class
 StartWindows\DashboardStyling.class
 StartWindows\StartScreen$3.class
+StartWindows\FinanceRegister$7.class
 StartWindows\DCustom$6.class
 StartWindows\RegisterWindow$3.class
 StartWindows\CovidRegister$7.class

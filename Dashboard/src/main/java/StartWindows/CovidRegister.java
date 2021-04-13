@@ -298,6 +298,7 @@ public CovidRegister(CustomUser cu, RegisterWindow rw){
            jrbtnCovidNewState.setEnabled(true);
            jrbtnCovidUseState.setEnabled(true);
            jrbtnNoCovid.setSelected(false);
+           jrbtnNoCovid.setEnabled(true);
        }
     }//GEN-LAST:event_jrbtnYesCovidActionPerformed
 

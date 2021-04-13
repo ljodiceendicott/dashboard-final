@@ -18,15 +18,16 @@ public class Covidsmall extends javax.swing.JPanel {
     public Covidsmall() {
         initComponents();
     }
-     public Covidsmall(CovidConnection cc) {
+     public Covidsmall(CovidConnection cc) { 
+        initComponents();
+    }
+     public void setValues(CovidConnection cc){
         jlblState.setText(cc.getName());
         jlblNumConfirmed.setText(cc.getConfirmed());
         jlblNumRecoverd.setText(cc.getRecovered());
         jlblNumDeaths.setText(cc.getDeaths());
         jlblLastUpdated.setText(cc.getUpdated());
-        
-        initComponents();
-    }
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
