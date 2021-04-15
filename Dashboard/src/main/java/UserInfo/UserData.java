@@ -5,15 +5,10 @@
  */
 package UserInfo;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -21,26 +16,29 @@ import javax.swing.JOptionPane;
  */
 public class UserData {
    private static ArrayList<CustomUser> fullUser;
-   private static ArrayList<User> halfUser;
-   public static Hashtable<String, String> userlogin;
-   public UserData(){
+   private static Hashtable<String, String> userlogin;
+   private static UserData ud;
+   
+   private UserData(){
        fullUser= new ArrayList();
-       halfUser = new ArrayList();
        userlogin = new Hashtable();
-       
    }
    
-   public static void logFullUser(CustomUser cu){
+   public static UserData getInstance(){
+       if(ud==null){
+           return new UserData();
+       }
+       return ud;
+   }
+   
+   public  void logFullUser(CustomUser cu){
        fullUser.add(cu);
-       halfUser.remove(cu.getUser()); 
+       //log this information in a json file 
    }
-   public static void logHalfUser(User u){
-       //halfUser.add(u);
+   public void logUserLogin(String usern, String pword){
+     userlogin.put(usern, pword);
    }
-   public static void logUserInfo(String usern, String pword){
-//       userlogin.put(usern, pword);
-   }
-   public static boolean isUser(String Username, String pword){
+   public boolean isUser(String Username, String pword){
    //cross reference to see if the username and pword match
    //if(userlogin.containsKey(Username)&& userlogin.)
        return true;

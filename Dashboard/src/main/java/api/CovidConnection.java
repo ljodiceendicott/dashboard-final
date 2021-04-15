@@ -80,6 +80,10 @@ public class CovidConnection implements ApiConnection{
 public void print(){
     System.out.println("Covid Today in "+this.getName()+"\n Confirmed Cases:"+this.getConfirmed());
 }
+@Override
+public String toString(){
+    return "Covid Today in "+this.getName()+"\n Confirmed Cases:"+this.getConfirmed();
+}
 
     /**
      * @return the confirmed

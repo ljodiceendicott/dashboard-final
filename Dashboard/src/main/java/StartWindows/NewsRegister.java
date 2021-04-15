@@ -321,6 +321,7 @@ ArrayList<NewsConnection> stories;
                 }
             }
             cu.setNews(stories);
+            //prints out to see
             for(NewsConnection story: stories){
                 System.out.println(story.toString()+"\n");
             }

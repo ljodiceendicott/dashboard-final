@@ -22,18 +22,16 @@ DefaultListModel<StockConnection> dlm;
     public DashboardBase() {
       cu = CustomUser.getDefaultCustomUser();
       dlm = new DefaultListModel<>();
-      dlm.addElement(new StockConnection("APPL", "APPL"));
-      dlm.addElement(new StockConnection("GM", "GM"));
         initComponents();
     }
     public DashboardBase(CustomUser cu){
         this.cu = cu;
-        if(cu.isCovid())
+        if(this.cu.isCovid())
             covidPanel.setValues(cu.getCovidinfo());
         else{
             //Put a blank disabled window
         }
-        if(cu.isStocks()){
+        if(this.cu.isStocks()){
         dlm = new DefaultListModel<>();
         dlm.addAll(cu.getStocks());
         }

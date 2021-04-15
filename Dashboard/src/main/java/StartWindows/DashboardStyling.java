@@ -7,6 +7,7 @@ package StartWindows;
 
 import Dashboards.DashboardBase;
 import UserInfo.CustomUser;
+import UserInfo.UserData;
 
 /**
  *
@@ -15,6 +16,8 @@ import UserInfo.CustomUser;
 public class DashboardStyling extends javax.swing.JFrame {
 CustomUser cu; 
 FinanceRegister fr;
+UserData ud;
+
     /**
      * Creates new form DashboardStyling
      */
@@ -24,6 +27,7 @@ FinanceRegister fr;
     public DashboardStyling(CustomUser cu, FinanceRegister fr){
      this.cu = cu;
      this.fr = fr;
+     ud = UserData.getInstance();
      initComponents();
     }
 
@@ -163,6 +167,7 @@ FinanceRegister fr;
                 DashboardBase db = new DashboardBase();
                 db.setVisible(true);
             }
+            ud.logFullUser(cu);
             DashboardBase db = new DashboardBase(cu);
             db.setVisible(true);
             //Store the User and finally complete in the USERDATA Class

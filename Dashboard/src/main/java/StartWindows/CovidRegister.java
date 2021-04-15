@@ -17,6 +17,7 @@ import javax.swing.JOptionPane;
 public class CovidRegister extends javax.swing.JFrame {
 CustomUser cu;
 RegisterWindow rw;
+CovidConnection cc;
     /**
      * Creates new form CovidRegister
      */
@@ -266,7 +267,8 @@ public CovidRegister(CustomUser cu, RegisterWindow rw){
        //Get the code to get whether one of the items is being selected
       if(jrbtnYesCovid.isSelected()){
        if(jrbtnCovidUseState.isSelected()){
-           cu.setCovid(new CovidConnection(cu.getUser().getStateTerritory()));
+           cc = new CovidConnection(cu.getUser().getStateTerritory());
+           cu.setCovid(cc);
        }
        else if(jrbtnCovidNewState.isSelected()){
            String loc = jcbStateSel.getSelectedItem().toString();
@@ -284,6 +286,7 @@ public CovidRegister(CustomUser cu, RegisterWindow rw){
           cu.setIsCovid(false);
       }
       System.out.print("Covid Info:Entered");
+      System.out.println(cc);
         this.setVisible(false);
         //cu.useCovid(false); //Implemented to make sure that if user does not want this feature
        // cu.setCovid();

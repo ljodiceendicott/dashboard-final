@@ -101,8 +101,8 @@ public String toString(){
        }
         return news;
 }
- public static void main(String[] args){
-     NewsConnection nc = new NewsConnection("sports");
-     System.out.println(nc);
- }
+ //public static void main(String[] args){
+  //   NewsConnection nc = new NewsConnection("sports");
+   //  System.out.println(nc);
+// }
 }

@@ -19,6 +19,7 @@ public class Covidsmall extends javax.swing.JPanel {
         initComponents();
     }
      public Covidsmall(CovidConnection cc) { 
+        this.setValues(cc);
         initComponents();
     }
      public void setValues(CovidConnection cc){

@@ -24,7 +24,7 @@ private CovidConnection covidApiTopic;
 private boolean isCovid;
 private WeatherConnection wc;
     private CustomUser(){
-        user = new User("Default", "User", "DefaultInfo@info.com","Chatham","Massachusetts", "Duser", "Duser123!", "Easypword");
+        user = new User("Default", "User","Massachusetts", "Duser", "Duser123!", "Easypword");
         CovidConnection cc = new CovidConnection(user.getStateTerritory());
         ArrayList<StockConnection> sc = new ArrayList<>();
         sc.add(new StockConnection("Apple","AAPL"));
@@ -84,7 +84,7 @@ private WeatherConnection wc;
     //    this.registerfull();
     //}
    private void registerfull(){
-       UserData.logFullUser(this);
+      // UserData.logFullUser(this);
    }
 
    

@@ -20,7 +20,7 @@ public class StartScreen extends javax.swing.JFrame {
     UserData ud;
     public StartScreen() {
         initComponents();
-        ud = new UserData();
+        ud = UserData.getInstance();
     }
 
     /**

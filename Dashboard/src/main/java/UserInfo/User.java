@@ -12,23 +12,18 @@ package UserInfo;
 public class User {
     private String firstName;
     private String lastName;
-    private String email;
-    private String city;
     private String stateTerritory;
     private String username;
     private String password;
     private String passwordHint;
-   public User(String fn, String ln, String email,String city,String staProv, String usern, String pword, String pwordHint){
+   public User(String fn, String ln,String staProv, String usern, String pword, String pwordHint){
         this.firstName = fn;
         this.lastName = ln;           
-        this.email = email;
-        this.city = city;
         this.stateTerritory = staProv;
         this.username = usern;
         this.password = pword;
 // this.password = this.encrypt(pword);
-        UserData.logUserInfo(usern, pword);
-        UserData.logHalfUser(this);
+       // UserData.logUserInfo(usern, pword);
    }
     
    public static boolean isEmail(String email){

@@ -20,14 +20,16 @@ import java.net.URLConnection;
  * @author jodic
  */
 public class WeatherConnection {
+    private String city;
     private String description;
    private String main;
    private String iconURL;
    private String myAPIKey = "&appid=7b2eea32adfd6ad3fe73ff7221c45daa"; ;
 
     public WeatherConnection(String cityName){
-     try{    
-// REPLACE WITH YOUR KEY!
+        this.city = cityName;
+        try{    
+
             URL apiURL = new URL("http://api.openweathermap.org/data/2.5/weather?units=imperial&q=" + cityName + myAPIKey);
 
             URLConnection yc = apiURL.openConnection();
@@ -60,5 +62,9 @@ public class WeatherConnection {
             // TODO: Produce useful error messages for the user
             e.printStackTrace();
         }
+    }
+    @Override
+    public String toString(){
+        return city+" Weather:"+description;
     }
 }
