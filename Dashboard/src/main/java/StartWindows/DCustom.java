@@ -5,23 +5,13 @@
  */
 package StartWindows;
 
-import DatabaseRetrieve.StockNameImport;
-import DatabaseRetrieve.StockNameImport.Stockinfo;
+import DatabaseRetrieve.StockFromJson.Stockinfo;
 import UserInfo.*;
 import api.*;
 import com.google.gson.Gson;
-import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
-import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -45,10 +35,10 @@ DefaultListModel<Stockinfo> watchlist;
         initComponents();
     }
     public DCustom(User u){
-        StockNameImport stockinfo = new StockNameImport();
+
         dlmall = new DefaultListModel<>();
         watchlist = new DefaultListModel<>();
-        stockinfo.getDlmItems(dlmall);
+ 
         //populate using the static method
         gson = new Gson();
         this.u = u;

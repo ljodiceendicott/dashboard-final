@@ -5,7 +5,8 @@
  */
 package UserInfo;
 
-import DatabaseRetrieve.StockNameImport.Stockinfo;
+import DatabaseRetrieve.StockFromJson;
+import DatabaseRetrieve.StockFromJson.Stockinfo;
 import api.*;
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  * @author jodic
  */
 
-public class CustomUser {
+public class CustomUser extends User{
   private User user;
 private ArrayList<NewsConnection> newsApiTopics;
 private boolean isNews;
@@ -23,26 +24,31 @@ private boolean isStocks;
 private CovidConnection covidApiTopic;
 private boolean isCovid;
 private WeatherConnection wc;
+private ArrayList<StockConnection> sc;
+private StockFromJson sfj;
+    
     private CustomUser(){
-        user = new User("Default", "User","Massachusetts", "Duser", "Duser123!", "Easypword");
-        CovidConnection cc = new CovidConnection(user.getStateTerritory());
-        ArrayList<StockConnection> sc = new ArrayList<>();
-        sc.add(new StockConnection("Apple","AAPL"));
-        sc.add(new StockConnection("GM","GM"));
+        super("Default", "User","Massachusetts", "Duser", "Duser123!", "Easypword");
+        CovidConnection cc = new CovidConnection(super.getStateTerritory());
+        sc= new ArrayList<>();
+        stockslist = new ArrayList<>();
+        sc.add(new StockConnection("AAPL"));
+        sc.add(new StockConnection("GM"));
     }
-    public CustomUser(User u) {
-        this.user= u;}
+    public CustomUser(User u){
+        super(u.getFirstName(),u.getLastName(), u.getStateTerritory(),u.getUsername(), u.getPassword(), u.getPasswordHint());
+        stockslist = new ArrayList<>();
+    }
     public void setCovid(CovidConnection cc){
         this.covidApiTopic = cc;       
     }
     public void setNews(ArrayList<NewsConnection> news){
         this.newsApiTopics = news;
     }
-    public void setStocks(ArrayList<Stockinfo> stocks){
-        stockslist = new ArrayList<>();
-        stocks.forEach(stock -> {
-            stockslist.add(new StockConnection(stock.getName(),stock.getSymbol()));
-        });
+    public void setStocks(ArrayList<Stockinfo> si){
+        for(int i= 0; i<si.size(); i++){
+            this.stockslist.add(new StockConnection(si.get(i).getSymbol()));
+        }
     }
     public void setWeather(WeatherConnection wc){
         this.wc = wc;
@@ -53,6 +59,9 @@ private WeatherConnection wc;
     public void setIsCovid(boolean c){
        this.isCovid=c;
     }
+        public void setCovidstate(String state){
+    super.setCovidstate(state);
+}
     public void setIsNews(boolean b) {
         this.isNews=b;
     }

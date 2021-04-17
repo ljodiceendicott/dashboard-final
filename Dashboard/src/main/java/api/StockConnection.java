@@ -40,11 +40,11 @@ public class StockConnection implements ApiConnection{
     //http://api.marketstack.com/v1/tickers?access_key=bbe21b9a39c90a3543d03a6d05efcc3e
     //http://api.marketstack.com/v1/
     //http://api.marketstack.com/v1/tickers/apple?access_key=bbe21b9a39c90a3543d03a6d05efcc3e
-    public StockConnection(String stock, String symb){
+    public StockConnection(String symb){
         url=this.setConnection(this.key,symb);
         try{
             this.symb = symb;
-            this.name= stock;
+           // this.name= stock;
             URL apiUrl = new URL(this.url);
             URLConnection yc = apiUrl.openConnection();
             InputStream inStream=yc.getInputStream();
@@ -76,9 +76,6 @@ public class StockConnection implements ApiConnection{
         
     }
 
-    public StockConnection(String symbol) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
    @Override
     public String toString(){
         return name+"("+symb+")  High:"+high+"/ Low:"+low;
@@ -137,7 +134,7 @@ public class StockConnection implements ApiConnection{
     return  "http://api.marketstack.com/v1/eod/latest?access_key="+key+"&symbols="+topic;  
     }
     public static void main(String[] args){
-        StockConnection sc = new StockConnection("apple","AAPL");
+        StockConnection sc = new StockConnection("AAPL");
         System.out.println(sc);
     }
 }

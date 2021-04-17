@@ -8,6 +8,7 @@ package StartWindows;
 import UserInfo.CustomUser;
 import UserInfo.User;
 import api.CovidConnection;
+import java.util.Set;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,13 +19,14 @@ public class CovidRegister extends javax.swing.JFrame {
 CustomUser cu;
 RegisterWindow rw;
 CovidConnection cc;
+String loc;
     /**
      * Creates new form CovidRegister
      */
     public CovidRegister() {
         initComponents();
     }
-public CovidRegister(CustomUser cu, RegisterWindow rw){
+public CovidRegister(RegisterWindow rw, CustomUser cu){
     this.cu = cu;
     this.rw = rw;
     initComponents();
@@ -254,6 +256,8 @@ public CovidRegister(CustomUser cu, RegisterWindow rw){
 
     private void jcbStateSelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbStateSelActionPerformed
         // TODO add your handling code here:
+        loc = jcbStateSel.getSelectedItem().toString();
+        System.out.println(loc);
     }//GEN-LAST:event_jcbStateSelActionPerformed
 
     private void jbtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBackActionPerformed
@@ -267,17 +271,18 @@ public CovidRegister(CustomUser cu, RegisterWindow rw){
        //Get the code to get whether one of the items is being selected
       if(jrbtnYesCovid.isSelected()){
        if(jrbtnCovidUseState.isSelected()){
-           cc = new CovidConnection(cu.getUser().getStateTerritory());
+           cu.setCovidstate(cu.getStateTerritory());
+           cc = new CovidConnection(cu.getStateTerritory());
            cu.setCovid(cc);
        }
        else if(jrbtnCovidNewState.isSelected()){
-           String loc = jcbStateSel.getSelectedItem().toString();
            if(loc =="<-Select-One->"){
                JOptionPane.showMessageDialog(this, "Need to select a State");
                return;
            }
            else{
-               cu.setCovid(new CovidConnection(loc));
+               cc= new CovidConnection(loc);
+               cu.setCovid(cc);
            }
        }
        cu.setIsCovid(true);

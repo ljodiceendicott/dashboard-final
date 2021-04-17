@@ -69,6 +69,10 @@ public class CovidConnection implements ApiConnection{
          System.out.println("Bad Connection: ERROR:"+e);
         }
 }
+   public static void main(String[] args){
+       CovidConnection cc = new CovidConnection("Ohio");
+       System.out.println(cc);
+   }
     @Override
    public String setConnection(String key, String topic){
        //will replace putting the code for connection in the constructor

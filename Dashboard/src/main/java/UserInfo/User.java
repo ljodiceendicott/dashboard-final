@@ -16,12 +16,14 @@ public class User {
     private String username;
     private String password;
     private String passwordHint;
+    private String covidState;
    public User(String fn, String ln,String staProv, String usern, String pword, String pwordHint){
         this.firstName = fn;
         this.lastName = ln;           
         this.stateTerritory = staProv;
         this.username = usern;
         this.password = pword;
+        this.passwordHint = pwordHint;
 // this.password = this.encrypt(pword);
        // UserData.logUserInfo(usern, pword);
    }
@@ -118,4 +120,7 @@ public class User {
     public String getPasswordHint() {
         return passwordHint;
     }
+public void setCovidstate(String state){
+    this.covidState = state;
+}
 }

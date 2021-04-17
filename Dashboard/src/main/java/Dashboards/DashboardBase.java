@@ -8,6 +8,7 @@ package Dashboards;
 import UserInfo.CustomUser;
 import api.*;
 import javax.swing.DefaultListModel;
+import panels.Covidsmall;
 
 /**
  *
@@ -26,21 +27,21 @@ DefaultListModel<StockConnection> dlm;
     }
     public DashboardBase(CustomUser cu){
         this.cu = cu;
-        if(this.cu.isCovid())
-            covidPanel.setValues(cu.getCovidinfo());
+        
+        if(this.cu.isCovid()){
+            
+            }
         else{
             //Put a blank disabled window
         }
         if(this.cu.isStocks()){
-        dlm = new DefaultListModel<>();
-        dlm.addAll(cu.getStocks());
+        
         }
         else{
             //put blank disabled window
         }
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
