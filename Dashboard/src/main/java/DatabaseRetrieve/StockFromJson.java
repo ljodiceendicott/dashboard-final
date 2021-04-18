@@ -27,27 +27,9 @@ import javax.swing.JOptionPane;
 public class StockFromJson {
      public static StockFromJson sfj;
     private Gson g;
-    private ArrayList<Stockinfo>  listnames;
+    private ArrayList<StockInfo>  listnames;
     private HashMap<String,String> list;
     
-            public class Stockinfo{
-                private String name;
-                private String symbol;
-   
-                protected Stockinfo(String name, String symbol){
-                    this.name= name;
-                    this.symbol = symbol;
-                    }
-                public String getName(){
-                    return name;
-                    }
-                public String getSymbol(){
-                    return symbol;
-                    }
-                public String toString(){
-                    return name+"("+symbol+")";
-                        }
-                }
  
     private StockFromJson(){
         listnames = new ArrayList<>();
@@ -74,7 +56,7 @@ public class StockFromJson {
                     String name = obj.get("name").getAsString();
                     String symbol= obj.get("symbol").getAsString();
                     list.put(symbol, name);
-                    listnames.add(new Stockinfo(name, symbol));
+                    listnames.add(new StockInfo(name, symbol));
                 }
                 buffread.close();
             }
@@ -92,7 +74,7 @@ public class StockFromJson {
             return sfj;
         }
     }
-    public DefaultListModel<Stockinfo> addToDlm(DefaultListModel<Stockinfo> dlm){
+    public DefaultListModel<StockInfo> addToDlm(DefaultListModel<StockInfo> dlm){
         for(int i = 0; i<listnames.size(); i++){
            dlm.addElement(listnames.get(i));
         } 
@@ -103,7 +85,7 @@ public class StockFromJson {
             return true;
         return false;
         }
-    public ArrayList<Stockinfo> getList(){
+    public ArrayList<StockInfo> getList(){
         return listnames;
     } 
     public static void main(String[] args){

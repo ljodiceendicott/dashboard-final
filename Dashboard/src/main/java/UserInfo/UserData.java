@@ -33,10 +33,16 @@ public class UserData {
    
    public  void logFullUser(CustomUser cu){
        fullUser.add(cu);
-       //log this information in a json file 
+       //log this information in a json file
+   }
+   public ArrayList<CustomUser> getFullUsers(){
+       return fullUser;
    }
    public void logUserLogin(String usern, String pword){
      userlogin.put(usern, pword);
+   }
+   public Hashtable<String,String> getCredentials(){
+       return userlogin;
    }
    public boolean isUser(String Username, String pword){
    //cross reference to see if the username and pword match

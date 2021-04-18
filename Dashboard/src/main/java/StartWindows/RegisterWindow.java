@@ -30,6 +30,8 @@ StartScreen stsc;
         initComponents();
         this.stsc = start;
         this.ud = ud;
+        this.setTitle("Personal Information: 1/5 (OOOOO)");
+        this.setLocationRelativeTo(null);
     }
     
 

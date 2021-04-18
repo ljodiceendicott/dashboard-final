@@ -6,7 +6,7 @@
 package UserInfo;
 
 import DatabaseRetrieve.StockFromJson;
-import DatabaseRetrieve.StockFromJson.Stockinfo;
+import DatabaseRetrieve.StockInfo;
 import api.*;
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ private CovidConnection covidApiTopic;
 private boolean isCovid;
 private WeatherConnection wc;
 private ArrayList<StockConnection> sc;
-private StockFromJson sfj;
+transient private StockFromJson sfj;
     
     private CustomUser(){
         super("Default", "User","Massachusetts", "Duser", "Duser123!", "Easypword");
@@ -45,7 +45,7 @@ private StockFromJson sfj;
     public void setNews(ArrayList<NewsConnection> news){
         this.newsApiTopics = news;
     }
-    public void setStocks(ArrayList<Stockinfo> si){
+    public void setStocks(ArrayList<StockInfo> si){
         for(int i= 0; i<si.size(); i++){
             this.stockslist.add(new StockConnection(si.get(i).getSymbol()));
         }
@@ -83,6 +83,9 @@ private StockFromJson sfj;
      public boolean isStocks(){
          return isStocks;
      }
+     public boolean isNews() {
+        return isNews;
+    }
   /*
     public CustomUser(boolean covid, boolean crypto, boolean stocks, boolean news) {
         this.assignadds(covid,crypto,stocks,news);
@@ -95,6 +98,8 @@ private StockFromJson sfj;
    private void registerfull(){
       // UserData.logFullUser(this);
    }
+
+    
 
    
 

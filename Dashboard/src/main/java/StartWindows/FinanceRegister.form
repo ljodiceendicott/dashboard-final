@@ -31,7 +31,7 @@
               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel5" pref="0" max="32767" attributes="0"/>
+              <Component id="jPanel5" pref="768" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -181,7 +181,7 @@
                     </Property>
                   </Properties>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Stockinfo&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;StockInfo&gt;"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -346,6 +346,9 @@
                     <Property name="text" type="java.lang.String" value="Add Stock to Watchlist"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbtnAddCustActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -365,7 +368,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Stockinfo&gt;"/>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;StockInfo&gt;"/>
               </AuxValues>
             </Component>
           </SubComponents>

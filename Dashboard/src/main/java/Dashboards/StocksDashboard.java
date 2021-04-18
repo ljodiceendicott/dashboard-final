@@ -5,6 +5,9 @@
  */
 package Dashboards;
 
+import api.StockConnection;
+import java.util.ArrayList;
+
 /**
  *
  * @author jodic
@@ -15,6 +18,10 @@ public class StocksDashboard extends javax.swing.JFrame {
      * Creates new form StocksDashboard
      */
     public StocksDashboard() {
+        initComponents();
+    }
+    
+    public StocksDashboard(ArrayList<StockConnection> sc){
         initComponents();
     }
 

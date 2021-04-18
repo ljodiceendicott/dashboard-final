@@ -5,17 +5,25 @@
  */
 package Dashboards;
 
+import api.CovidConnection;
+import java.io.File;
+import panels.Covidsmall;
+
 /**
  *
  * @author jodic
  */
 public class CovidDashboard extends javax.swing.JFrame {
-
+    Covidsmall cp;
     /**
      * Creates new form CovidDashboard
      */
     public CovidDashboard() {
         initComponents();
+    }
+    public CovidDashboard(CovidConnection cc){
+        cp = new Covidsmall(cc);
+          initComponents();
     }
 
     /**

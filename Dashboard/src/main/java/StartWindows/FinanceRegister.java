@@ -6,11 +6,11 @@
 package StartWindows;
 
 import DatabaseRetrieve.*;
-import DatabaseRetrieve.*;
-import DatabaseRetrieve.StockFromJson.Stockinfo;
 import UserInfo.CustomUser;
+import api.StockConnection;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
 /**
@@ -19,8 +19,8 @@ import javax.swing.JRadioButton;
  */
 public class FinanceRegister extends javax.swing.JFrame {
 StockFromJson sfj;
-DefaultListModel<Stockinfo> dlmall;
-DefaultListModel<Stockinfo> watchlist;
+DefaultListModel<StockInfo> dlmall;
+DefaultListModel<StockInfo> watchlist;
 CustomUser cu;
 NewsRegister parent;
     /**
@@ -38,6 +38,8 @@ NewsRegister parent;
         watchlist = new DefaultListModel<>();
         sfj.addToDlm(dlmall);
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Stock Information: 4/5 (\u2713\u2713\u2713OO)");
     }
 
     /**
@@ -185,6 +187,11 @@ NewsRegister parent;
 
         jbtnAddCust.setText("Add Stock to Watchlist");
         jbtnAddCust.setEnabled(false);
+        jbtnAddCust.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAddCustActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -307,7 +314,7 @@ NewsRegister parent;
                 .addComponent(jbtnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(62, 62, 62))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 768, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -348,7 +355,7 @@ NewsRegister parent;
 
     private void jbtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNextActionPerformed
         //if info is blanck leave a joptionpane
-        ArrayList<Stockinfo> si = new ArrayList<>();
+        ArrayList<StockInfo> si = new ArrayList<>();
         for(int i=0; i<watchlist.size(); i++){
             si.add(watchlist.get(i));
         }
@@ -359,7 +366,7 @@ NewsRegister parent;
     }//GEN-LAST:event_jbtnNextActionPerformed
 
     private void jbtnAddWatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAddWatchActionPerformed
-      Stockinfo s = dlmall.getElementAt(jLall.getSelectedIndex());
+      StockInfo s = dlmall.getElementAt(jLall.getSelectedIndex());
       dlmall.remove(jLall.getSelectedIndex());
       watchlist.addElement(s);
     }//GEN-LAST:event_jbtnAddWatchActionPerformed
@@ -391,10 +398,23 @@ NewsRegister parent;
     }//GEN-LAST:event_jrbtnCustomStockActionPerformed
 
     private void jbtnRemWatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRemWatchActionPerformed
-     Stockinfo s = watchlist.getElementAt(this.jlSelStocks.getSelectedIndex());
+     StockInfo s = watchlist.getElementAt(this.jlSelStocks.getSelectedIndex());
      watchlist.remove(jlSelStocks.getSelectedIndex());
      dlmall.addElement(s);
     }//GEN-LAST:event_jbtnRemWatchActionPerformed
+
+    private void jbtnAddCustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAddCustActionPerformed
+        //check to see if symbol is a legit stock
+        String s = jtfCustomSymbol.getText();
+        StockConnection temp = new StockConnection(s);
+        if(temp.getIsLegit()){
+            StockInfo e = new StockInfo(temp.getName(),temp.getSymb());
+            watchlist.addElement(e);
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Unable to find Symbol: \u201C"+s+"\u201C. \n Make sure you are using a legitimate stock symbol");
+            }
+    }//GEN-LAST:event_jbtnAddCustActionPerformed
     public void setSelectedOp(boolean b){
         jbtnAddWatch.setEnabled(b);
         jbtnRemWatch.setEnabled(b);
@@ -439,7 +459,7 @@ NewsRegister parent;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<Stockinfo> jLall;
+    private javax.swing.JList<StockInfo> jLall;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -452,7 +472,7 @@ NewsRegister parent;
     private javax.swing.JButton jbtnBack;
     private javax.swing.JButton jbtnNext;
     private javax.swing.JButton jbtnRemWatch;
-    private javax.swing.JList<Stockinfo> jlSelStocks;
+    private javax.swing.JList<StockInfo> jlSelStocks;
     private javax.swing.JRadioButton jrbtnCustomStock;
     private javax.swing.JRadioButton jrbtnDefaultStock;
     private javax.swing.JRadioButton jrbtnNoStock;

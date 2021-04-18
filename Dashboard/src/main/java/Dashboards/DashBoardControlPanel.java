@@ -6,7 +6,6 @@
 package Dashboards;
 
 import UserInfo.CustomUser;
-import java.util.ArrayList;
 
 /**
  *
@@ -14,6 +13,9 @@ import java.util.ArrayList;
  */
 public class DashBoardControlPanel extends javax.swing.JFrame {
     private CustomUser cu;
+    private CovidDashboard cd;
+    private NewsDashboard nd;
+    private StocksDashboard sd;
     /**
      * Creates new form DashBoardControlPanel
      */
@@ -22,6 +24,18 @@ public class DashBoardControlPanel extends javax.swing.JFrame {
     }
     public DashBoardControlPanel(CustomUser cu){
         this.cu = cu;
+        if(cu.isCovid()){
+            this.cd = new CovidDashboard(cu.getCovidinfo());
+            cd.setVisible(true);
+        }
+        if(cu.isStocks()){
+            this.sd = new StocksDashboard(cu.getStocks());
+            sd.setVisible(true);
+        }
+        if(cu.isNews()){
+            this.nd = new NewsDashboard();
+            nd.setVisible(true);
+        }
         initComponents();
     }
     
@@ -43,11 +57,11 @@ public class DashBoardControlPanel extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 551, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGap(0, 387, Short.MAX_VALUE)
         );
 
         pack();

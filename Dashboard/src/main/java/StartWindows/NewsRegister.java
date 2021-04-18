@@ -29,6 +29,8 @@ ArrayList<NewsConnection> stories;
        this.parent = cr;
        stories = new ArrayList<>();
         initComponents();
+        this.setTitle("News Information Register: 3/5 (\u2713\u2713OOO)");
+        this.setLocationRelativeTo(null);
     }
 
     /**

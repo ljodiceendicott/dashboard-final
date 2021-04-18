@@ -26,6 +26,7 @@ import java.util.logging.Logger;
  */
 public class StockConnection implements ApiConnection{
    private String url;
+   private boolean isLegit;
    private int high;
    private int low;
    private String name;
@@ -35,7 +36,7 @@ public class StockConnection implements ApiConnection{
    private String updatedlast;
    private String splitfact; 
    private String key ="bbe21b9a39c90a3543d03a6d05efcc3e";
-   private String baselink = "http://api.marketstack.com/v1/";
+   private String baselink = "http://api.marketstack.com/v1/eod/latest?access_key=";
     //http://api.marketstack.com/v1/eod/latest?access_key=bbe21b9a39c90a3543d03a6d05efcc3e&symbols=AAPL&date_from=2021-03-21&date_to=2021-03-31
     //http://api.marketstack.com/v1/tickers?access_key=bbe21b9a39c90a3543d03a6d05efcc3e
     //http://api.marketstack.com/v1/
@@ -67,13 +68,15 @@ public class StockConnection implements ApiConnection{
             this.high = data.get("high").getAsInt();
             this.low = data.get("low").getAsInt();
             this.splitfact = data.get("split_factor").getAsString();
-            this.splitfact = data.get("date").getAsString(); 
+            this.updatedlast = data.get("date").getAsString(); 
         } catch (MalformedURLException ex) {
            Logger.getLogger(StockConnection.class.getName()).log(Level.SEVERE, null, ex);
+           isLegit = false;
        } catch (IOException ex) {
            Logger.getLogger(StockConnection.class.getName()).log(Level.SEVERE, null, ex);
+           isLegit = false;
        }
-        
+        isLegit = true;
     }
 
    @Override
@@ -84,6 +87,7 @@ public class StockConnection implements ApiConnection{
  * 
  * @return the name
  */
+   
     public String getName(){
         return name;
     }
@@ -121,17 +125,20 @@ public class StockConnection implements ApiConnection{
     public int getOpen() {
         return open;
     }
-
+    public boolean getIsLegit(){
+        return isLegit;
+    }
     /**
      * @return the updatedlast
      */
     public String getUpdatedlast() {
         return updatedlast;
     }
+    
 
     @Override
-    public String setConnection(String key, String topic) {
-    return  "http://api.marketstack.com/v1/eod/latest?access_key="+key+"&symbols="+topic;  
+    public String setConnection(String key, String symb) {
+    return  baselink+key+"&symbols="+symb;  
     }
     public static void main(String[] args){
         StockConnection sc = new StockConnection("AAPL");

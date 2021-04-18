@@ -30,6 +30,8 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
     this.cu = cu;
     this.rw = rw;
     initComponents();
+    this.setTitle("Covid Information Register: 2/5 (\u2713OOOO)");
+    this.setLocationRelativeTo(null);
 }
     /**
      * This method is called from within the constructor to initialize the form.
