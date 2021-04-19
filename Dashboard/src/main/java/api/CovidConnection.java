@@ -6,6 +6,7 @@
 package api;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -33,8 +34,8 @@ public class CovidConnection implements ApiConnection{
         //code for current day of Covid
         try{
             
-            URL apiURL = new URL("https://covid-api.mmediagroup.fr/v1/cases?country=US");
-
+            //URL apiURL = new URL("https://api.covid19api.com/summary");
+            URL apiURL = new URL("https://api.apify.com/v2/key-value-stores/moxA3Q0aZh5LosewB/records/LATEST?disableRedirect=true");
             URLConnection yc = apiURL.openConnection();
 
             InputStream inStream = yc.getInputStream();
@@ -48,7 +49,18 @@ public class CovidConnection implements ApiConnection{
                 sb.append(inputLine);
                 sb.append("\n");
             }
+            JsonParser jp = new JsonParser();
+            JsonElement root = jp.parse(sb.toString());
+            JsonObject stateobj = root.getAsJsonObject();
+            this.deaths = stateobj.get("TotalDeaths").getAsString();
+            JsonArray ja = stateobj.get("casesByState").getAsJsonArray();
+            for(int i =0; i<ja.size(); i++){
+                if(ja.get(i).getAsJsonObject().get("name").getAsString()==state){
+                    this.confirmed=ja.get(i).getAsJsonObject().get("casesReported").getAsString();
+                }
+            }
             
+          /*  
             JsonParser jp= new JsonParser();
             JsonElement root = jp.parse(sb.toString());
             JsonObject stateJson = root.getAsJsonObject();
@@ -58,7 +70,7 @@ public class CovidConnection implements ApiConnection{
             this.recovered = stateobj.get("recovered").getAsString();
             this.deaths = stateobj.get("deaths").getAsString();
             this.updated = stateobj.get("updated").getAsString();
-            
+            */
             
             in.close();
         }

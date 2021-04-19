@@ -30,15 +30,38 @@ private WeatherConnection wc;
 
 private ArrayList<StockConnection> sc;
 transient private StockFromJson sfj;
+
+private boolean UseDefaults;
+
+
 //Custom User calls   
         //used for default user
     private CustomUser(){
         super("Default", "User","Massachusetts", "Duser", "Duser123!", "Easypword");
         CovidConnection cc = new CovidConnection(super.getStateTerritory());
-        sc= new ArrayList<>();
+        this.setCovidstate(super.getStateTerritory());
+        this.setIsCovid(true);
+        this.setCovid(cc);
+        //arts, automobiles, books, business
+        NewsConnection ncOne = new NewsConnection("arts");
+        NewsConnection ncTwo = new NewsConnection("automobiles");
+        NewsConnection ncThree = new NewsConnection("books");
+        NewsConnection ncFour = new NewsConnection("business");
+        ArrayList<NewsConnection> news = new ArrayList<>();
+        news.add(ncOne);
+        news.add(ncTwo);
+        news.add(ncThree);
+        news.add(ncFour);
+        this.setIsNews(true);
+        this.setNews(news);
+        
         stockslist = new ArrayList<>();
+        sc= new ArrayList<>();
         sc.add(new StockConnection("AAPL"));
         sc.add(new StockConnection("GM"));
+        
+        this.setIsStocks(true);
+        this.setStocksDef(sc);
     }
    
     public CustomUser(User u){
@@ -90,6 +113,11 @@ transient private StockFromJson sfj;
      public void setStocks(ArrayList<StockInfo> si){
         for(int i= 0; i<si.size(); i++){
             this.stockslist.add(new StockConnection(si.get(i).getSymbol()));
+        }
+    }
+     public void setStocksDef(ArrayList<StockConnection> si){
+        for(int i= 0; i<si.size(); i++){
+            this.stockslist.add(si.get(i));
         }
     }
      public ArrayList<StockConnection> getStocks(){

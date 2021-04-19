@@ -28,7 +28,10 @@ public class CovidDashboard extends javax.swing.JFrame {
         jlRecover.setText(cc.getRecovered());
         jlDeath.setText(cc.getDeaths());
         jlUpdated.setText(cc.getUpdated());
-          
+         if(jlUpdated.getText()==""){
+             jlUpdatedlab.setVisible(false);
+             jpUpdate.setVisible(false);
+         }
     }
 
     /**
@@ -46,8 +49,8 @@ public class CovidDashboard extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        jpUpdate = new javax.swing.JPanel();
+        jlUpdatedlab = new javax.swing.JLabel();
         jlUpdated = new javax.swing.JLabel();
         jlConfirm = new javax.swing.JLabel();
         jlRecover = new javax.swing.JLabel();
@@ -73,46 +76,45 @@ public class CovidDashboard extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Arial Black", 1, 12)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Deaths:");
+        jLabel5.setText("Total Deaths:");
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jpUpdate.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel6.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Last Updated:");
+        jlUpdatedlab.setFont(new java.awt.Font("Arial Black", 0, 12)); // NOI18N
+        jlUpdatedlab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlUpdatedlab.setText("Last Updated:");
 
         jlUpdated.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jlUpdated.setText("jLabel7");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jpUpdateLayout = new javax.swing.GroupLayout(jpUpdate);
+        jpUpdate.setLayout(jpUpdateLayout);
+        jpUpdateLayout.setHorizontalGroup(
+            jpUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpUpdateLayout.createSequentialGroup()
+                .addGroup(jpUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpUpdateLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jlUpdatedlab, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                    .addGroup(jpUpdateLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jlUpdated, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        jpUpdateLayout.setVerticalGroup(
+            jpUpdateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jpUpdateLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
+                .addComponent(jlUpdatedlab)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlUpdated)
+                .addComponent(jlUpdated, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        jlConfirm.setText("jLabel8");
+        jlConfirm.setText("N/A");
 
-        jlRecover.setText("jLabel9");
+        jlRecover.setText("N/A");
 
-        jlDeath.setText("jLabel10");
+        jlDeath.setText("N/A");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -131,12 +133,12 @@ public class CovidDashboard extends javax.swing.JFrame {
                         .addComponent(jlRecover)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlDeath)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jpUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -155,7 +157,7 @@ public class CovidDashboard extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jlDeath))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -226,14 +228,14 @@ public class CovidDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jlConfirm;
     private javax.swing.JLabel jlDeath;
     private javax.swing.JLabel jlRecover;
     private javax.swing.JLabel jlState;
     private javax.swing.JLabel jlUpdated;
+    private javax.swing.JLabel jlUpdatedlab;
+    private javax.swing.JPanel jpUpdate;
     // End of variables declaration//GEN-END:variables
 
    
