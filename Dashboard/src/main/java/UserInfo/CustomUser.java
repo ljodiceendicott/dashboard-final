@@ -19,14 +19,19 @@ public class CustomUser extends User{
   private User user;
 private ArrayList<NewsConnection> newsApiTopics;
 private boolean isNews;
+
 private ArrayList<StockConnection> stockslist;
 private boolean isStocks;
+
 private CovidConnection covidApiTopic;
 private boolean isCovid;
+
 private WeatherConnection wc;
+
 private ArrayList<StockConnection> sc;
 transient private StockFromJson sfj;
-    
+//Custom User calls   
+        //used for default user
     private CustomUser(){
         super("Default", "User","Massachusetts", "Duser", "Duser123!", "Easypword");
         CovidConnection cc = new CovidConnection(super.getStateTerritory());
@@ -35,73 +40,73 @@ transient private StockFromJson sfj;
         sc.add(new StockConnection("AAPL"));
         sc.add(new StockConnection("GM"));
     }
+   
     public CustomUser(User u){
         super(u.getFirstName(),u.getLastName(), u.getStateTerritory(),u.getUsername(), u.getPassword(), u.getPasswordHint());
         stockslist = new ArrayList<>();
     }
+    
+    public static CustomUser getDefaultCustomUser(){
+        return new CustomUser();
+    }
+    
+    public User getUser(){
+        return this.user;
+    }    
+    
+//Covid information calls
     public void setCovid(CovidConnection cc){
         this.covidApiTopic = cc;       
     }
-    public void setNews(ArrayList<NewsConnection> news){
-        this.newsApiTopics = news;
-    }
-    public void setStocks(ArrayList<StockInfo> si){
-        for(int i= 0; i<si.size(); i++){
-            this.stockslist.add(new StockConnection(si.get(i).getSymbol()));
-        }
-    }
-    public void setWeather(WeatherConnection wc){
-        this.wc = wc;
-    }
-    public ArrayList<StockConnection> getStocks(){
-        return this.stockslist;
-    }
-    public void setIsCovid(boolean c){
+     public void setIsCovid(boolean c){
        this.isCovid=c;
     }
         public void setCovidstate(String state){
     super.setCovidstate(state);
 }
-    public void setIsNews(boolean b) {
-        this.isNews=b;
-    }
-    public void setIsStocks(boolean b){
-        this.isStocks = b;
-    }
-      public static CustomUser getDefaultCustomUser(){
-        return new CustomUser();
-    }
-    public User getUser(){
-        return this.user;
-    }
-    public CovidConnection getCovidinfo(){
+   public CovidConnection getCovidinfo(){
         return covidApiTopic;
     }
      public boolean isCovid() {
          return isCovid;
-     }
-     public boolean isStocks(){
-         return isStocks;
-     }
+     }       
+        
+//News information calls
+    public void setNews(ArrayList<NewsConnection> news){
+        this.newsApiTopics = news;
+    }
+     public void setIsNews(boolean b) {
+        this.isNews=b;
+    }
      public boolean isNews() {
         return isNews;
     }
-  /*
-    public CustomUser(boolean covid, boolean crypto, boolean stocks, boolean news) {
-        this.assignadds(covid,crypto,stocks,news);
-    }*/
-    //used if all of the of the things should be added
-   // private void assignadds(CovidConnection covid, StockConnection stocks, NewsConnection news, WeatherConnection weather){ 
-        //information about what the user wants
-    //    this.registerfull();
-    //}
-   private void registerfull(){
-      // UserData.logFullUser(this);
-   }
+       public ArrayList<NewsConnection> getNews() {
+      return newsApiTopics;
+    }
 
+       
+//stock information calls
+     public void setStocks(ArrayList<StockInfo> si){
+        for(int i= 0; i<si.size(); i++){
+            this.stockslist.add(new StockConnection(si.get(i).getSymbol()));
+        }
+    }
+     public ArrayList<StockConnection> getStocks(){
+        return this.stockslist;
+    }
+     
+    public void setIsStocks(boolean b){
+        this.isStocks = b;
+    }
+     
+     
+    public void setWeather(WeatherConnection wc){
+        this.wc = wc;
+    }
     
-
-   
-
+     public boolean isStocks(){
+         return isStocks;
+     }
     
 }

@@ -5,6 +5,7 @@
  */
 package api;
 
+import DatabaseRetrieve.NewsStory;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -27,24 +28,8 @@ import java.util.logging.Logger;
 public class NewsConnection implements ApiConnection{
   private ArrayList<NewsStory> stories = new ArrayList<>();
   private String url;
+  private String section;
 
-   
-   
-   public class NewsStory{
-   private String storylink;
-   private String last_updated;
-   private String pubdate;
-   private String title;
-   private String desc;
-   
-   public NewsStory(String storylink, String lastup, String pubdate, String title, String desc){
-       this.storylink = storylink;
-       this.last_updated = lastup;
-       this.pubdate = pubdate;
-       this.title = title;
-       this.desc = desc;
-   }
-   }
    
  String apid= "24cb25ed-4ee6-4186-b672-fd3e5e9cbef2";
  String key = "w7nhQF5PpKTQsBezWG2JkgkYsWbBt5KP";
@@ -53,6 +38,7 @@ public class NewsConnection implements ApiConnection{
  //https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=w7nhQF5PpKTQsBezWG2JkgkYsWbBt5KP
  
 public NewsConnection(String section){
+            this.section = section;
             stories= new ArrayList<>();
             url = this.setConnection(key, section);
        try {
@@ -97,9 +83,15 @@ public NewsConnection(String section){
 public String toString(){
     String news="";
        for (NewsStory story : stories) {
-           news=news+story.title+"\n";
+           news=news+story.getTitle()+"\n";
        }
         return news;
+}
+public String getSection(){
+    return section;
+}
+public ArrayList<NewsStory> getStories(){
+    return stories;
 }
  //public static void main(String[] args){
   //   NewsConnection nc = new NewsConnection("sports");

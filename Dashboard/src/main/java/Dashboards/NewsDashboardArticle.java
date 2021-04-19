@@ -5,49 +5,19 @@
  */
 package Dashboards;
 
-import UserInfo.CustomUser;
-import api.CovidConnection;
-
 /**
  *
  * @author jodic
  */
-public class DashBoardControlPanel extends javax.swing.JFrame {
-    private CovidDashboard cd;
-    private NewsDashboard nd;
-    private StocksDashboard sd;
+public class NewsDashboardArticle extends javax.swing.JFrame {
+
     /**
-     * Creates new form DashBoardControlPanel
+     * Creates new form NewsDashboardArticle
      */
-    public DashBoardControlPanel() {
+    public NewsDashboardArticle() {
         initComponents();
-         this.cd = new CovidDashboard(new CovidConnection("Massachusetts"));
-            cd.setVisible(true);
-            cd.setLocationRelativeTo(this);
     }
-    public DashBoardControlPanel(CustomUser cu){
-        initComponents();
-        this.setLocationRelativeTo(null);
-        if(cu.isCovid()){
-            //this.cd = new CovidDashboard(cu.getCovidinfo());
-            this.cd = new CovidDashboard(cu.getCovidinfo());
-            cd.setVisible(true);
-            cd.setLocationRelativeTo(this);
-        }
-        if(cu.isStocks()){
-            this.sd = new StocksDashboard(cu.getStocks());
-            sd.setVisible(true);
-        }
-        if(cu.isNews()){
-            this.nd = new NewsDashboard(cu.getNews());
-            nd.setVisible(true);
-        }
-        
-    }
-    
-    
-   
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,11 +33,11 @@ public class DashBoardControlPanel extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 551, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
+            .addGap(0, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -90,20 +60,20 @@ public class DashBoardControlPanel extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DashBoardControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewsDashboardArticle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DashBoardControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewsDashboardArticle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DashBoardControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewsDashboardArticle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DashBoardControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(NewsDashboardArticle.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashBoardControlPanel().setVisible(true);
+                new NewsDashboardArticle().setVisible(true);
             }
         });
     }

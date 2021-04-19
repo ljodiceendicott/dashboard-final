@@ -148,7 +148,8 @@ UserData ud;
            ud.logFullUser(cu);
            ud.logUserLogin(cu.getUsername(), cu.getPassword());
         DashBoardControlPanel dcp = new DashBoardControlPanel(cu);
-           dcp.setVisible(true);    
+           dcp.setVisible(true);  
+           this.setVisible(false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed

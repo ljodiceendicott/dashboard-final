@@ -5,19 +5,93 @@
  */
 package Dashboards;
 
+import api.NewsConnection;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.JLabel;
+import javax.swing.JToggleButton;
+
 /**
  *
  * @author jodic
  */
 public class NewsDashboard extends javax.swing.JFrame {
-
+ArrayList<NewsConnection> news;
+Set<String> topics;
+JToggleButton[] buttons;
+JLabel[] stories;
     /**
      * Creates new form NewsDashboard
      */
     public NewsDashboard() {
+        //Test
+        topics = new HashSet<>();
+        topics.add("Sports");
+        topics.add("crazy news");
+        topics.add("Sports");
+        topics.add("crazy news");
+        topics.add("Sports");
+        topics.add("crazy news");
+        
+        String[] array =topics.toArray(new String[topics.size()]);
+        //https://www.techiedelight.com/convert-set-to-array-java/ Helped understand how to usethe Set.toArray method
         initComponents();
+        buttons = new JToggleButton[]{jtbtnNewsOne,jtbtnNewsTwo,jtbtnNewsThree, jtbtnNewsFour};
+        stories = new JLabel[]{jlStoryOne,jlStoryTwo,jlStoryThree};
+        System.out.println(topics.toString());
+        this.setButtons(array);
     }
-
+    public NewsDashboard(ArrayList<NewsConnection> news){
+        initComponents();
+        this.news = news;
+        buttons = new JToggleButton[]{jtbtnNewsOne,jtbtnNewsTwo,jtbtnNewsThree, jtbtnNewsFour};        
+        //get the names of the news topics
+        topics = new HashSet<>();
+        for(int i = 0; i<news.size(); i++){
+            topics.add(news.get(i).getSection());
+        }
+        String[] topic = topics.toArray(new String[topics.size()]);
+        setButtons(topic);   
+    }
+    
+    
+    private void setButtons(String[] s){
+        
+        for(int i = 0; i<s.length; i++){
+            buttons[i].setText(s[i]);
+        }
+        if(s.length<buttons.length){
+            int remainder = buttons.length - s.length;
+            for(int i= buttons.length-1; i>buttons.length-remainder-1; i--){
+                buttons[i].setEnabled(false);
+                buttons[i].setVisible(false);
+            }
+        }
+    }
+    
+    private void updateButtons(JToggleButton btn){
+        for(int i =0; i<buttons.length; i++){
+            buttons[i].setSelected(false);
+        }
+        btn.setSelected(true);
+    }
+    private void setStories(JToggleButton btn){
+        if(btn.isSelected()){
+         this.updateButtons(btn);
+         String topic = btn.getText();
+         for(int i=0; i<news.size(); i++){
+             //news => list of news connections
+             if(news.get(i).getSection()==topic){
+                 for(int j =0; j<news.get(i).getStories().size(); i++){
+                     stories[i].setText(news.get(i).getStories().get(i).toString());
+                 }
+             }
+         }
+     }
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +101,175 @@ public class NewsDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jtbtnNewsOne = new javax.swing.JToggleButton();
+        jtbtnNewsTwo = new javax.swing.JToggleButton();
+        jtbtnNewsThree = new javax.swing.JToggleButton();
+        jtbtnNewsFour = new javax.swing.JToggleButton();
+        jlStoryOne = new javax.swing.JLabel();
+        jlStoryTwo = new javax.swing.JLabel();
+        jlStoryThree = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Top News Stories");
+
+        jtbtnNewsOne.setSelected(true);
+        jtbtnNewsOne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbtnNewsOneActionPerformed(evt);
+            }
+        });
+
+        jtbtnNewsTwo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbtnNewsTwoActionPerformed(evt);
+            }
+        });
+
+        jtbtnNewsThree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbtnNewsThreeActionPerformed(evt);
+            }
+        });
+
+        jtbtnNewsFour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtbtnNewsFourActionPerformed(evt);
+            }
+        });
+
+        jlStoryOne.setBackground(new java.awt.Color(51, 51, 51));
+        jlStoryOne.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlStoryOne.setText("Story One");
+        jlStoryOne.setOpaque(true);
+        jlStoryOne.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlStoryOneMouseClicked(evt);
+            }
+        });
+
+        jlStoryTwo.setBackground(new java.awt.Color(51, 51, 51));
+        jlStoryTwo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlStoryTwo.setText("Story Two");
+        jlStoryTwo.setOpaque(true);
+
+        jlStoryThree.setBackground(new java.awt.Color(51, 51, 51));
+        jlStoryThree.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlStoryThree.setText("Story Three");
+        jlStoryThree.setOpaque(true);
+
+        jLabel5.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jLabel5.setText("Select one of the topics on the top to switch between the Topics");
+
+        jLabel6.setFont(new java.awt.Font("Arial", 2, 12)); // NOI18N
+        jLabel6.setText("that have been selected");
+
+        jLabel7.setText("To read more about a story, Click on a headline. Will give you ");
+
+        jLabel8.setText("the title, as well as link to read full article on: ");
+
+        jLabel9.setText("www.nytimes.com");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 2, 10)); // NOI18N
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Information gotten from New York Times API");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+                    .addComponent(jlStoryThree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlStoryOne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jlStoryTwo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtbtnNewsOne, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
+                            .addComponent(jtbtnNewsThree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtbtnNewsFour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtbtnNewsTwo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtbtnNewsTwo, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(jtbtnNewsOne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jtbtnNewsThree, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                    .addComponent(jtbtnNewsFour, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(jlStoryOne, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jlStoryTwo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jlStoryThree, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jlStoryOneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlStoryOneMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jlStoryOneMouseClicked
+
+    private void jtbtnNewsOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbtnNewsOneActionPerformed
+     this.setStories(jtbtnNewsOne);
+        
+    }//GEN-LAST:event_jtbtnNewsOneActionPerformed
+
+    private void jtbtnNewsTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbtnNewsTwoActionPerformed
+        this.setStories(jtbtnNewsTwo);
+    }//GEN-LAST:event_jtbtnNewsTwoActionPerformed
+
+    private void jtbtnNewsThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbtnNewsThreeActionPerformed
+      this.setStories(jtbtnNewsThree);
+    }//GEN-LAST:event_jtbtnNewsThreeActionPerformed
+
+    private void jtbtnNewsFourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbtnNewsFourActionPerformed
+        this.setStories(jtbtnNewsFour);
+    }//GEN-LAST:event_jtbtnNewsFourActionPerformed
 
     /**
      * @param args the command line arguments
@@ -81,5 +309,19 @@ public class NewsDashboard extends javax.swing.JFrame {
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jlStoryOne;
+    private javax.swing.JLabel jlStoryThree;
+    private javax.swing.JLabel jlStoryTwo;
+    private javax.swing.JToggleButton jtbtnNewsFour;
+    private javax.swing.JToggleButton jtbtnNewsOne;
+    private javax.swing.JToggleButton jtbtnNewsThree;
+    private javax.swing.JToggleButton jtbtnNewsTwo;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@
  */
 package panels;
 
+import UserInfo.CustomUser;
 import api.CovidConnection;
 
 /**
@@ -18,8 +19,8 @@ public class Covidsmall extends javax.swing.JPanel {
     public Covidsmall() {
         initComponents();
     }
-     public Covidsmall(CovidConnection cc) { 
-        this.setValues(cc);
+     public Covidsmall(CustomUser cu) { 
+        this.setValues(cu.getCovidinfo());
         initComponents();
     }
      public void setValues(CovidConnection cc){

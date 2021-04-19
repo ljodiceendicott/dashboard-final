@@ -24,9 +24,6 @@ public class CovidConnection implements ApiConnection{
    private String confirmed;
    private String recovered;
    private String deaths;
-   private String yestConfirmed;
-    String yestRecovered;
-    String yestDeaths;
    private String updated;
    private String name;
     Gson gson;
@@ -70,7 +67,7 @@ public class CovidConnection implements ApiConnection{
         }
 }
    public static void main(String[] args){
-       CovidConnection cc = new CovidConnection("Ohio");
+       CovidConnection cc = new CovidConnection("Massachusetts");
        System.out.println(cc);
    }
     @Override

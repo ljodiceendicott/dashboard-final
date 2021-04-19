@@ -15,19 +15,20 @@ import java.util.Hashtable;
  * @author jodic
  */
 public class WriteData {
-     ArrayList<CustomUser> c;
-    public WriteData(ArrayList<CustomUser> cu){
+     UserData ud;
+    public WriteData(){
            // String s =System.getProperty("user.dir");
            //use this to get user working directory
-           c=cu;
+           ud = UserData.getInstance();
     }
-  public void writePDtoJson(){
+  public static void writePDtoJson(ArrayList<CustomUser> c){
       for(int i=0; i<c.size(); i++){
+          
           //take all of the CustomUser info and put it into a file
       }
       
   }
-  public void writeCredentoJson(){
+  public static void writeCredentoJson(ArrayList<CustomUser> c){
       for(int i=0; i<c.size(); i++){
           String name = c.get(i).getUsername();
           String pword = c.get(i).getPassword();
