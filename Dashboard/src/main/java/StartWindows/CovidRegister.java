@@ -9,6 +9,7 @@ import UserInfo.CustomUser;
 import UserInfo.User;
 import api.CovidConnection;
 import java.util.Set;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class CovidRegister extends javax.swing.JFrame {
 CustomUser cu;
-RegisterWindow rw;
+JFrame parent;
 
 String loc;
     /**
@@ -28,7 +29,14 @@ String loc;
     }
 public CovidRegister(RegisterWindow rw, CustomUser cu){
     this.cu = cu;
-    this.rw = rw;
+    this.parent = rw;
+    initComponents();
+    this.setTitle("Covid Information Register: 2/5 (\u2713OOOO)");
+    this.setLocationRelativeTo(null);
+}
+public CovidRegister(StartScreen sc ,CustomUser cu){
+    this.cu = cu;
+    this.parent = sc;
     initComponents();
     this.setTitle("Covid Information Register: 2/5 (\u2713OOOO)");
     this.setLocationRelativeTo(null);
@@ -44,8 +52,6 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
 
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jrbtnCovidUseState = new javax.swing.JRadioButton();
-        jrbtnCovidNewState = new javax.swing.JRadioButton();
         jcbStateSel = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jbtnNext = new javax.swing.JButton();
@@ -57,22 +63,6 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jrbtnCovidUseState.setText("Use State/Territory you live in");
-        jrbtnCovidUseState.setEnabled(false);
-        jrbtnCovidUseState.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbtnCovidUseStateActionPerformed(evt);
-            }
-        });
-
-        jrbtnCovidNewState.setText("Select New State/Territory");
-        jrbtnCovidNewState.setEnabled(false);
-        jrbtnCovidNewState.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbtnCovidNewStateActionPerformed(evt);
-            }
-        });
-
         jcbStateSel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "<-Select-One->", "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming", "Washington", "DC", "American Samoa", "Baker Island", "Guam", "Howland Island", "Jarvis Island", "Johnston Atoll", "Kingman Reef", "Midway Islands", "Navassa Island", "Northern", "Mariana Islands", "Palmyra Atoll", "Puerto Rico", "Virgin Islands", "Wake Island" }));
         jcbStateSel.setEnabled(false);
         jcbStateSel.addActionListener(new java.awt.event.ActionListener() {
@@ -81,7 +71,8 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
             }
         });
 
-        jLabel1.setText("Would you like to Use the location that you have provided or look at another location?");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Please select the State that you would like to see the covid information about");
         jLabel1.setOpaque(true);
 
         jbtnNext.setBackground(new java.awt.Color(153, 153, 153));
@@ -149,10 +140,6 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jcbStateSel, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(109, 109, 109))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 485, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -160,18 +147,15 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jrbtnCovidUseState)
-                                .addGap(71, 71, 71)
-                                .addComponent(jrbtnCovidNewState, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jbtnBack)
-                                .addGap(224, 224, 224)
-                                .addComponent(jbtnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jbtnBack)
+                        .addGap(224, 224, 224)
+                        .addComponent(jbtnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(jcbStateSel, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -181,13 +165,9 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jrbtnCovidUseState)
-                    .addComponent(jrbtnCovidNewState))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jcbStateSel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -201,7 +181,7 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,24 +215,6 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jrbtnCovidUseStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnCovidUseStateActionPerformed
-        if(jrbtnCovidUseState.isSelected()){
-            jrbtnCovidNewState.setEnabled(true);
-            jrbtnCovidUseState.setEnabled(false);
-            jrbtnCovidNewState.setSelected(false);
-            jcbStateSel.setEnabled(false);
-        }
-    }//GEN-LAST:event_jrbtnCovidUseStateActionPerformed
-
-    private void jrbtnCovidNewStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnCovidNewStateActionPerformed
-        if(jrbtnCovidNewState.isSelected()){
-            jrbtnCovidUseState.setEnabled(true);
-            jrbtnCovidNewState.setEnabled(false);
-            jrbtnCovidUseState.setSelected(false);
-            jcbStateSel.setEnabled(true);
-        }
-    }//GEN-LAST:event_jrbtnCovidNewStateActionPerformed
-
     private void jcbStateSelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbStateSelActionPerformed
         // TODO add your handling code here:
         loc = jcbStateSel.getSelectedItem().toString();
@@ -261,29 +223,22 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
 
     private void jbtnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnBackActionPerformed
         this.dispose();
-        rw.setVisible(true);
+        parent.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jbtnBackActionPerformed
 
     private void jbtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNextActionPerformed
         // TODO add your handling code here:
        //Get the code to get whether one of the items is being selected
-      if(jrbtnYesCovid.isSelected()){
-       if(jrbtnCovidUseState.isSelected()){
-           cu.setCovidstate(cu.getStateTerritory());
-           CovidConnection cc = new CovidConnection(cu.getStateTerritory());
-           cu.setCovid(cc);
-       }
-       else if(jrbtnCovidNewState.isSelected()){
+      
+       if(jrbtnYesCovid.isSelected()){
            if(loc =="<-Select-One->"){
                JOptionPane.showMessageDialog(this, "Need to select a State");
                return;
            }
            else{
-               CovidConnection newState= new CovidConnection(loc);
-               cu.setCovidstate(loc);
-               cu.setCovid(newState);
-           }
+               CovidConnection State= new CovidConnection(loc);
+               cu.setCovid(State);
        }
        cu.setIsCovid(true);
       }
@@ -303,11 +258,10 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
        if(jrbtnYesCovid.isSelected()){
            jrbtnYesCovid.setEnabled(false);
            jbtnNext.setEnabled(true);
-           jrbtnCovidNewState.setEnabled(true);
-           jrbtnCovidUseState.setEnabled(true);
            jrbtnNoCovid.setSelected(false);
            jrbtnNoCovid.setEnabled(true);
-       }
+           jcbStateSel.setEnabled(true);
+                   }
     }//GEN-LAST:event_jrbtnYesCovidActionPerformed
 
     private void jrbtnNoCovidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnNoCovidActionPerformed
@@ -315,8 +269,7 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
            jrbtnYesCovid.setEnabled(true);
            jrbtnYesCovid.setSelected(false);
            jrbtnNoCovid.setEnabled(false);
-           jrbtnCovidUseState.setEnabled(false);
-           jrbtnCovidNewState.setEnabled(false);
+           jcbStateSel.setEnabled(false);
            jbtnNext.setEnabled(true);
        }
     }//GEN-LAST:event_jrbtnNoCovidActionPerformed
@@ -365,8 +318,6 @@ public CovidRegister(RegisterWindow rw, CustomUser cu){
     private javax.swing.JButton jbtnBack;
     private javax.swing.JButton jbtnNext;
     private javax.swing.JComboBox<String> jcbStateSel;
-    private javax.swing.JRadioButton jrbtnCovidNewState;
-    private javax.swing.JRadioButton jrbtnCovidUseState;
     private javax.swing.JRadioButton jrbtnNoCovid;
     private javax.swing.JRadioButton jrbtnYesCovid;
     // End of variables declaration//GEN-END:variables

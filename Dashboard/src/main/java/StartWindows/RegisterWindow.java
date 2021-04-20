@@ -229,10 +229,10 @@ StartScreen stsc;
         User u = new User(jtfFirstName.getText(), jtfLastName.getText(),State, jtfUsername.getText(),jpfield.getText(), jtaPassHint.getText()); 
         
         //log  User's password, username, hint
-        CustomUser cu = new CustomUser(u);
+       // CustomUser cu = new CustomUser(u);
         this.setVisible(false);
-        CovidRegister cr = new CovidRegister(this, cu);
-        cr.setVisible(true);
+        //CovidRegister cr = new CovidRegister(this, cu);
+       // cr.setVisible(true);
         
         //error will check to see if the information that is filled out in this part is incorrect
         

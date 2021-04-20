@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author jodic
  */
 
-public class CustomUser extends User{
+public class CustomUser{
   private User user;
 private ArrayList<NewsConnection> newsApiTopics;
 private boolean isNews;
@@ -36,8 +36,8 @@ private boolean UseDefaults;
 
 //Custom User calls   
         //used for default user
-    private CustomUser(){
-        super("Default", "User","Massachusetts", "Duser", "Duser123!", "Easypword");
+    private CustomUser(String type){
+        
        // CovidConnection cc = new CovidConnection(super.getStateTerritory());
         //this.setCovidstate(super.getStateTerritory());
         //this.setIsCovid(true);
@@ -63,13 +63,9 @@ private boolean UseDefaults;
         this.setIsStocks(true);
         this.setStocksDef(sc);
     }
-   
-    public CustomUser(User u){
-        super(u.getFirstName(),u.getLastName(), u.getStateTerritory(),u.getUsername(), u.getPassword(), u.getPasswordHint());
-        this.user = u;
-        stockslist = new ArrayList<>();
-        newsApiTopics = new ArrayList<>();
-    }
+   public CustomUser(){
+       
+   }
     
     public static CustomUser getDefaultCustomUser(){
         return new CustomUser();
@@ -86,9 +82,6 @@ private boolean UseDefaults;
      public void setIsCovid(boolean c){
        this.isCovid=c;
     }
-        public void setCovidstate(String state){
-    super.setCovidstate(state);
-}
    public CovidConnection getCovidinfo(){
         return covidApiTopic;
     }

@@ -146,7 +146,6 @@ UserData ud;
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
            //store cu 
            ud.logFullUser(cu);
-           ud.logUserCred(cu.getUserCred());
         DashBoardControlPanel dcp = new DashBoardControlPanel(cu);
            dcp.setVisible(true);  
            this.setVisible(false);
