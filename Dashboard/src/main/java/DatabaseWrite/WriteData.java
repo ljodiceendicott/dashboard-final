@@ -6,6 +6,7 @@
 package DatabaseWrite;
 
 import UserInfo.CustomUser;
+import UserInfo.UserCredential;
 import UserInfo.UserData;
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -22,18 +23,14 @@ public class WriteData {
            ud = UserData.getInstance();
     }
   public static void writePDtoJson(ArrayList<CustomUser> c){
-      for(int i=0; i<c.size(); i++){
-          
-          //take all of the CustomUser info and put it into a file
-      }
+     
+      for(int i= 0; i<c.size(); i++){
+         
+     }
       
   }
-  public static void writeCredentoJson(ArrayList<CustomUser> c){
-      for(int i=0; i<c.size(); i++){
-          String name = c.get(i).getUsername();
-          String pword = c.get(i).getPassword();
-          //write to the file that has all of the credentials in it
-        }
+  public static void writeCredentoJson(ArrayList<UserCredential> c){
+      
     }
 }
   

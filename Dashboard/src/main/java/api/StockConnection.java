@@ -25,18 +25,18 @@ import java.util.logging.Logger;
  * @author jodic
  */
 public class StockConnection implements ApiConnection{
-   private String url;
-   private boolean isLegit;
-   private int high;
-   private int low;
+   private transient String url;
+   private transient boolean isLegit;
+   private transient int high;
+   private transient int low;
    private String name;
    private String symb;
-   private int close;
-   private int open;
-   private String updatedlast;
-   private String splitfact; 
-   private String key ="bbe21b9a39c90a3543d03a6d05efcc3e";
-   private String baselink = "http://api.marketstack.com/v1/eod/latest?access_key=";
+   private transient int close;
+   private transient int open;
+   private transient String updatedlast;
+   private transient String splitfact; 
+   private transient String key ="bbe21b9a39c90a3543d03a6d05efcc3e";
+   private transient String baselink = "http://api.marketstack.com/v1/eod/latest?access_key=";
     //http://api.marketstack.com/v1/eod/latest?access_key=bbe21b9a39c90a3543d03a6d05efcc3e&symbols=AAPL&date_from=2021-03-21&date_to=2021-03-31
     //http://api.marketstack.com/v1/tickers?access_key=bbe21b9a39c90a3543d03a6d05efcc3e
     //http://api.marketstack.com/v1/

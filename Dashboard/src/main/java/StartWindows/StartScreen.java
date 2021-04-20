@@ -22,6 +22,13 @@ public class StartScreen extends javax.swing.JFrame {
     UserData ud;
     public StartScreen() {
         initComponents();
+        //this will load into existance from json file
+        /*
+        UD holds
+        -previous User Credentials
+        -User Saved Settings
+        -verification that person is using right credentials
+        */
         ud = UserData.getInstance();
         this.setTitle("Dashboard Application By Luke Jodice");
         this.setLocationRelativeTo(null);

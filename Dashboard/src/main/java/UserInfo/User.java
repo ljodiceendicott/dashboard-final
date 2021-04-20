@@ -9,45 +9,23 @@ package UserInfo;
  *
  * @author jodic
  */
-public class User {
+public class User extends UserCredential{
     private String firstName;
     private String lastName;
     private String stateTerritory;
-    private String username;
-    private String password;
-    private String passwordHint;
+    
+  
     private String covidState;
    public User(String fn, String ln,String staProv, String usern, String pword, String pwordHint){
+        super(usern,pword,pwordHint);
         this.firstName = fn;
         this.lastName = ln;           
         this.stateTerritory = staProv;
-        this.username = usern;
-        this.password = pword;
-        this.passwordHint = pwordHint;
+       
 // this.password = this.encrypt(pword);
        // UserData.logUserInfo(usern, pword);
    }
     
-   public static boolean isEmail(String email){
-       if(email.length()<=6){
-           return false;
-       }
-       int atseen=0;
-       for(int i=0; i<email.length(); i++){
-           char character= email.charAt(i);
-           if(character=='@'){
-               if(i==0||i>email.length()-4){
-                   return false;
-                       }
-                   atseen++;
-               if(email.charAt(email.length()-4)=='.'){
-                   return atseen==1;
-               }
-            }
-        }
-       return false;
-       //algo for email
-   }
    private String encrypt(String pword){
        System.out.println("unencrypted:"+this.getPassword());
        String encrpword = "";
@@ -104,21 +82,24 @@ public class User {
      * @return the username
      */
     public String getUsername() {
-        return username;
+        return super.getUsername();
     }
 
     /**
      * @return the password
      */
     public String getPassword() {
-        return password;
+        return super.getPassword();
     }
 
     /**
      * @return the passwordHint
      */
     public String getPasswordHint() {
-        return passwordHint;
+        return super.getPasswordHint();
+    }
+    public UserCredential getUserCred(){
+        return super.getUserCred();
     }
 public void setCovidstate(String state){
     this.covidState = state;

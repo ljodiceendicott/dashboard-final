@@ -22,12 +22,12 @@ import java.net.URLConnection;
  * @author lukej
  */
 public class CovidConnection implements ApiConnection{
-   private String confirmed;
-   private String recovered;
-   private String deaths;
-   private String updated;
+   private transient String confirmed;
+   private transient String recovered;
+   private transient String deaths;
+   private transient String updated;
    private String name;
-    Gson gson;
+    private transient Gson gson;
     
    public CovidConnection(String state){
         this.name = state; 
@@ -55,7 +55,7 @@ public class CovidConnection implements ApiConnection{
             this.deaths = stateobj.get("TotalDeaths").getAsString();
             JsonArray ja = stateobj.get("casesByState").getAsJsonArray();
             for(int i =0; i<ja.size(); i++){
-                if(ja.get(i).getAsJsonObject().get("name").getAsString()==state){
+                if(ja.get(i).getAsJsonObject().get("name").getAsString()==this.name){
                     this.confirmed=ja.get(i).getAsJsonObject().get("casesReported").getAsString();
                 }
             }

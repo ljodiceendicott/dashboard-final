@@ -26,13 +26,13 @@ import java.util.logging.Logger;
  * @author jodic
  */
 public class NewsConnection implements ApiConnection{
-  private ArrayList<NewsStory> stories = new ArrayList<>();
-  private String url;
+  private transient ArrayList<NewsStory> stories = new ArrayList<>();
+  private transient String url;
   private String section;
 
    
- String apid= "24cb25ed-4ee6-4186-b672-fd3e5e9cbef2";
- String key = "w7nhQF5PpKTQsBezWG2JkgkYsWbBt5KP";
+ private transient String apid= "24cb25ed-4ee6-4186-b672-fd3e5e9cbef2";
+private transient String key = "w7nhQF5PpKTQsBezWG2JkgkYsWbBt5KP";
  //arts, automobiles, books, business, fashion, food, health, home, insider, magazine, movies, nyregion, obituaries, 
  //opinion, politics, realestate, science, sports, sundayreview, technology, theater, t-magazine, travel, upshot, us, world
  //https://api.nytimes.com/svc/topstories/v2/sports.json?api-key=w7nhQF5PpKTQsBezWG2JkgkYsWbBt5KP
@@ -86,6 +86,7 @@ public String toString(){
            news=news+story.getTitle()+"\n";
        }
         return news;
+  // return this.getSection();
 }
 public String getSection(){
     return section;
@@ -93,8 +94,8 @@ public String getSection(){
 public ArrayList<NewsStory> getStories(){
     return stories;
 }
- //public static void main(String[] args){
-  //   NewsConnection nc = new NewsConnection("sports");
-   //  System.out.println(nc);
-// }
+ public static void main(String[] args){
+     NewsConnection nc = new NewsConnection("sports");
+    System.out.println(nc);
+ }
 }

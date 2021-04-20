@@ -38,10 +38,10 @@ private boolean UseDefaults;
         //used for default user
     private CustomUser(){
         super("Default", "User","Massachusetts", "Duser", "Duser123!", "Easypword");
-        CovidConnection cc = new CovidConnection(super.getStateTerritory());
-        this.setCovidstate(super.getStateTerritory());
-        this.setIsCovid(true);
-        this.setCovid(cc);
+       // CovidConnection cc = new CovidConnection(super.getStateTerritory());
+        //this.setCovidstate(super.getStateTerritory());
+        //this.setIsCovid(true);
+        //this.setCovid(cc);
         //arts, automobiles, books, business
         NewsConnection ncOne = new NewsConnection("arts");
         NewsConnection ncTwo = new NewsConnection("automobiles");
@@ -66,7 +66,9 @@ private boolean UseDefaults;
    
     public CustomUser(User u){
         super(u.getFirstName(),u.getLastName(), u.getStateTerritory(),u.getUsername(), u.getPassword(), u.getPasswordHint());
+        this.user = u;
         stockslist = new ArrayList<>();
+        newsApiTopics = new ArrayList<>();
     }
     
     public static CustomUser getDefaultCustomUser(){

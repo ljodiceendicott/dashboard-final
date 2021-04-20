@@ -21,10 +21,10 @@ import java.net.URLConnection;
  */
 public class WeatherConnection {
     private String city;
-    private String description;
-   private String main;
-   private String iconURL;
-   private String myAPIKey = "&appid=7b2eea32adfd6ad3fe73ff7221c45daa"; ;
+    private transient String description;
+   private transient String main;
+   private transient String iconURL;
+   private transient String myAPIKey = "&appid=7b2eea32adfd6ad3fe73ff7221c45daa"; ;
 
     public WeatherConnection(String cityName){
         this.city = cityName;

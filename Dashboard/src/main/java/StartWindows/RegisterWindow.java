@@ -227,6 +227,8 @@ StartScreen stsc;
         String State= (String) jcbState.getSelectedItem();
         //User(String fn, String ln, String email, String city, String staProv, String usern, String pword, String pwordHint){
         User u = new User(jtfFirstName.getText(), jtfLastName.getText(),State, jtfUsername.getText(),jpfield.getText(), jtaPassHint.getText()); 
+        
+        //log  User's password, username, hint
         CustomUser cu = new CustomUser(u);
         this.setVisible(false);
         CovidRegister cr = new CovidRegister(this, cu);
