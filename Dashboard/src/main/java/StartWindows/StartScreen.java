@@ -111,7 +111,7 @@ public class StartScreen extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setVisible(false);
-       CovidRegister cr = new CovidRegister();
+       CovidRegister cr = new CovidRegister(this, new CustomUser());
         cr.setVisible(true);
       //RegisterWindow rw = new RegisterWindow(ud, this);
      // rw.setVisible(true);

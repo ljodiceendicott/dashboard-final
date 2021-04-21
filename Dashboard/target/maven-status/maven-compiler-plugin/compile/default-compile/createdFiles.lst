@@ -32,7 +32,6 @@ DatabaseRetrieve\StockInfo.class
 StartWindows\StartScreen.class
 panels\Covidsmall.class
 api\ApiConnection.class
-StartWindows\CovidRegister$8.class
 StartWindows\DashboardStyling$2.class
 CustomRenders\StocksListRender.class
 Dashboards\NewsDashboardArticle$1.class
@@ -58,7 +57,6 @@ DatabaseRetrieve\RetrieveUserInfo.class
 StartWindows\FinanceRegister$7.class
 Dashboards\DashBoardControlPanel$1.class
 StartWindows\RegisterWindow$3.class
-StartWindows\CovidRegister$7.class
 StartWindows\FinanceRegister$5.class
 api\WeatherConnection.class
 Dashboards\DashBoardControlPanel.class

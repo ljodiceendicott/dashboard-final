@@ -243,7 +243,7 @@ public CovidRegister(StartScreen sc ,CustomUser cu){
        cu.setIsCovid(true);
       }
       else if(jrbtnNoCovid.isSelected()){
-          cu.setIsCovid(false);
+         cu.setIsCovid(false);
       }
       System.out.print("Covid Info:Entered");
       System.out.println(cu.getCovidinfo());

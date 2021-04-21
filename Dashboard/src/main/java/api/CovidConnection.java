@@ -52,7 +52,7 @@ public class CovidConnection implements ApiConnection{
             JsonParser jp = new JsonParser();
             JsonElement root = jp.parse(sb.toString());
             JsonObject stateobj = root.getAsJsonObject();
-            this.deaths = stateobj.get("TotalDeaths").getAsString();
+            //this.deaths = stateobj.get("TotalDeaths").getAsString();
             JsonArray ja = stateobj.get("casesByState").getAsJsonArray();
             for(int i =0; i<ja.size(); i++){
                 if(ja.get(i).getAsJsonObject().get("name").getAsString()==this.name){

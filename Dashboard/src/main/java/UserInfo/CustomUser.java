@@ -64,6 +64,8 @@ private boolean UseDefaults;
         this.setStocksDef(sc);
     }
    public CustomUser(){
+       newsApiTopics = new ArrayList<>();
+       stockslist = new ArrayList<>();
        
    }
     
