@@ -7,8 +7,10 @@ package UserInfo;
 
 
 import com.google.gson.Gson;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 
 /**
@@ -63,14 +66,17 @@ public class UserData {
    }
    public void saveFullUsers(CustomUser cu){
        JOptionPane.showMessageDialog(null, "Make Sure that the Filename ends in the extension(.json) due to that being the file type that is going to be saved\n This will be what you "
-            + "loadinto and will save the settings that you have set for the next time you hop on");
+            + "loadinto and will save the settings that you have set for the next time you hop on\n Put this in a location where you will remember it");
          PrintWriter out = null;
      try{
          JFileChooser jfc = new JFileChooser();
-        int ret = jfc.showSaveDialog(null);
+         FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Json Files", "json");
+        jfc.setFileFilter(fileFilter);
+         int ret = jfc.showSaveDialog(null);
         if(ret != JFileChooser.APPROVE_OPTION)
                return;
            File f = jfc.getSelectedFile();
+           
             out = new PrintWriter(f);
           out.write(g.toJson(cu));
           JOptionPane.showMessageDialog(null, "File has been Saved Successfully. Have a good day!");
@@ -84,6 +90,38 @@ public class UserData {
          out.close();
      }       
    } 
+   
+   public CustomUser loadFullUser(){
+       BufferedReader buffread = null;
+      CustomUser cu =null;
+        try {
+            JFileChooser jfc = new JFileChooser();
+            int ret = jfc.showSaveDialog(null);
+            if(ret != JFileChooser.APPROVE_OPTION)
+                return null;
+            File f = jfc.getSelectedFile();
+            buffread = new BufferedReader(new FileReader(f));
+            String inputLine;
+            StringBuilder sb = new StringBuilder();
+            while((inputLine = buffread.readLine()) != null){
+                sb.append(inputLine);
+                sb.append("\n");
+            }   //getinto the data
+            cu = g.fromJson(buffread, CustomUser.class);
+            JOptionPane.showMessageDialog(null, "File has been Saved Successfully. Have a good day!");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                buffread.close();
+            } catch (IOException ex) {
+                Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return cu;
+   }
    public ArrayList<CustomUser> getFullUsers(){
        return fullUser;
    }

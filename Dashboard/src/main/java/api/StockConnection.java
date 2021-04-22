@@ -81,7 +81,7 @@ public class StockConnection implements ApiConnection{
 
    @Override
     public String toString(){
-        return name+"("+symb+")  High:"+high+"/ Low:"+low;
+        return "("+symb+")  High:"+high+"/ Low:"+low;
     }
 /**
  * 

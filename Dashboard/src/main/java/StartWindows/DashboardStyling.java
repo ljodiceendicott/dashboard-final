@@ -67,7 +67,7 @@ UserData ud;
 
         jCheckBox1.setText("Weather(Will use location given in registry)");
 
-        jButton3.setText("Get Started");
+        jButton3.setText("Save Profile & Get Started");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);

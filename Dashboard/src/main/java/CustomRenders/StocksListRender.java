@@ -6,6 +6,7 @@
 package CustomRenders;
 
 import api.StockConnection;
+import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
@@ -112,11 +113,18 @@ public class StocksListRender extends javax.swing.JPanel implements ListCellRend
     }// </editor-fold>//GEN-END:initComponents
   @Override
     public Component getListCellRendererComponent(JList<? extends StockConnection> list, StockConnection value, int index, boolean isSelected, boolean cellHasFocus) {
-        jlblStockName.setText(value.getName());
+        this.setOpaque(true);
+        jlblStockName.setText(value.getSymb());
         lblStockHigh.setText(""+value.getHigh());
         lblStockLow.setText(""+value.getLow());
         lblStockClose.setText(""+value.getClose());
         lblStockOpen.setText(""+value.getOpen());
+        if(isSelected){
+            setBackground(Color.blue);
+        }
+        else{
+            setBackground(list.getBackground());
+        }
         return this;
     }
 

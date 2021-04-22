@@ -19,6 +19,7 @@ public class NewsPanel extends javax.swing.JPanel {
      * Creates new form NewsPanel
      */
     JLabel[] stories;
+      ArrayList<NewsStory> c;
     public NewsPanel() {
         initComponents();
         stories = new JLabel[]{jlStoryOne, jlStoryTwo, jlStoryThree};
@@ -28,7 +29,7 @@ public class NewsPanel extends javax.swing.JPanel {
     }
     public void setValues(NewsConnection newCon){
         jlTitle.setText("Topic:"+newCon.getSection());
-        ArrayList<NewsStory> c = newCon.getStories();
+       c= newCon.getStories();
         for(int i=0; i<c.size(); i++){
         stories[i].setText(c.get(i).getTitle());
         }
@@ -105,7 +106,8 @@ public class NewsPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jlStoryOneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlStoryOneMouseClicked
-        // TODO add your handling code here:
+        System.out.print(stories[0].getText());
+        System.out.println(c.get(0).getStorylink());
     }//GEN-LAST:event_jlStoryOneMouseClicked
 
     private void jlStoryTwoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlStoryTwoMouseClicked

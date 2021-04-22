@@ -125,6 +125,14 @@ public class StartScreen extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        //This will load the data that will be gotten by the user
+       CustomUser cu = ud.loadFullUser();
+       if(cu==null){
+           return;
+       }
+       DashBoardControlPanel dcp = new DashBoardControlPanel(cu);
+       this.setVisible(false);
+       dcp.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

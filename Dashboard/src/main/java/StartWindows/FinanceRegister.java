@@ -312,7 +312,7 @@ NewsRegister parent;
                         .addGap(312, 312, 312)
                         .addComponent(jbtnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 32, Short.MAX_VALUE))
+                .addGap(0, 72, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -357,6 +357,12 @@ NewsRegister parent;
             si.add(watchlist.get(i));
         }
        cu.setStocks(si);
+       if(si.isEmpty()){
+           cu.setIsStocks(false);
+       }
+       else{
+           cu.setIsStocks(true);
+       }
      this.setVisible(false);
      DashboardStyling ds = new DashboardStyling(cu, this);
      ds.setVisible(true);
