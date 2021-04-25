@@ -96,4 +96,23 @@ private void setButtons(String[] s){
      }
     }
 It was causing issues that I think could be avoided if I make the window hold all of the values
--
+4/20/21 -4/25 ~10-12 hours in this time frame
+-Added graphic parts for stocks window
+-Added Feature that makes a window pop up from news window
+-Added Feature in Control Panel that allows you to get back to start window, and ability to toggle the other windows
+
+features in work
+-add feature for the weather onto the dashboard control panel
+
+-getting Json File from user
+
+-making sure that everything fits in the window properly
+
+-Stocks Register Window add proper functions for the radio buttons 
+	-making it so that changing the buttons update the watchlist accordingly
+
+Issues
+-Json file Reading not working kind of strange(could possibly change this so that that information is not saved unless wanted)
+	possible solutions: 
+		-make a list of default and made CustomUser profiles that you could load into on the main page that updates as you add diff users(could use a txt file to help out......)(seems to be the better thing to do)
+		-keep trying to do it with a json file
