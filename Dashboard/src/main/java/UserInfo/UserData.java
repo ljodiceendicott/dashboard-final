@@ -32,6 +32,7 @@ public class UserData {
    private static ArrayList<CustomUser> fullUser;
    private static ArrayList<UserCredential> userlogin;
    private static UserData ud;
+   private CustomUser cu;
   
     public class Userlogininformation{
            public String username;
@@ -93,7 +94,6 @@ public class UserData {
    
    public CustomUser loadFullUser(){
        BufferedReader buffread = null;
-      CustomUser cu =null;
         try {
             JFileChooser jfc = new JFileChooser();
             int ret = jfc.showSaveDialog(null);
@@ -107,8 +107,7 @@ public class UserData {
                 sb.append(inputLine);
                 sb.append("\n");
             }   //getinto the data
-            cu = g.fromJson(buffread, CustomUser.class);
-            JOptionPane.showMessageDialog(null, "File has been Saved Successfully. Have a good day!");
+             CustomUser cu = g.fromJson(buffread, CustomUser.class);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -122,6 +121,7 @@ public class UserData {
         }
         return cu;
    }
+        
    public ArrayList<CustomUser> getFullUsers(){
        return fullUser;
    }

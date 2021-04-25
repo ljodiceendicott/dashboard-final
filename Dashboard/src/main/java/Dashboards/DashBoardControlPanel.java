@@ -5,28 +5,45 @@
  */
 package Dashboards;
 
+import StartWindows.StartScreen;
 import UserInfo.CustomUser;
 import api.CovidConnection;
+import api.TimeApi;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.Timer;
 
 /**
  *
  * @author jodic
  */
-public class DashBoardControlPanel extends javax.swing.JFrame {
+public class DashBoardControlPanel extends javax.swing.JFrame implements ActionListener {
+    private TimeApi time;
     private CovidDashboard cd;
     private NewsDashboard nd;
     private StocksDashboard sd;
+    private CustomUser cu;
+    private Timer t;
     /**
      * Creates new form DashBoardControlPanel
      */
     public DashBoardControlPanel() {
         initComponents();
+        
+        //thread for time
+            //within thread a timer that updates the time every 30 sec
          this.cd = new CovidDashboard(new CovidConnection("Massachusetts"));
             cd.setVisible(true);
             cd.setLocationRelativeTo(this);
     }
     public DashBoardControlPanel(CustomUser cu){
+        this.cu = cu;
         initComponents();
+        time = new TimeApi();
+        jlDate.setText(time.getDate());
+        jlTime.setText(time.gettime());
+        
         this.setLocationRelativeTo(null);
         if(cu.isCovid()){
             //this.cd = new CovidDashboard(cu.getCovidinfo());
@@ -42,12 +59,26 @@ public class DashBoardControlPanel extends javax.swing.JFrame {
             this.nd = new NewsDashboard(cu.getNews());
             nd.setVisible(true);
         }
+        //Thread for clock
+         t= new Timer(3000,this);
+        t.start();
         
     }
-    
-    
-   
-    
+     @Override
+    public void actionPerformed(ActionEvent e) {
+        jlTime.setText(time.gettime());
+    }
+    public void hideWins(){
+            if(cu.isStocks()){
+        sd.setVisible(false);
+        }
+        if(cu.isCovid()){
+        cd.setVisible(false);
+        }
+        if(cu.isNews()){
+        nd.setVisible(false);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,22 +88,151 @@ public class DashBoardControlPanel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jlTime = new javax.swing.JLabel();
+        jlDate = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jmtoMain = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jmCovidWin = new javax.swing.JMenuItem();
+        jmNewsWin = new javax.swing.JMenuItem();
+        jmStocksWin = new javax.swing.JMenuItem();
+        jmHide = new javax.swing.JMenuItem();
+        jmShow = new javax.swing.JMenuItem();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jlTime.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
+        jlTime.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlTime.setText("jLabel1");
+
+        jlDate.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jlDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlDate.setText("jLabel2");
+
+        jmtoMain.setText("File");
+
+        jMenuItem5.setText("Return to Start Page");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jmtoMain.add(jMenuItem5);
+
+        jMenuBar1.add(jmtoMain);
+
+        jMenu2.setText("View");
+
+        jMenu3.setText("Toggle  Specific Window");
+
+        jmCovidWin.setText("Covid Window");
+        jmCovidWin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmCovidWinActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmCovidWin);
+
+        jmNewsWin.setText("News Window");
+        jmNewsWin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmNewsWinActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmNewsWin);
+
+        jmStocksWin.setText("Stocks Window");
+        jmStocksWin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmStocksWinActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmStocksWin);
+
+        jMenu2.add(jMenu3);
+
+        jmHide.setText("Hide All Windows");
+        jmHide.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmHideActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmHide);
+
+        jmShow.setText("Show All Windows");
+        jmShow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmShowActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jmShow);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 356, Short.MAX_VALUE)
+            .addComponent(jlTime, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+            .addComponent(jlDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 387, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(jlTime, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlDate)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jmStocksWinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmStocksWinActionPerformed
+     this.toggleWin(sd);
+    }//GEN-LAST:event_jmStocksWinActionPerformed
+
+    private void jmHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmHideActionPerformed
+        this.hideWins();
+    }//GEN-LAST:event_jmHideActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+       this.hideWins();
+        StartScreen sscreen = new StartScreen();
+       sscreen.setVisible(true);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jmCovidWinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmCovidWinActionPerformed
+      if(cu.isCovid()){
+        this.toggleWin(cd);
+      }
+    }//GEN-LAST:event_jmCovidWinActionPerformed
+
+    private void jmNewsWinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmNewsWinActionPerformed
+      if(cu.isNews()){
+        this.toggleWin(nd);
+      }
+    }//GEN-LAST:event_jmNewsWinActionPerformed
+
+    private void jmShowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmShowActionPerformed
+      if(cu.isStocks()){
+        sd.setVisible(true);
+        }
+        if(cu.isCovid()){
+        cd.setVisible(true);
+        }
+        if(cu.isNews()){
+        nd.setVisible(true);
+        }
+    }//GEN-LAST:event_jmShowActionPerformed
+    public void toggleWin(JFrame frame){
+    frame.setVisible(!frame.isVisible());
+    }
     /**
      * @param args the command line arguments
      */
@@ -109,5 +269,19 @@ public class DashBoardControlPanel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JLabel jlDate;
+    private javax.swing.JLabel jlTime;
+    private javax.swing.JMenuItem jmCovidWin;
+    private javax.swing.JMenuItem jmHide;
+    private javax.swing.JMenuItem jmNewsWin;
+    private javax.swing.JMenuItem jmShow;
+    private javax.swing.JMenuItem jmStocksWin;
+    private javax.swing.JMenu jmtoMain;
     // End of variables declaration//GEN-END:variables
+
+   
 }

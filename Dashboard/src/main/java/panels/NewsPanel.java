@@ -7,7 +7,12 @@ package panels;
 
 import DatabaseRetrieve.NewsStory;
 import api.NewsConnection;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 
 /**
@@ -28,10 +33,23 @@ public class NewsPanel extends javax.swing.JPanel {
         return jlTitle.getText();
     }
     public void setValues(NewsConnection newCon){
-        jlTitle.setText("Topic:"+newCon.getSection());
+        jlTitle.setText(newCon.getSection());
        c= newCon.getStories();
         for(int i=0; i<c.size(); i++){
         stories[i].setText(c.get(i).getTitle());
+        }
+    }
+    //Use of opening a link into default browser
+    //https://gist.github.com/GiriB/b79f47e4d970dec887a7
+    public void openStory(String storylink){
+        java.awt.Desktop d = java.awt.Desktop.getDesktop();
+        try{
+            URI link = new URI(storylink);
+            d.browse(link);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(NewsPanel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(NewsPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     /**
@@ -48,6 +66,7 @@ public class NewsPanel extends javax.swing.JPanel {
         jlStoryTwo = new javax.swing.JLabel();
         jlStoryThree = new javax.swing.JLabel();
 
+        jlTitle.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
         jlTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jlStoryOne.setBackground(new java.awt.Color(51, 51, 51));
@@ -87,7 +106,7 @@ public class NewsPanel extends javax.swing.JPanel {
                     .addComponent(jlStoryTwo, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
                     .addComponent(jlStoryOne, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jlStoryThree, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jlTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jlTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -108,14 +127,18 @@ public class NewsPanel extends javax.swing.JPanel {
     private void jlStoryOneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlStoryOneMouseClicked
         System.out.print(stories[0].getText());
         System.out.println(c.get(0).getStorylink());
+        String storylink1 = c.get(0).getStorylink();
+        this.openStory(storylink1);
     }//GEN-LAST:event_jlStoryOneMouseClicked
 
     private void jlStoryTwoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlStoryTwoMouseClicked
-        // TODO add your handling code here:
+       System.out.println(c.get(1).getStorylink());
+        String storylink2 = c.get(1).getStorylink();
     }//GEN-LAST:event_jlStoryTwoMouseClicked
 
     private void jlStoryThreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlStoryThreeMouseClicked
-        // TODO add your handling code here:
+        System.out.println(c.get(2).getStorylink());
+        String storylink3 = c.get(2).getStorylink();
     }//GEN-LAST:event_jlStoryThreeMouseClicked
 
 

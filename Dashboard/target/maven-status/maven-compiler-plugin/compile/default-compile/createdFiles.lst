@@ -14,6 +14,8 @@ StartWindows\FinanceRegister$2.class
 Dashboards\NewsDashboard$2.class
 StartWindows\FinanceRegister$10.class
 StartWindows\NewsRegister$2.class
+Dashboards\DashBoardControlPanel$3.class
+Dashboards\DashBoardControlPanel$6.class
 StartWindows\StartScreen$1.class
 StartWindows\DashboardStyling$1.class
 Dashboards\NewsDashboard$5.class
@@ -28,10 +30,12 @@ DatabaseRetrieve\StockFromJson.class
 StartWindows\CovidRegister$1.class
 StartWindows\FinanceRegister$3.class
 StartWindows\RegisterWindow$2.class
+Dashboards\DashBoardControlPanel$4.class
 DatabaseRetrieve\StockInfo.class
 StartWindows\StartScreen.class
 panels\Covidsmall.class
 api\ApiConnection.class
+Dashboards\DashBoardControlPanel$7.class
 StartWindows\DashboardStyling$2.class
 CustomRenders\StocksListRender.class
 Dashboards\NewsDashboardArticle$1.class
@@ -42,6 +46,7 @@ StartWindows\NewsRegister$1.class
 UserInfo\UserCredential.class
 Dashboards\NewsDashboard$4.class
 Dashboards\StocksDashboard.class
+Dashboards\DashBoardControlPanel$5.class
 DatabaseWrite\WriteData.class
 UserInfo\UserData$Userlogininformation.class
 UserInfo\User.class
@@ -71,10 +76,12 @@ Dashboards\NewsDashboard$1.class
 Dashboards\CovidDashboard.class
 StartWindows\CovidRegister.class
 UserInfo\CustomUser.class
+api\TimeApi.class
 Dashboards\StocksDashboard$1.class
 StartWindows\NewsRegister.class
 StartWindows\CovidRegister$3.class
 StartWindows\FinanceRegister$1.class
 panels\NewsPanel$3.class
 StartWindows\StartScreen$2.class
+Dashboards\DashBoardControlPanel$2.class
 StartWindows\RegisterWindow$4.class
