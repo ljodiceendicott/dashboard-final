@@ -60,7 +60,6 @@ NewsRegister parent;
         jPanel3 = new javax.swing.JPanel();
         jrbtnCustomStock = new javax.swing.JRadioButton();
         jrbtnNoStock = new javax.swing.JRadioButton();
-        jrbtnDefaultStock = new javax.swing.JRadioButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -68,6 +67,8 @@ NewsRegister parent;
         jLabel4 = new javax.swing.JLabel();
         jtfCustomSymbol = new javax.swing.JTextField();
         jbtnAddCust = new javax.swing.JButton();
+        jtfCustomName = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jLall = new javax.swing.JList<>();
         jbtnAddWatch = new javax.swing.JButton();
@@ -98,16 +99,14 @@ NewsRegister parent;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jbtnRemWatch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 26, Short.MAX_VALUE)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jbtnRemWatch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,14 +115,14 @@ NewsRegister parent;
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jbtnRemWatch)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jrbtnCustomStock.setText(" add my own Watchlist");
+        jrbtnCustomStock.setText("Make Stock List");
         jrbtnCustomStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jrbtnCustomStockActionPerformed(evt);
@@ -137,13 +136,6 @@ NewsRegister parent;
             }
         });
 
-        jrbtnDefaultStock.setText("I am not sure which Stocks I want to watch");
-        jrbtnDefaultStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jrbtnDefaultStockActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -152,9 +144,8 @@ NewsRegister parent;
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jrbtnNoStock)
-                    .addComponent(jrbtnCustomStock)
-                    .addComponent(jrbtnDefaultStock))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(jrbtnCustomStock))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,9 +154,7 @@ NewsRegister parent;
                 .addComponent(jrbtnNoStock)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jrbtnCustomStock)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jrbtnDefaultStock)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
@@ -191,6 +180,15 @@ NewsRegister parent;
             }
         });
 
+        jtfCustomName.setEditable(false);
+        jtfCustomName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfCustomNameActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Stock Name:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -200,11 +198,15 @@ NewsRegister parent;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbtnAddCust, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jtfCustomSymbol, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jbtnAddCust, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtfCustomName, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
+                            .addComponent(jtfCustomSymbol))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -218,9 +220,13 @@ NewsRegister parent;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jtfCustomSymbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtfCustomName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbtnAddCust)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -259,13 +265,13 @@ NewsRegister parent;
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jbtnAddWatch, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jbtnAddWatch, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(173, 173, 173))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,8 +283,8 @@ NewsRegister parent;
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbtnAddWatch, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -308,39 +314,27 @@ NewsRegister parent;
             .addGroup(layout.createSequentialGroup()
                 .addGap(38, 38, 38)
                 .addComponent(jbtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(312, 312, 312)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jbtnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 78, Short.MAX_VALUE))
+                .addGap(150, 150, 150))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jrbtnDefaultStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnDefaultStockActionPerformed
-        if(jrbtnDefaultStock.isSelected()){
-            jrbtnDefaultStock.setEnabled(false);
-            jrbtnCustomStock.setEnabled(true);
-            jrbtnNoStock.setEnabled(true);
-            jrbtnCustomStock.setSelected(false);
-            jrbtnNoStock.setSelected(false);
-            jbtnNext.setEnabled(true);
-            this.setSelectedOp(false);
-        }
-    }//GEN-LAST:event_jrbtnDefaultStockActionPerformed
 
     private void jtfCustomSymbolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCustomSymbolActionPerformed
         // TODO add your handling code here:
@@ -380,23 +374,27 @@ NewsRegister parent;
         if(jrbtnNoStock.isSelected()){
             jrbtnNoStock.setEnabled(false);
             jrbtnCustomStock.setEnabled(true);
-            jrbtnDefaultStock.setEnabled(true);
             jrbtnCustomStock.setSelected(false);
-            jrbtnDefaultStock.setSelected(false);
+            jtfCustomSymbol.setEnabled(false);
+            jtfCustomName.setEnabled(false);
             jbtnNext.setEnabled(true);
             this.setSelectedOp(false);
+            if(!watchlist.isEmpty()){
+            dlmall.clear();
+            watchlist.clear();
+            sfj.addToDlm(dlmall);
+            }
         }
     }//GEN-LAST:event_jrbtnNoStockActionPerformed
 
     private void jrbtnCustomStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbtnCustomStockActionPerformed
      if(jrbtnCustomStock.isSelected()){
             jrbtnCustomStock.setEnabled(false);
-            jrbtnNoStock.setEnabled(true);
-            jrbtnDefaultStock.setEnabled(true);
+            jrbtnNoStock.setEnabled(true);          
             jtfCustomSymbol.setEnabled(true);
+            jtfCustomName.setEnabled(true);
             jbtnAddCust.setEnabled(true);
             jrbtnNoStock.setSelected(false);
-            jrbtnDefaultStock.setSelected(false);
             jbtnNext.setEnabled(true);
             this.setSelectedOp(true);
         }
@@ -410,16 +408,25 @@ NewsRegister parent;
 
     private void jbtnAddCustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAddCustActionPerformed
         //check to see if symbol is a legit stock
-        String s = jtfCustomSymbol.getText();
-        StockConnection temp = new StockConnection(s);
+        if(jtfCustomSymbol.getText()==" "||jtfCustomName.getText()==" "){
+            JOptionPane.showMessageDialog(this, "Please Make sure that BOTH custom Fields are filled out when you make a request for a stock");
+        return;
+        }
+        String symbol = jtfCustomSymbol.getText();
+        String name = jtfCustomName.getText();
+        StockConnection temp = new StockConnection(symbol);
         if(temp.getIsLegit()){
-            StockInfo e = new StockInfo(temp.getName(),temp.getSymb());
-            watchlist.addElement(e);
+            watchlist.addElement(new StockInfo(name,symbol));
         }
         else{
-            JOptionPane.showMessageDialog(this, "Unable to find Symbol: \u201C"+s+"\u201C. \n Make sure you are using a legitimate stock symbol");
+            JOptionPane.showMessageDialog(this, "Unable to find Symbol: \u201C"+symbol+"\u201C. \n Make sure you are using a legitimate stock symbol");
+            return;
             }
     }//GEN-LAST:event_jbtnAddCustActionPerformed
+
+    private void jtfCustomNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCustomNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfCustomNameActionPerformed
     public void setSelectedOp(boolean b){
         jbtnAddWatch.setEnabled(b);
         jbtnRemWatch.setEnabled(b);
@@ -462,6 +469,7 @@ NewsRegister parent;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<StockInfo> jLall;
@@ -479,8 +487,8 @@ NewsRegister parent;
     private javax.swing.JButton jbtnRemWatch;
     private javax.swing.JList<StockInfo> jlSelStocks;
     private javax.swing.JRadioButton jrbtnCustomStock;
-    private javax.swing.JRadioButton jrbtnDefaultStock;
     private javax.swing.JRadioButton jrbtnNoStock;
+    private javax.swing.JTextField jtfCustomName;
     private javax.swing.JTextField jtfCustomSymbol;
     // End of variables declaration//GEN-END:variables
 }

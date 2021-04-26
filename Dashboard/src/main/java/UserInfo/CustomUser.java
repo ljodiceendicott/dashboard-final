@@ -27,6 +27,7 @@ private CovidConnection covidApiTopic;
 private boolean isCovid;
 
 private WeatherConnection wc;
+private boolean isWeather;
 
 private ArrayList<StockConnection> sc;
 transient private StockFromJson sfj;
@@ -124,14 +125,21 @@ private boolean UseDefaults;
     public void setIsStocks(boolean b){
         this.isStocks = b;
     }
+      public boolean isStocks(){
+         return isStocks;
+     }
      
-     
+   //Weather information   
+      
     public void setWeather(WeatherConnection wc){
         this.wc = wc;
     }
+    public void setisWeather(boolean b){
+        this.isWeather = b;
+    }
+    public boolean isWeather(){
+     return this.isWeather;   
+    }
     
-     public boolean isStocks(){
-         return isStocks;
-     }
     
 }

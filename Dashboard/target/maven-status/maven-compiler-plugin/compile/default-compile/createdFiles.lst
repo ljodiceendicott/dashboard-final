@@ -51,6 +51,7 @@ DatabaseWrite\WriteData.class
 UserInfo\UserData$Userlogininformation.class
 UserInfo\User.class
 panels\NewsPanel$1.class
+StartWindows\FinanceRegister$11.class
 StartWindows\NewsRegister$3.class
 StartWindows\FinanceRegister$4.class
 UserInfo\UserData.class

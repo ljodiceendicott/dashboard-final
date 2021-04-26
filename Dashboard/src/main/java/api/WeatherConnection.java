@@ -23,7 +23,6 @@ public class WeatherConnection {
     private String city;
     private transient String description;
    private transient String main;
-   private transient String iconURL;
    private transient String myAPIKey = "&appid=7b2eea32adfd6ad3fe73ff7221c45daa"; ;
 
     public WeatherConnection(String cityName){
@@ -54,8 +53,7 @@ public class WeatherConnection {
             JsonObject currWeatherObj = weatherArray.get(0).getAsJsonObject();
             this.main = currWeatherObj.get("main").getAsString();
             this.description = currWeatherObj.get("description").getAsString();
-            String iconNum = currWeatherObj.get("icon").getAsString();
-            this.iconURL = "http://openweathermap.org/img/wn/"+iconNum+"@2x.png";
+            
             in.close();}
    
        catch(Exception e){

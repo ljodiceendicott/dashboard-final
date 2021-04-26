@@ -59,6 +59,9 @@ public class DashBoardControlPanel extends javax.swing.JFrame implements ActionL
             this.nd = new NewsDashboard(cu.getNews());
             nd.setVisible(true);
         }
+        if(cu.isWeather()){
+            //add the weather part of the api
+        }
         //Thread for clock
          t= new Timer(3000,this);
         t.start();

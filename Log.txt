@@ -108,7 +108,7 @@ features in work
 
 -making sure that everything fits in the window properly
 
--Stocks Register Window add proper functions for the radio buttons 
+-Stocks Register Window add proper functions for the radio buttons - Done(later this day)
 	-making it so that changing the buttons update the watchlist accordingly
 
 Issues
@@ -116,3 +116,6 @@ Issues
 	possible solutions: 
 		-make a list of default and made CustomUser profiles that you could load into on the main page that updates as you add diff users(could use a txt file to help out......)(seems to be the better thing to do)
 		-keep trying to do it with a json file
+
+4/25/21 afternoon 1hr
+-Need to go through all of hte code to find the parts that are not needed anymore and get rid of them
