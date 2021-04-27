@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 
 public class CustomUser{
-  private User user;
+public String profileName;
 private ArrayList<NewsConnection> newsApiTopics;
 private boolean isNews;
 
@@ -37,13 +37,14 @@ private boolean UseDefaults;
 
 //Custom User calls   
         //used for default user
-    private CustomUser(String type){
+    private CustomUser(String pfName){
         
        // CovidConnection cc = new CovidConnection(super.getStateTerritory());
         //this.setCovidstate(super.getStateTerritory());
         //this.setIsCovid(true);
         //this.setCovid(cc);
         //arts, automobiles, books, business
+        this.profileName = pfName;
         NewsConnection ncOne = new NewsConnection("arts");
         NewsConnection ncTwo = new NewsConnection("automobiles");
         NewsConnection ncThree = new NewsConnection("books");
@@ -70,14 +71,18 @@ private boolean UseDefaults;
        
    }
     
-    public static CustomUser getDefaultCustomUser(){
-        return new CustomUser();
+    public static CustomUser getDefaultCustomUser(String name){
+        return new CustomUser(name);
     }
     
-    public User getUser(){
-        return this.user;
-    }    
+    public void setpfpName(String name){
+        this.profileName = name;
+    }
     
+    @Override
+    public String toString(){
+        return profileName;
+    }
 //Covid information calls
     public void setCovid(CovidConnection cc){
         this.covidApiTopic = cc;       

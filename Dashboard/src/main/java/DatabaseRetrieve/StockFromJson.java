@@ -51,7 +51,7 @@ public class StockFromJson {
                 JsonArray stockNameInfo = valueElem.getAsJsonArray();
                 
                 //take data and put it into an arraylist<stockInfo>
-                for (int i = 0; i<650; i++) {
+                for (int i = 0; i<500; i++) {
                     JsonObject obj = stockNameInfo.get(i).getAsJsonObject();
                     String name = obj.get("name").getAsString();
                     String symbol= obj.get("symbol").getAsString();
@@ -62,8 +62,10 @@ public class StockFromJson {
             }
         }  catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Can not find file");
+            System.out.print(ex.getStackTrace());
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, "Issue reading in the file");
+            System.out.print(ex.getStackTrace());
         }
 }
     public static StockFromJson getInstance(){

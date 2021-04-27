@@ -6,7 +6,15 @@
 package UserInfo;
 
 
+import Dashboards.DashBoardControlPanel;
+import DatabaseRetrieve.StockInfo;
+import api.CovidConnection;
+import api.NewsConnection;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -29,29 +37,13 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class UserData {
     private Gson g;
-   private static ArrayList<CustomUser> fullUser;
-   private static ArrayList<UserCredential> userlogin;
    private static UserData ud;
-   private CustomUser cu;
+    private  ArrayList<CustomUser> userlist;
+
   
-    public class Userlogininformation{
-           public String username;
-           public String password;
-           public String passwordhint;
-           public Userlogininformation(UserCredential u){
-               this.username = u.getUsername();
-               this.password = u.getPassword();
-               this.passwordhint = u.getPasswordHint();
-           }
-           
-       }
    
    private UserData(){
-       //load data onto these
-       
-       fullUser= new ArrayList<>();
-       userlogin = new ArrayList<>();
-       g = new Gson();
+       userlist = new ArrayList<>();       
       
    }
    
@@ -60,129 +52,73 @@ public class UserData {
            ud =new UserData();
        return ud;
    }
-   
-   public  void logFullUser(CustomUser cu){
-       fullUser.add(cu);
-       this.saveFullUsers(cu);
+   public void writeUser(CustomUser cu){
+       this.writetoFile(cu);
    }
-   public void saveFullUsers(CustomUser cu){
-       JOptionPane.showMessageDialog(null, "Make Sure that the Filename ends in the extension(.json) due to that being the file type that is going to be saved\n This will be what you "
-            + "loadinto and will save the settings that you have set for the next time you hop on\n Put this in a location where you will remember it");
-         PrintWriter out = null;
-     try{
-         JFileChooser jfc = new JFileChooser();
-         FileNameExtensionFilter fileFilter = new FileNameExtensionFilter("Json Files", "json");
-        jfc.setFileFilter(fileFilter);
-         int ret = jfc.showSaveDialog(null);
-        if(ret != JFileChooser.APPROVE_OPTION)
-               return;
-           File f = jfc.getSelectedFile();
-           
-            out = new PrintWriter(f);
-          out.write(g.toJson(cu));
-          JOptionPane.showMessageDialog(null, "File has been Saved Successfully. Have a good day!");
-     }catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Invalid file please try again.", "Invalid file", JOptionPane.ERROR_MESSAGE);
+   private void writetoFile(CustomUser cu){
+       //Use this path as a start location for getting and saving files
+        String strUserDir = System.getProperty("user.dir");
+        
+       g = new Gson();
+       //add filter to this JFileChooser for only JSON files
+       FileNameExtensionFilter filter = new FileNameExtensionFilter(
+            "User Json Files", "json", "json");
+      JFileChooser jfc = new JFileChooser(System.getProperty("user.dir"));
+      jfc.setFileFilter(filter);
+      try{ 
+      int ret = jfc.showSaveDialog(null);
+       if(ret != JFileChooser.APPROVE_OPTION)
+           return;
+       File f = jfc.getSelectedFile();
+       FileWriter output = new FileWriter(f);
+           output.write(g.toJson(cu));
+       
+       output.close();
+      
+      } catch (IOException ex) {
+            Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
         }
-     catch (IOException ex) {
-            System.out.println(ex);
-        }
-     finally{
-         out.close();
-     }       
-   } 
-   
-   public CustomUser loadFullUser(){
-       BufferedReader buffread = null;
-        try {
-            JFileChooser jfc = new JFileChooser();
-            int ret = jfc.showSaveDialog(null);
-            if(ret != JFileChooser.APPROVE_OPTION)
-                return null;
-            File f = jfc.getSelectedFile();
-            buffread = new BufferedReader(new FileReader(f));
-            String inputLine;
-            StringBuilder sb = new StringBuilder();
-            while((inputLine = buffread.readLine()) != null){
-                sb.append(inputLine);
-                sb.append("\n");
-            }   //getinto the data
-             CustomUser cu = g.fromJson(buffread, CustomUser.class);
-        } catch (FileNotFoundException ex) {
+   }
+   private CustomUser getUserinfo(CustomUser cu){
+       CustomUser tempu = new CustomUser();
+       if(cu.isCovid()){
+           tempu.setCovid(new CovidConnection(cu.getCovidinfo().getName()));
+       }
+       if(cu.isNews()){
+           ArrayList<NewsConnection> stories = new ArrayList<>(); 
+           for(int i=0; i<cu.getNews().size(); i++){
+               stories.add(new NewsConnection(cu.getNews().get(i).getSection()));
+           }
+           tempu.setNews(stories);
+       }
+       //if stocks
+       
+       
+       
+       
+       
+       
+       return tempu;
+   }
+   public void readfromFile(){
+       g = new Gson();
+       FileNameExtensionFilter filter = new FileNameExtensionFilter("User Json Files", "json", "json");
+      JFileChooser jfc = new JFileChooser(System.getProperty("user.dir"));
+      jfc.setFileFilter(filter);
+      try{ 
+      int ret = jfc.showSaveDialog(null);
+       if(ret != JFileChooser.APPROVE_OPTION)
+           return;
+        File f = jfc.getSelectedFile();
+        BufferedReader buffread = new BufferedReader(new FileReader(f));
+        CustomUser cu = g.fromJson(buffread, CustomUser.class);
+        DashBoardControlPanel dcp = new DashBoardControlPanel(this.getUserinfo(cu));
+        dcp.setVisible(true);
+   }    catch (FileNotFoundException ex) {
             Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                buffread.close();
-            } catch (IOException ex) {
-                Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
-        return cu;
    }
-        
-   public ArrayList<CustomUser> getFullUsers(){
-       return fullUser;
-   }
+}
    
-   public void logUserCred(UserCredential userCred){
-       userlogin.add(userCred);
-       saveUserCred(userCred);
-       
-   }
-   private void saveUserCred(UserCredential c){
-    JOptionPane.showMessageDialog(null, "Make Sure that the Filename ends in the extension(.json) due to that being the file type that is going to be saved\n This will be what you "
-            + "loadinto and will save the settings that you have set for the next time you hop on");
-         PrintWriter out = null;
-     try{
-         JFileChooser jfc = new JFileChooser();
-        int ret = jfc.showSaveDialog(null);
-        if(ret != JFileChooser.APPROVE_OPTION)
-               return;
-           File f = jfc.getSelectedFile();
-            out = new PrintWriter(f);
-          out.write(g.toJson(c));
-          JOptionPane.showMessageDialog(null, "File has been Saved Successfully. Have a good day!");
-     }catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(null, "Invalid file please try again.", "Invalid file", JOptionPane.ERROR_MESSAGE);
-        }
-     catch (IOException ex) {
-            System.out.println(ex);
-        }
-     finally{
-         out.close();
-     }
-     }    
-     
-     
-     
-     
-     
-     /*
-     PrintWriter out =null;
-         try{
-           File fe = new File(getClass().getResource("/logininfo.txt").getFile());
-           out =new PrintWriter(fe);
-                out.print("test");
-                //out.print(size);
-               //out.print(jobj.toString());
-               System.out.println("User Cred Saved:");
-           
-       } catch (IOException ex) {
-            Logger.getLogger(UserData.class.getName()).log(Level.SEVERE, null, ex);
-        }
-         finally{
-             out.close();
-         }
-*/
-      
-   public ArrayList<UserCredential> getCredentials(){
-       return userlogin;
-   }
-   public boolean isUser(String Username, String pword){
-   //cross reference to see if the username and pword match
-   //if(userlogin.containsKey(Username)&& userlogin.)
-       return true;
-   }
-           }

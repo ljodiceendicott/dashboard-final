@@ -21,7 +21,7 @@ DefaultListModel<StockConnection> dlm;
      * Creates new form DashboardBase
      */
     public DashboardBase() {
-      cu = CustomUser.getDefaultCustomUser();
+      cu = CustomUser.getDefaultCustomUser("mike");
       dlm = new DefaultListModel<>();
         initComponents();
     }

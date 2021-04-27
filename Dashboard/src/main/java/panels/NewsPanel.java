@@ -125,20 +125,18 @@ public class NewsPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jlStoryOneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlStoryOneMouseClicked
-        System.out.print(stories[0].getText());
-        System.out.println(c.get(0).getStorylink());
         String storylink1 = c.get(0).getStorylink();
         this.openStory(storylink1);
     }//GEN-LAST:event_jlStoryOneMouseClicked
 
     private void jlStoryTwoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlStoryTwoMouseClicked
-       System.out.println(c.get(1).getStorylink());
         String storylink2 = c.get(1).getStorylink();
+        this.openStory(storylink2);
     }//GEN-LAST:event_jlStoryTwoMouseClicked
 
     private void jlStoryThreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlStoryThreeMouseClicked
-        System.out.println(c.get(2).getStorylink());
         String storylink3 = c.get(2).getStorylink();
+        this.openStory(storylink3);
     }//GEN-LAST:event_jlStoryThreeMouseClicked
 
 

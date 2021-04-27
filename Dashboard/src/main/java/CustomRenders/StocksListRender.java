@@ -159,10 +159,6 @@ public class StocksListRender extends javax.swing.JPanel implements ListCellRend
         lblStockLow.setText(""+value.getLow());
         lblStockClose.setText(""+value.getClose());
         lblStockOpen.setText(""+value.getOpen());
-        if(isSelected){
-            setBackground(Color.blue);
-        }
-        else{
             if(value.getOpen()>value.getClose()){
                 //loss
                 setBackground(new Color(255, 102, 102));
@@ -174,8 +170,6 @@ public class StocksListRender extends javax.swing.JPanel implements ListCellRend
                 //gain
                 setBackground(new Color(0,255,51));
                         }
-            
-        }
         return this;
     }
 

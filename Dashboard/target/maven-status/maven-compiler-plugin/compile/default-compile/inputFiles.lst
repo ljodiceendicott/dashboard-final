@@ -1,13 +1,11 @@
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\CustomRenders\StocksListRender.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\StartWindows\RegisterWindow.java
-C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\panels\WeatherSmall.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\DatabaseRetrieve\StockFromJson.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\StartWindows\DashboardStyling.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\api\StockConnection.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\StartWindows\StartScreen.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\Main.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\Dashboards\CovidDashboard.java
-C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\DatabaseRetrieve\RetrieveUserInfo.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\api\CovidConnection.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\Dashboards\DashBoardControlPanel.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\DatabaseRetrieve\StockInfo.java
@@ -17,9 +15,9 @@ C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\UserInfo\Use
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\DatabaseRetrieve\NewsStory.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\StartWindows\CovidRegister.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\api\TimeApi.java
+C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\Dashboards\WeatherDashboard.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\panels\Covidsmall.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\api\NewsConnection.java
-C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\Dashboards\NewsDashboardArticle.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\Dashboards\StocksDashboard.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\panels\NewsPanel.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\StartWindows\FinanceRegister.java
@@ -29,5 +27,4 @@ C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\panels\Stock
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\Dashboards\NewsDashboard.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\UserInfo\CustomUser.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\UserInfo\User.java
-C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\DatabaseWrite\WriteData.java
 C:\Users\jodic\Desktop\dashboard-final-main\Dashboard\src\main\java\Dashboards\DashboardBase.java

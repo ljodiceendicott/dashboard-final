@@ -9,6 +9,7 @@ import Dashboards.DashBoardControlPanel;
 import Dashboards.DashboardBase;
 import UserInfo.CustomUser;
 import UserInfo.UserData;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,11 +20,13 @@ CustomUser cu;
 FinanceRegister fr;
 UserData ud;
 
+
     /**
      * Creates new form DashboardStyling
      */
     public DashboardStyling() {
         initComponents();
+        
     }
     public DashboardStyling(CustomUser cu, FinanceRegister fr){
      this.cu = cu;
@@ -120,7 +123,15 @@ UserData ud;
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         cu.setisWeather(jcbWeather.isSelected());
-        ud.logFullUser(cu);
+        //ud.logFullUser(cu);
+       
+        String pfp ="";
+        while(pfp.equals("")){
+       pfp= JOptionPane.showInputDialog("What would you like to name this profile?\n Ex. Konnor-Work, Mike-Productivity, Luke");
+        }
+        cu.setpfpName(pfp);
+        //add user to list in the background
+         ud.writeUser(cu);
         DashBoardControlPanel dcp = new DashBoardControlPanel(cu);
         dcp.setVisible(true);  
         this.setVisible(false);
