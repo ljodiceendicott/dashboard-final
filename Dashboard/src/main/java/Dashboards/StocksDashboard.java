@@ -47,7 +47,6 @@ DefaultListModel<StockConnection> dlm;
         jLabel2 = new javax.swing.JLabel();
         jlUpdated = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Stock Info");
 
         jList1.setModel(dlm);
