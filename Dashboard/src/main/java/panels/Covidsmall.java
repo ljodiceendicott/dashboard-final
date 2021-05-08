@@ -6,7 +6,7 @@
 package panels;
 
 import UserInfo.CustomUser;
-import api.CovidConnection;
+import apiCalls.CovidConnection;
 
 /**
  *
@@ -26,7 +26,6 @@ public class Covidsmall extends javax.swing.JPanel {
      public void setValues(CovidConnection cc){
         jlblState.setText(cc.getName());
         jlblNumConfirmed.setText(cc.getConfirmed());
-        jlblNumRecoverd.setText(cc.getRecovered());
         jlblNumDeaths.setText(cc.getDeaths());
         jlblLastUpdated.setText(cc.getUpdated());
      }
@@ -41,12 +40,10 @@ public class Covidsmall extends javax.swing.JPanel {
 
         jlblState = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jlblLastUpdated = new javax.swing.JLabel();
         jlblNumDeaths = new javax.swing.JLabel();
-        jlblNumRecoverd = new javax.swing.JLabel();
         jlblNumConfirmed = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -57,9 +54,6 @@ public class Covidsmall extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel2.setText("Confirmed:");
 
-        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
-        jLabel3.setText("Recovered:");
-
         jLabel4.setFont(new java.awt.Font("Arial Black", 1, 11)); // NOI18N
         jLabel4.setText("Deaths:");
 
@@ -69,8 +63,6 @@ public class Covidsmall extends javax.swing.JPanel {
         jlblLastUpdated.setText("jLabel6");
 
         jlblNumDeaths.setText("jLabel7");
-
-        jlblNumRecoverd.setText("jLabel8");
 
         jlblNumConfirmed.setText("jLabel9");
 
@@ -91,13 +83,9 @@ public class Covidsmall extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlblNumRecoverd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jlblNumConfirmed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jlblNumConfirmed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -118,11 +106,7 @@ public class Covidsmall extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jlblNumConfirmed))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jlblNumRecoverd))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jlblNumDeaths))
@@ -138,13 +122,11 @@ public class Covidsmall extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jlblLastUpdated;
     private javax.swing.JLabel jlblNumConfirmed;
     private javax.swing.JLabel jlblNumDeaths;
-    private javax.swing.JLabel jlblNumRecoverd;
     private javax.swing.JLabel jlblState;
     // End of variables declaration//GEN-END:variables
 }

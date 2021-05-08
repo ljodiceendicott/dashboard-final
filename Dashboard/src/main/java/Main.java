@@ -1,6 +1,6 @@
 
-import StartWindows.StartScreen;
-import api.CovidConnection;
+import RegisterWindows.StartScreen;
+import apiCalls.CovidConnection;
 import com.github.weisj.darklaf.LafManager;
 import com.github.weisj.darklaf.theme.DarculaTheme;
 import javax.swing.JOptionPane;

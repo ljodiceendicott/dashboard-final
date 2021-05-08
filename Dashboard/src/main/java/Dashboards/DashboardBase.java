@@ -5,8 +5,8 @@
  */
 package Dashboards;
 
+import apiCalls.StockConnection;
 import UserInfo.CustomUser;
-import api.*;
 import javax.swing.DefaultListModel;
 import panels.Covidsmall;
 

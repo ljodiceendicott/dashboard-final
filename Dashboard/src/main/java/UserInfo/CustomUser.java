@@ -5,9 +5,12 @@
  */
 package UserInfo;
 
+import apiCalls.CovidConnection;
+import apiCalls.WeatherConnection;
+import apiCalls.StockConnection;
+import apiCalls.NewsConnection;
 import DatabaseRetrieve.StockFromJson;
 import DatabaseRetrieve.StockInfo;
-import api.*;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +29,7 @@ private boolean isStocks;
 private CovidConnection covidApiTopic;
 private boolean isCovid;
 
-private WeatherConnection wc;
+private ArrayList<WeatherConnection> weatherList;
 private boolean isWeather;
 
 private ArrayList<StockConnection> sc;
@@ -68,6 +71,7 @@ private boolean UseDefaults;
    public CustomUser(){
        newsApiTopics = new ArrayList<>();
        stockslist = new ArrayList<>();
+       weatherList = new ArrayList<>();
        
    }
     
@@ -136,8 +140,11 @@ private boolean UseDefaults;
      
    //Weather information   
       
-    public void setWeather(WeatherConnection wc){
-        this.wc = wc;
+    public void addToWeather(WeatherConnection wc){
+        weatherList.add(wc);
+    }
+    public ArrayList<WeatherConnection> getWeatherloc(){
+        return weatherList;
     }
     public void setisWeather(boolean b){
         this.isWeather = b;

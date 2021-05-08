@@ -34,12 +34,12 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jbtnStoryOne" pref="208" max="32767" attributes="0"/>
                   <Component id="jbtnStoryThree" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jbtnStoryFour" min="-2" pref="221" max="-2" attributes="0"/>
                   <Component id="jbtnStoryTwo" min="-2" pref="221" max="-2" attributes="0"/>
@@ -52,13 +52,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jbtnStoryOne" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jbtnStoryTwo" max="32767" attributes="0"/>
+                  <Component id="jbtnStoryTwo" pref="30" max="32767" attributes="0"/>
+                  <Component id="jbtnStoryOne" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jbtnStoryThree" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="jbtnStoryFour" min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jbtnStoryFour" pref="30" max="32767" attributes="0"/>
+                  <Component id="jbtnStoryThree" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="npOne" min="-2" max="-2" attributes="0"/>

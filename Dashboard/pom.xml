@@ -30,6 +30,9 @@
             </directory>
             <includes>
                 <include>
+                    *.png
+                </include>
+                <include>
                     *.jpeg
                 </include>
                 <include>

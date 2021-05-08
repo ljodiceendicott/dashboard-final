@@ -9,22 +9,25 @@ package DatabaseRetrieve;
  *
  * @author jodic
  */
-public class StockInfo {
-                private String name;
-                private String symbol;
-   
-                public StockInfo(String name, String symbol){
-                    this.name= name;
-                    this.symbol = symbol;
-                    }
-                public String getName(){
-                    return name;
-                    }
-                public String getSymbol(){
-                    return symbol;
-                    }
-                public String toString(){
-                    return name+"("+symbol+")";
-                        }
-                }
+public class StockInfo {    
+  private String symbol;
+  private String name;
+    public StockInfo(String symbol, String name){
+        this.symbol = symbol;
+        this.name = name; 
+    }
+     public StockInfo(String symbol){
+        this.symbol = symbol;
+        this.name = "no Name";
+    }
+    public String getSymbol(){
+        return symbol;
+        }
+    public String toString(){
+        if(this.name =="no Name"){
+            return symbol;
+        }
+        return "("+symbol+") "+name;
+            }
+}
 

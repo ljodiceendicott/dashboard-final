@@ -6,7 +6,7 @@
 package panels;
 
 import CustomRenders.StocksListRender;
-import api.StockConnection;
+import apiCalls.StockConnection;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 

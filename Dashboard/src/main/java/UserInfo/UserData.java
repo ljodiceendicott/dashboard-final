@@ -6,8 +6,10 @@
 package UserInfo;
 
 
+import apiCalls.CovidConnection;
+import apiCalls.NewsConnection;
+import apiCalls.StockConnection;
 import Dashboards.DashBoardControlPanel;
-import api.*;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.File;

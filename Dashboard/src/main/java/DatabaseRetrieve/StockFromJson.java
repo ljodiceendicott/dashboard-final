@@ -53,10 +53,12 @@ public class StockFromJson {
                 //take data and put it into an arraylist<stockInfo>
                 for (int i = 0; i<500; i++) {
                     JsonObject obj = stockNameInfo.get(i).getAsJsonObject();
+                    if(obj.get("has_eod").getAsBoolean()){
                     String name = obj.get("name").getAsString();
                     String symbol= obj.get("symbol").getAsString();
                     list.put(symbol, name);
-                    listnames.add(new StockInfo(name, symbol));
+                    listnames.add(new StockInfo(symbol,name));
+                    }
                 }
                 buffread.close();
             }

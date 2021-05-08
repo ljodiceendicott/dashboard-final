@@ -119,3 +119,12 @@ Issues
 
 4/25/21 afternoon 1hr
 -Need to go through all of hte code to find the parts that are not needed anymore and get rid of them
+4/28/21
+work roughly an hour
+- got loading the file to work( json files)
+- got rid of the add default stocks you either have them or not
+-Removed some files that were not needed
+	things to work on:
+	-Main page needs to look better
+	-check all of the stocks and make sure that they work with the api
+	-make sure that if the user puts in a bad stock symbol then it does not let them use it

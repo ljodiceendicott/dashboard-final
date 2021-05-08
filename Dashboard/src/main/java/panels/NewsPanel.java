@@ -6,7 +6,7 @@
 package panels;
 
 import DatabaseRetrieve.NewsStory;
-import api.NewsConnection;
+import apiCalls.NewsConnection;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -36,7 +36,13 @@ public class NewsPanel extends javax.swing.JPanel {
         jlTitle.setText(newCon.getSection());
        c= newCon.getStories();
         for(int i=0; i<c.size(); i++){
+            if(c.get(i).getTitle().length()>79){
+           String title = c.get(i).getTitle().substring(0, 75)+"...";
+            stories[i].setText(title);
+            }
+            else{
         stories[i].setText(c.get(i).getTitle());
+            }
         }
     }
     //Use of opening a link into default browser
