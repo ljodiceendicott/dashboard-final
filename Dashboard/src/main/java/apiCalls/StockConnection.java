@@ -5,6 +5,7 @@
  */
 package apiCalls;
 
+import DatabaseRetrieve.StockInfo;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -36,7 +37,12 @@ public class StockConnection implements ApiConnection{
    private transient String updatedlast;
    private transient String splitfact; 
    private transient String key ="bbe21b9a39c90a3543d03a6d05efcc3e";
-   private transient String baselink = "http://api.marketstack.com/v1/eod/latest?access_key=";
+   private transient String baseLink = "http://api.marketstack.com/v1/";
+   private transient String baseLinkAll = "http://api.marketstack.com/v1/tickers/";
+   private transient String priceInfo = "eod?access_key=";
+   private transient String stockName = "/tickers?access_key=";
+   public StockInfo nameinfo;
+   //http://api.marketstack.com/v1/tickers/AAPL/eod?access_key=bbe21b9a39c90a3543d03a6d05efcc3e
     //http://api.marketstack.com/v1/
     public StockConnection(String symb){
         url=this.setConnection(this.key,symb);
@@ -44,22 +50,11 @@ public class StockConnection implements ApiConnection{
             this.symb = symb;
            // this.name= stock;
             URL apiUrl = new URL(this.url);
-            URLConnection yc = apiUrl.openConnection();
-            InputStream inStream=yc.getInputStream();
-            InputStreamReader inStreamReader = new InputStreamReader(inStream);
-            BufferedReader in = new BufferedReader(inStreamReader);
-            String inp;
-             StringBuilder sb = new StringBuilder();
-                   
-                   while ((inp = in.readLine()) != null){
-                       sb.append(inp);
-                       sb.append("\n");
-                   }
-                   JsonParser jp = new JsonParser();
-            JsonElement root = jp.parse(sb.toString());
+            JsonElement root = this.apiConnect(apiUrl);
             JsonObject objRoot = root.getAsJsonObject();
             JsonArray valueElem = objRoot.getAsJsonArray("data");
             JsonObject data = valueElem.get(0).getAsJsonObject();
+            this.name = data.get("name").getAsString();
             this.open = data.get("open").getAsInt();
             this.close = data.get("close").getAsInt();
             this.high = data.get("high").getAsInt();
@@ -73,18 +68,35 @@ public class StockConnection implements ApiConnection{
            Logger.getLogger(StockConnection.class.getName()).log(Level.SEVERE, null, ex);
            isLegit = false;
        }
+         catch (Exception ex){
+             isLegit = false;
+         }
         isLegit = true;
     }
 
    @Override
     public String toString(){
-        return "("+symb+")  High:"+high+"/ Low:"+low;
+        return symb;
     }
-/**
+    private JsonElement apiConnect(URL apiUrl) throws IOException{
+        URLConnection yc = apiUrl.openConnection();
+            InputStream inStream=yc.getInputStream();
+            InputStreamReader inStreamReader = new InputStreamReader(inStream);
+            BufferedReader in = new BufferedReader(inStreamReader);
+            String inp;
+             StringBuilder sb = new StringBuilder();
+                   
+                   while ((inp = in.readLine()) != null){
+                       sb.append(inp);
+                       sb.append("\n");
+                   }
+                   JsonParser jp = new JsonParser();
+                   return jp.parse(sb.toString());
+    }
+    /**
  * 
  * @return the name
  */
-   
     public String getName(){
         return name;
     }
@@ -135,10 +147,6 @@ public class StockConnection implements ApiConnection{
 
     @Override
     public String setConnection(String key, String symb) {
-    return  baselink+key+"&symbols="+symb;  
-    }
-    public static void main(String[] args){
-        StockConnection sc = new StockConnection("AAPL");
-        System.out.println(sc);
+    return  baseLinkAll+priceInfo+key+"&symbols="+symb;  
     }
 }

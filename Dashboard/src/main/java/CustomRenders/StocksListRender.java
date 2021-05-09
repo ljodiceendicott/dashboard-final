@@ -156,7 +156,7 @@ public class StocksListRender extends javax.swing.JPanel implements ListCellRend
   @Override
     public Component getListCellRendererComponent(JList<? extends StockConnection> list, StockConnection value, int index, boolean isSelected, boolean cellHasFocus) {
         this.setOpaque(true);
-        jlblStockName.setText(value.getSymb());
+        jlblStockName.setText(value.toString());
         lblStockHigh.setText(""+value.getHigh());
         lblStockLow.setText(""+value.getLow());
         lblStockClose.setText(""+value.getClose());
@@ -166,6 +166,7 @@ public class StocksListRender extends javax.swing.JPanel implements ListCellRend
                 setBackground(new Color(255, 102, 102));
             }
             else if(value.getOpen()==value.getClose()){
+                //neither gain nor loss
                 setBackground(list.getBackground());
             }
             else{

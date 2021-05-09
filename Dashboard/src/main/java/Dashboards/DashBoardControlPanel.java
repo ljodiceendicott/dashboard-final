@@ -9,8 +9,6 @@ import RegisterWindows.StartScreen;
 import UserInfo.CustomUser;
 import apiCalls.CovidConnection;
 import apiCalls.TimeApi;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.Timer;
 

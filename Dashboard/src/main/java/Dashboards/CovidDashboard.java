@@ -11,7 +11,7 @@ import panels.Covidsmall;
 
 /**
  *
- * @author jodic
+ * @author ljodice
  */
 public class CovidDashboard extends javax.swing.JFrame {
     Covidsmall cp;

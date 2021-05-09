@@ -6,9 +6,7 @@
 package RegisterWindows;
 
 import UserInfo.CustomUser;
-import UserInfo.User;
 import apiCalls.CovidConnection;
-import java.util.Set;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -27,13 +25,6 @@ String loc;
     public CovidRegister() {
         initComponents();
     }
-public CovidRegister(RegisterWindow rw, CustomUser cu){
-    this.cu = cu;
-    this.parent = rw;
-    initComponents();
-    this.setTitle("Covid Information Register: 2/5 (\u2713OOOO)");
-    this.setLocationRelativeTo(null);
-}
 public CovidRegister(StartScreen sc ,CustomUser cu){
     this.cu = cu;
     this.parent = sc;
@@ -77,7 +68,6 @@ public CovidRegister(StartScreen sc ,CustomUser cu){
 
         jbtnNext.setBackground(new java.awt.Color(153, 153, 153));
         jbtnNext.setText("Next");
-        jbtnNext.setBorderPainted(false);
         jbtnNext.setEnabled(false);
         jbtnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,16 +227,21 @@ public CovidRegister(StartScreen sc ,CustomUser cu){
                return;
            }
            else{
-               CovidConnection State= new CovidConnection(loc);
-               cu.setCovid(State);
+               Thread th = new Thread(new Runnable(){
+                   @Override
+                   public void run() {
+                      CovidConnection State= new CovidConnection(loc);
+                      cu.setCovid(State);
+                   }
+                   
+               });
+              th.start();
        }
        cu.setIsCovid(true);
       }
       else if(jrbtnNoCovid.isSelected()){
          cu.setIsCovid(false);
       }
-      System.out.print("Covid Info:Entered");
-      System.out.println(cu.getCovidinfo());
         this.setVisible(false);
         //cu.useCovid(false); //Implemented to make sure that if user does not want this feature
        // cu.setCovid();

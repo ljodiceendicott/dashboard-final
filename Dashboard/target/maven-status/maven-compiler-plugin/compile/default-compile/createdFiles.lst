@@ -51,7 +51,6 @@ RegisterWindows\DashboardStyling$1.class
 RegisterWindows\DashboardStyling.class
 RegisterWindows\CovidRegister$3.class
 UserInfo\UserData.class
-RegisterWindows\StartScreen$4.class
 Dashboards\WeatherDashboard$2.class
 RegisterWindows\FinanceRegister$6.class
 Main.class
@@ -65,9 +64,7 @@ Dashboards\WeatherDashboard$1.class
 Dashboards\DashBoardControlPanel.class
 RegisterWindows\DashboardStyling$2.class
 RegisterWindows\RegisterWindow$3.class
-Dashboards\DashboardBase$1.class
 RegisterWindows\FinanceRegister$2.class
-Dashboards\DashboardBase.class
 panels\NewsPanel.class
 Dashboards\NewsDashboard$1.class
 RegisterWindows\CovidRegister$4.class

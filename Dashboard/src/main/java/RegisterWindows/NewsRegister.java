@@ -6,7 +6,6 @@
 package RegisterWindows;
 
 import UserInfo.CustomUser;
-import UserInfo.User;
 import apiCalls.NewsConnection;
 import java.util.ArrayList;
 
@@ -327,11 +326,7 @@ ArrayList<NewsConnection> stories;
             }
             cu.setNews(stories);
             //prints out to see
-            for(NewsConnection story: stories){
-                System.out.println(story.toString()+"\n");
-            }
-           }
-       System.out.println("News Topics: Recorded");
+                }
             }
         });
         th.start();

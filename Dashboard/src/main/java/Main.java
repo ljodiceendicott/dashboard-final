@@ -1,10 +1,7 @@
 
 import RegisterWindows.StartScreen;
-import apiCalls.CovidConnection;
 import com.github.weisj.darklaf.LafManager;
 import com.github.weisj.darklaf.theme.DarculaTheme;
-import javax.swing.JOptionPane;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,10 +10,11 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author jodic
+ * @author Ljodice
  */
 public class Main {
     public static void main(String[] args){
+        //Sets the default theme for the entire project to be the Darcula Theme
         LafManager.setTheme(new DarculaTheme());
        LafManager.install();
         StartScreen ss = new StartScreen();

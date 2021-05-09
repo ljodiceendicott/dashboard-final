@@ -6,7 +6,6 @@
 package UserInfo;
 
 import apiCalls.CovidConnection;
-import apiCalls.WeatherConnection;
 import apiCalls.StockConnection;
 import apiCalls.NewsConnection;
 import DatabaseRetrieve.StockFromJson;
@@ -20,17 +19,14 @@ import java.util.ArrayList;
 
 public class CustomUser{
 public String profileName;
-private ArrayList<NewsConnection> newsApiTopics;
+protected ArrayList<NewsConnection> newsApiTopics;
 private boolean isNews;
 
-private ArrayList<StockConnection> stockslist;
+protected ArrayList<StockConnection> stockslist;
 private boolean isStocks;
 
 private CovidConnection covidApiTopic;
 private boolean isCovid;
-
-private ArrayList<WeatherConnection> weatherList;
-private boolean isWeather;
 
 private ArrayList<StockConnection> sc;
 transient private StockFromJson sfj;
@@ -40,45 +36,13 @@ private boolean UseDefaults;
 
 //Custom User calls   
         //used for default user
-    private CustomUser(String pfName){
-        
-       // CovidConnection cc = new CovidConnection(super.getStateTerritory());
-        //this.setCovidstate(super.getStateTerritory());
-        //this.setIsCovid(true);
-        //this.setCovid(cc);
-        //arts, automobiles, books, business
-        this.profileName = pfName;
-        NewsConnection ncOne = new NewsConnection("arts");
-        NewsConnection ncTwo = new NewsConnection("automobiles");
-        NewsConnection ncThree = new NewsConnection("books");
-        NewsConnection ncFour = new NewsConnection("business");
-        ArrayList<NewsConnection> news = new ArrayList<>();
-        news.add(ncOne);
-        news.add(ncTwo);
-        news.add(ncThree);
-        news.add(ncFour);
-        this.setIsNews(true);
-        this.setNews(news);
-        
-        stockslist = new ArrayList<>();
-        sc= new ArrayList<>();
-        sc.add(new StockConnection("AAPL"));
-        sc.add(new StockConnection("GM"));
-        
-        this.setIsStocks(true);
-        this.setStocksDef(sc);
-    }
-   public CustomUser(){
+    public CustomUser(){
        newsApiTopics = new ArrayList<>();
        stockslist = new ArrayList<>();
-       weatherList = new ArrayList<>();
+      //weatherList = new ArrayList<>();
        
    }
-    
-    public static CustomUser getDefaultCustomUser(String name){
-        return new CustomUser(name);
-    }
-    
+
     public void setpfpName(String name){
         this.profileName = name;
     }
@@ -125,7 +89,7 @@ private boolean UseDefaults;
      public void setStocksDef(ArrayList<StockConnection> si){
         for(int i= 0; i<si.size(); i++){
             this.stockslist.add(si.get(i));
-        }
+       }
     }
      public ArrayList<StockConnection> getStocks(){
         return this.stockslist;
@@ -136,22 +100,5 @@ private boolean UseDefaults;
     }
       public boolean isStocks(){
          return isStocks;
-     }
-     
-   //Weather information   
-      
-    public void addToWeather(WeatherConnection wc){
-        weatherList.add(wc);
-    }
-    public ArrayList<WeatherConnection> getWeatherloc(){
-        return weatherList;
-    }
-    public void setisWeather(boolean b){
-        this.isWeather = b;
-    }
-    public boolean isWeather(){
-     return this.isWeather;   
-    }
-    
-    
+     }    
 }

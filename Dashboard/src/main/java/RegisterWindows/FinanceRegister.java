@@ -11,8 +11,6 @@ import apiCalls.StockConnection;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
-import javax.swing.JRadioButton;
-
 /**
  *
  * @author jodic
@@ -74,6 +72,7 @@ NewsRegister parent;
         jbtnNext = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -330,17 +329,23 @@ NewsRegister parent;
 
     private void jbtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNextActionPerformed
         //if info is blanck leave a joptionpane
-        ArrayList<StockInfo> si = new ArrayList<>();
-        for(int i=0; i<watchlist.size(); i++){
-            si.add(watchlist.get(i));
-        }
-       cu.setStocks(si);
-       if(si.isEmpty()){
-           cu.setIsStocks(false);
-       }
-       else{
-           cu.setIsStocks(true);
-       }
+        Thread th = new Thread(new Runnable(){
+            @Override
+            public void run() {
+            ArrayList<StockInfo> si = new ArrayList<>();
+            for(int i=0; i<watchlist.size(); i++){
+                si.add(watchlist.get(i));
+                }
+            cu.setStocks(si);
+            if(si.isEmpty()){
+                cu.setIsStocks(false);
+                }
+                else{
+                    cu.setIsStocks(true);
+                }
+            }
+            
+        });
      this.setVisible(false);
      DashboardStyling ds = new DashboardStyling(cu, this);
      ds.setVisible(true);
@@ -399,11 +404,13 @@ NewsRegister parent;
         return;
         }
         String symbol = jtfCustomSymbol.getText();
+        jtfCustomSymbol.setText("");
         StockConnection temp = new StockConnection(symbol);
-        if(temp.getIsLegit()){
+        if(temp != null){
             watchlist.addElement(new StockInfo(symbol));
         }
         else{
+            System.out.println(temp);
             JOptionPane.showMessageDialog(this, "Unable to find Symbol: \u201C"+symbol+"\u201C. \n Make sure you are using a legitimate stock symbol");
             return;
             }
