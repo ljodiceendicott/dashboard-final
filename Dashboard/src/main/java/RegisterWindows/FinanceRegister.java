@@ -329,23 +329,12 @@ NewsRegister parent;
 
     private void jbtnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnNextActionPerformed
         //if info is blanck leave a joptionpane
-        Thread th = new Thread(new Runnable(){
-            @Override
-            public void run() {
             ArrayList<StockInfo> si = new ArrayList<>();
             for(int i=0; i<watchlist.size(); i++){
                 si.add(watchlist.get(i));
                 }
             cu.setStocks(si);
-            if(si.isEmpty()){
-                cu.setIsStocks(false);
-                }
-                else{
-                    cu.setIsStocks(true);
-                }
-            }
-            
-        });
+            cu.setIsStocks(true);
      this.setVisible(false);
      DashboardConfirm ds = new DashboardConfirm(cu, this);
      ds.setVisible(true);

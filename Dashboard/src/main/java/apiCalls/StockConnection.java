@@ -39,13 +39,14 @@ public class StockConnection implements ApiConnection{
    private transient String key ="bbe21b9a39c90a3543d03a6d05efcc3e";
    private transient String baseLink = "http://api.marketstack.com/v1/";
    private transient String baseLinkAll = "http://api.marketstack.com/v1/tickers/";
-   private transient String priceInfo = "eod?access_key=";
+   private transient String priceInfo = "/eod?access_key=";
    private transient String stockName = "/tickers?access_key=";
    public StockInfo nameinfo;
-   //http://api.marketstack.com/v1/tickers/AAPL/eod?access_key=bbe21b9a39c90a3543d03a6d05efcc3e
+ 
     //http://api.marketstack.com/v1/
     public StockConnection(String symb){
         url=this.setConnection(this.key,symb);
+         System.out.println(url);
         try{
             this.symb = symb;
            // this.name= stock;
@@ -61,11 +62,14 @@ public class StockConnection implements ApiConnection{
             this.low = data.get("low").getAsInt();
             this.splitfact = data.get("split_factor").getAsString();
             this.updatedlast = data.get("date").getAsString(); 
+           
         } catch (MalformedURLException ex) {
            Logger.getLogger(StockConnection.class.getName()).log(Level.SEVERE, null, ex);
+           System.out.println("issue w/ link");
            isLegit = false;
        } catch (IOException ex) {
            Logger.getLogger(StockConnection.class.getName()).log(Level.SEVERE, null, ex);
+           System.out.println("issue w/ reading");
            isLegit = false;
        }
          catch (Exception ex){
@@ -147,6 +151,7 @@ public class StockConnection implements ApiConnection{
 
     @Override
     public String setConnection(String key, String symb) {
-    return  baseLinkAll+priceInfo+key+"&symbols="+symb;  
+    return  baseLinkAll+symb+priceInfo+key;  
     }
+      //http://api.marketstack.com/v1/tickers/AAPL/eod?access_key=bbe21b9a39c90a3543d03a6d05efcc3e
 }

@@ -33,8 +33,6 @@ public class CovidConnection implements ApiConnection{
         //code for current day of Covid
         try{
             
-            //URL apiURL = new URL("https://api.covid19api.com/summary");
-            //URL apiURL = new URL("https://api.apify.com/v2/key-value-stores/moxA3Q0aZh5LosewB/records/LATEST?disableRedirect=true");
             URL  apiURL = new URL("https://covid-api.mmediagroup.fr/v1/cases?country=US");
             URLConnection yc = apiURL.openConnection();
 
