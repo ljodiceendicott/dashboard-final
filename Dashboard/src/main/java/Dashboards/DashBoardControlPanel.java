@@ -56,9 +56,6 @@ public class DashBoardControlPanel extends javax.swing.JFrame{
             this.nd = new NewsDashboard(cu.getNews());
             nd.setVisible(true);
         }
-        if(cu.isWeather()){
-            //add the weather part of the api
-        }
     }
     public void hideWins(){
             if(cu.isStocks()){
@@ -96,17 +93,21 @@ public class DashBoardControlPanel extends javax.swing.JFrame{
         jmShow = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(306, 131));
         setMinimumSize(new java.awt.Dimension(306, 131));
 
-        jButton1.setText("Sign-out");
+        jButton1.setText("Quit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Back to Main Menu");
+        jButton2.setText("Sign-Out");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jlLoaded.setText("Last Loaded:");
 
@@ -203,7 +204,10 @@ public class DashBoardControlPanel extends javax.swing.JFrame{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmStocksWinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmStocksWinActionPerformed
+     StartScreen sc = new StartScreen();
+     sc.setVisible(true);
      this.toggleWin(sd);
+     this.hideWins();
     }//GEN-LAST:event_jmStocksWinActionPerformed
 
     private void jmHideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmHideActionPerformed
@@ -243,6 +247,11 @@ public class DashBoardControlPanel extends javax.swing.JFrame{
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        System.exit(1);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
     public void toggleWin(JFrame frame){
     frame.setVisible(!frame.isVisible());
     }

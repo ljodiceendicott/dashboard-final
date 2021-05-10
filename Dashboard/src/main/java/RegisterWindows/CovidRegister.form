@@ -123,7 +123,7 @@
             <Component class="javax.swing.JComboBox" name="jcbStateSel">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="68">
+                  <StringArray count="52">
                     <StringItem index="0" value="&lt;-Select-One-&gt;"/>
                     <StringItem index="1" value="Alabama"/>
                     <StringItem index="2" value="Alaska"/>
@@ -176,22 +176,6 @@
                     <StringItem index="49" value="Wisconsin"/>
                     <StringItem index="50" value="Wyoming"/>
                     <StringItem index="51" value="Washington"/>
-                    <StringItem index="52" value="DC"/>
-                    <StringItem index="53" value="American Samoa"/>
-                    <StringItem index="54" value="Baker Island"/>
-                    <StringItem index="55" value="Guam"/>
-                    <StringItem index="56" value="Howland Island"/>
-                    <StringItem index="57" value="Jarvis Island"/>
-                    <StringItem index="58" value="Johnston Atoll"/>
-                    <StringItem index="59" value="Kingman Reef"/>
-                    <StringItem index="60" value="Midway Islands"/>
-                    <StringItem index="61" value="Navassa Island"/>
-                    <StringItem index="62" value="Northern"/>
-                    <StringItem index="63" value="Mariana Islands"/>
-                    <StringItem index="64" value="Palmyra Atoll"/>
-                    <StringItem index="65" value="Puerto Rico"/>
-                    <StringItem index="66" value="Virgin Islands"/>
-                    <StringItem index="67" value="Wake Island"/>
                   </StringArray>
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>

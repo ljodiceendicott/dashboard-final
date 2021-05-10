@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author jodic
  */
-public class DashboardStyling extends javax.swing.JFrame {
+public class DashboardConfirm extends javax.swing.JFrame {
 CustomUser cu; 
 FinanceRegister fr;
 UserData ud;
@@ -23,11 +23,11 @@ UserData ud;
     /**
      * Creates new form DashboardStyling
      */
-    public DashboardStyling() {
+    public DashboardConfirm() {
         initComponents();
         
     }
-    public DashboardStyling(CustomUser cu, FinanceRegister fr){
+    public DashboardConfirm(CustomUser cu, FinanceRegister fr){
      String cuinfo="";
      this.cu = cu;
      this.fr = fr;
@@ -187,20 +187,21 @@ UserData ud;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DashboardStyling.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DashboardStyling.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DashboardStyling.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DashboardStyling.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DashboardConfirm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashboardStyling().setVisible(true);
+                new DashboardConfirm().setVisible(true);
             }
         });
     }

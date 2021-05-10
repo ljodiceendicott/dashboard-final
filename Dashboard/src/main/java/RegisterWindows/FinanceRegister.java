@@ -347,7 +347,7 @@ NewsRegister parent;
             
         });
      this.setVisible(false);
-     DashboardStyling ds = new DashboardStyling(cu, this);
+     DashboardConfirm ds = new DashboardConfirm(cu, this);
      ds.setVisible(true);
     }//GEN-LAST:event_jbtnNextActionPerformed
 
